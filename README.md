@@ -39,7 +39,7 @@ Reordering assets created before the Community Updates began can have consequenc
 Much of this code is messy, uses unusual solutions, and does not hold to our established formatting style - this is a result of AM2R's reconstruction and nature as a learning project passed down to multiple lead developers.
 
 ## Requirements
-[GameMaker: Studio 1.4.1763](https://store.yoyogames.com/downloads/gm-studio/GMStudio-Installer-1.4.1763.exe) - the IDE for editing and compiling this project.
+[GameMaker: Studio 1.4.1763](https://store.yoyogames.com/downloads/gm-studio/GMStudio-Installer-1.4.1763.exe) - the IDE for editing and compiling this project. (more on that below)
 
 [GMXDataSync](https://raw.githubusercontent.com/YAL-GameMaker-Tools/GmxDataSync/master/Executable/GmxDataSync.exe) - a utility created by YellowAfterlife to populate project files with matching game assets.
 
@@ -51,3 +51,12 @@ This repository, being based on YellowAfterlife's source reconstruction, is inst
 Afterwards, replace the two blank shader assets with default GM:S shader skeletons or your own copy of each shader, as well as the accompanying script files for the Retro Palette Swapper: `pal_swap_init_system` and `pal_swap_set`.
 
 Finally, you will need to install `modifiers.ini` as well as the `lang` and `mods` folders as datafiles within the GM:S project. The default ones do not contain the actual assets and are merely references. These can be copied over from your AM2R_15_2 folder.
+
+
+## About GameMaker versions
+This source code was designed to run on GM:S 1.4.1763, however, if you feel a bit experimental (or if you don't want to downgrade), try to do the following:
+
+- Set `IS_9999` macro to `true`.
+- Comment all the lines where IDE is complaining about missing functions.
+- Try running the game.
+- Hope it runs.

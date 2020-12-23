@@ -4326,6 +4326,11 @@
       <script>scripts\mus_boss_fadein.gml</script>
       <script>scripts\set_widescreen.gml</script>
     </scripts>
+    <scripts name="Studio 9999 stubs">
+      <script>scripts\vib_play_effect.gml</script>
+      <script>scripts\vib_stop.gml</script>
+      <script>scripts\scr_font_replace.gml</script>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shGameBoy.shader</shader>
@@ -5793,7 +5798,7 @@
       <room>rooms\rm_gameplay</room>
     </rooms>
   </rooms>
-  <constants number="10">
+  <constants number="11">
     <constant name="os_is_native">(os_browser == browser_not_a_browser)</constant>
     <constant name="os_is_browser">(os_browser != browser_not_a_browser)</constant>
     <constant name="leftUp">19000</constant>
@@ -5804,6 +5809,7 @@
     <constant name="rightDown">19005</constant>
     <constant name="rightLeft">19006</constant>
     <constant name="rightRight">19007</constant>
+    <constant name="IS_9999">true</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

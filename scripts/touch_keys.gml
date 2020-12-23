@@ -19,33 +19,33 @@ walk_zone = 0;
 // Haptic Effects
 if(global.opxjoyvib && instance_exists(oBigQuake) && global.ingame) {
     if(floor(oBigQuake.statetime) == 575) {
-        immersion_play_effect(34);
+        vib_play_effect(34);
     }
     if ((oBigQuake.statetime > 640) && (oBigQuake.statetime < 1150)) {
-        immersion_play_effect(28);
+        vib_play_effect(28);
     }
     else if(floor(oBigQuake.statetime) == 1150){
-        immersion_stop();
-        immersion_play_effect(41);
+        vib_stop();
+        vib_play_effect(41);
     }
 }
 if(global.opxjoyvib && instance_exists(oBigQuakeQueen) && global.ingame) {
     if(floor(oBigQuakeQueen.statetime) == 75) {
-        immersion_play_effect(33);
+        vib_play_effect(33);
     }
     else if ((oBigQuakeQueen.statetime > 140) && (oBigQuakeQueen.statetime < 575)) {
-        immersion_play_effect(27);
+        vib_play_effect(27);
     }
     else if(floor(oBigQuakeQueen.statetime) == 575){
-        immersion_stop();
-        immersion_play_effect(40);
+        vib_stop();
+        vib_play_effect(40);
     }
 }
 if(global.opxjoyvib && sfx_isplaying(sndDrillLoop) && global.ingame) {
-    immersion_play_effect(111);
+    vib_play_effect(111);
 }
 if(!global.ingame || room == rm_transition) {
-    immersion_stop();
+    vib_stop();
 }
 // Touch
 if(instance_exists(oTouchControls) && (global.joydetected == 0 || global.ingame == false)) {

@@ -69,7 +69,7 @@ with (oCharacter) {
     morphing = 0;
     turning = 0;
 }
-immersion_stop();
+vib_stop();
 instance_destroy();
 </string>
           </argument>

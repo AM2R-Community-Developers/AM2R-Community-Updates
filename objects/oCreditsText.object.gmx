@@ -175,7 +175,7 @@ statetime += 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>display_set_gui_size(-1,-1);
+            <string>///Return from the credits.
 
 if (global.creditsmenuopt == 0) {
     room_goto(rm_score);
@@ -189,7 +189,7 @@ if (global.creditsmenuopt == 0) {
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -206,7 +206,7 @@ if (global.creditsmenuopt == 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>display_set_gui_size(320,240);
+            <string>///Draw the credits text.
 draw_set_alpha(image_alpha);
 draw_set_font(fontGUI2);
 draw_set_color(c_black);

@@ -9,11 +9,11 @@ if (global.opxjoyvib && (!instance_exists(oBigQuake)) && (!instance_exists(oBigQ
     }
     else {   
         if(floor(argument2) == 10) {
-            immersion_play_effect(6);
+            vib_play_effect(6);
         } else if(floor(argument2) == 15) {
-            immersion_play_effect(15);
+            vib_play_effect(15);
         } else if(floor(argument2) == 20) {
-            immersion_play_effect(82);
+            vib_play_effect(82);
         }
     }
 }
