@@ -64,9 +64,9 @@ c_id = 0;
 global.gotolog = -1;
 global.tiptext = "";
 displaygui = 1;
-guifont1 = font_add_sprite(512, 48, 0, 1);
-guifont1a = font_add_sprite(513, 48, 0, 1);
-global.guifont2 = font_add_sprite(514, 48, 0, 0);
+guifont1 = font_add_sprite(sGUIFont1, 48, 0, 1);
+guifont1a = font_add_sprite(sGUIFont1A, 48, 0, 1);
+global.guifont2 = font_add_sprite(sGUIFont2, 48, 0, 0);
 showfps = 0;
 global.creditsmenuopt = 0;
 hudflash = 0;
@@ -286,7 +286,7 @@ subScrItemOffset   = 0;
 
 // Replace the default fonts if replacement files exist.
 ini_open("lang/fonts/sizes.ini");
-if (IS_9999) font_add_enable_aa(false);
+//if (IS_9999) font_add_enable_aa(false);
 if(file_exists("lang/fonts/04b09.ttf")) {
     scr_font_replace("fontGUI", "lang/fonts/04b09.ttf", ini_read_real('Sizes', '04b09_(large)', 16), false, false, 32, 255);
     scr_font_replace("fontSubScr", "lang/fonts/04b09.ttf", ini_read_real('Sizes', '04b09_(small)', 8), false, false, 32, 255);

@@ -5809,7 +5809,7 @@
     <constant name="rightDown">19005</constant>
     <constant name="rightLeft">19006</constant>
     <constant name="rightRight">19007</constant>
-    <constant name="IS_9999">true</constant>
+    <constant name="IS_9999">false</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

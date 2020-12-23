@@ -2,7 +2,7 @@
 if (IS_9999) {
     var reducedsize = ceil(argument2 - ((25 / 100) * argument2));
     // comment the line below if on 1763.
-    variable_global_set(argument0, font_add(argument1, reducedsize, argument3, argument4, argument5, argument6));
+    //variable_global_set(argument0, font_add(argument1, reducedsize, argument3, argument4, argument5, argument6));
 }
 else {
     // 1.4.1763 doesn't have variable_* functions afaik... I am sorry.
@@ -18,5 +18,5 @@ else {
     }
     
     // comment the line below if on 9999.
-    //font_replace(fontindex, argument1, argument2, argument3, argument4, argument5, argument6);
+    font_replace(fontindex, argument1, argument2, argument3, argument4, argument5, argument6);
 }

@@ -56,7 +56,9 @@ Finally, you will need to install `modifiers.ini` as well as the `lang` and `mod
 ## About GameMaker versions
 This source code was designed to run on GM:S 1.4.1763, however, if you feel a bit experimental (or if you don't want to downgrade), try to do the following:
 
-- Set `IS_9999` macro to `true`.
+- Set `IS_9999` macro in All Configurations to `true`.
 - Comment all the lines where IDE is complaining about missing functions.
+- Uncomment line that calls `font_add_enable_aa` in oControl:Create event.
+- Uncomment line in `scr_font_replace` in `if (IS_9999)` block.
 - Try running the game.
 - Hope it runs.
