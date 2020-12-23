@@ -1,0 +1,31 @@
+/// sfx_stop_loops()
+audio_stop_sound(sndSpinJump);
+audio_stop_sound(sndSpaceJump);
+audio_stop_sound(sndScrewAttack);
+audio_stop_sound(sndSpaceScrewAttack);
+audio_stop_sound(sndSpinJumpWater);
+audio_stop_sound(sndSBStart);
+audio_stop_sound(sndSBLoop);
+audio_stop_sound(sndSBChargeLoop);
+audio_stop_sound(sndSJLoop);
+audio_stop_sound(sndSBallLoop);
+audio_stop_sound(sndCharge);
+audio_stop_sound(sndChargeLoop);
+audio_stop_sound(sndLavaLoop);
+audio_stop_sound(sndPlantLoop);
+audio_stop_sound(sndQuakeLoop);
+audio_stop_sound(sndA2WJLoop);
+audio_stop_sound(sndMGammaElecLoop);
+audio_stop_sound(sndALLaserLoop);
+audio_stop_sound(sndALBladesLoop);
+audio_stop_sound(sndMachineLoop1);
+audio_stop_sound(sndDrillLoop);
+audio_stop_sound(sndStoneLoop);
+audio_stop_sound(sndA4AlarmLoop);
+audio_stop_sound(sndTesterMeleeLoop);
+audio_stop_sound(sndElevatorLoop);
+audio_stop_sound(sndDrainLoop);
+audio_stop_sound(sndWaterfallLoop);
+audio_stop_sound(sndGFTrooperBattleLoop);
+audio_stop_sound(sndLowEnergyAlertLoop);
+audio_stop_sound(sndSkorpBlade); //1.4.4

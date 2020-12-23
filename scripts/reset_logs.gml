@@ -1,0 +1,56 @@
+/// reset_logs()
+global.log[0] = 0;
+global.log[1] = 0;
+global.log[2] = 0;
+global.log[3] = 0;
+global.log[4] = 0;
+global.log[5] = 0;
+global.log[10] = 0;
+global.log[11] = 0;
+global.log[12] = 0;
+global.log[13] = 0;
+global.log[14] = 0;
+global.log[15] = 0;
+global.log[16] = 0;
+global.log[20] = 0;
+global.log[21] = 0;
+global.log[22] = 0;
+global.log[23] = 0;
+global.log[24] = 0;
+global.log[25] = 0;
+global.log[26] = 0;
+global.log[27] = 0;
+global.log[28] = 0;
+global.log[29] = 0;
+global.log[30] = 0;
+global.log[31] = 0;
+global.log[32] = 0;
+global.log[33] = 0;
+global.log[34] = 0;
+global.log[35] = 0;
+global.log[36] = 0;
+global.log[37] = 0;
+global.log[38] = 0;
+
+global.log[41] = 0; //<--- newlogscode
+global.log[42] = 0;
+global.log[43] = 0;
+global.log[44] = 0;
+global.log[45] = 0;
+
+global.log[0] = 1;
+global.log[1] = 1;
+global.log[4] = 1;
+global.log[5] = 1;
+global.log[10] = 1;
+global.log[20] = 1;
+global.log[30] = 1;
+
+global.trooperlog[0] = 0;
+global.trooperlog[1] = 0;
+global.trooperlog[2] = 0;
+global.trooperlog[3] = 0;
+global.trooperlog[4] = 0;
+global.trooperlog[5] = 0;
+global.trooperlog[6] = 0;
+global.trooperlog[7] = 0;

@@ -1,0 +1,26 @@
+/// set_default_joypad()
+global.openablejoy = 1;
+global.opanalogwalk = 1;
+global.opdeadzone = 50;
+if((os_type != os_android && os_type != os_linux) || oControl.init) global.opjoyid = 1;
+global.opjoybtn_xax = 0;
+global.opjoybtn_yax = 1;
+global.opjoybtn_a = 3;
+global.opjoybtn_b = 4;
+global.opjoybtn_x = 8;
+global.opjoybtn_l = 5;
+global.opjoybtn_l2 = 7;
+global.opjoybtn_r = 2;
+global.opjoybtn_r2 = 6;
+global.opjoybtn_sel = 1;
+global.opjoybtn_str = 10;
+global.opjoybtn_exit = 9;
+global.opjoybtn_menu1 = 3;
+global.opjoybtn_menu2 = 2;
+global.opjoybtn_padu = 36;
+global.opjoybtn_padd = 37;
+global.opjoybtn_padl = 38;
+global.opjoybtn_padr = 39;
+global.opanalog_stick = 0;
+global.opanalog_invert = 0;
+global.dpad_rebind = 0;

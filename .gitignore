@@ -1,0 +1,15 @@
+sprites/images/*
+background/images/*
+fonts/*.png
+Configs/*
+!Configs/Default.config.gmx
+scripts/pal_swap_*
+*.ogg
+*.wav
+*.shader
+\#backups
+datafiles
+help.rtf
+extensions
+AM2R.exe
+data.win

@@ -1,0 +1,13 @@
+sounds:
+ 258: musMonsterAppear
+ 373: sndCrystalMelt
+ 374: sndEggCrush
+ 375: sndHornoadDie
+ 376: sndHornoadScream
+ 377: sndHornoadLand
+ 378: sndHornoadSkeletonCrumble
+ 379: sndXInfect
+sprites:
+1504: sSolidBlank
+1506: sHornoadSkeleton
+1507: sMonsterEggHatched
