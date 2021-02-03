@@ -5325,6 +5325,7 @@
         <object>objects\oEndingHornoadFX</object>
         <object>objects\oEndingCrystalParent</object>
         <object>objects\oEndingSkip</object>
+        <object>objects\oEndingSolid</object>
       </objects>
       <objects name="Boss">
         <objects name="Serris">

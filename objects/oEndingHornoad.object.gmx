@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>//Init
 
-timeline_index = timelineCrystal;
+timeline_index = timelineHornoad;
 
 timeline_position = 0;
 
@@ -115,7 +115,7 @@ if(jumpLeft == 1 &amp;&amp; sprite_index == sHornoadJump &amp;&amp; floor(image_
             <string>///Hornoad animations
 
 //Change to idle when landing
-if(sprite_index == sHornoadJump &amp;&amp; image_index &gt;= 5 &amp;&amp; place_meeting(x, y+1, oSolid)) {
+if(sprite_index == sHornoadJump &amp;&amp; image_index &gt;= 5 &amp;&amp; place_meeting(x, y+1, oEndingSolid)) {
     PlaySoundMono(sndHornoadLand);
     sprite_index = sHornoadIdle; 
     image_index = 0;
