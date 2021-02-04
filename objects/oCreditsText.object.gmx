@@ -25,176 +25,92 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>CREDITS_LENGTH = 160;
-TARGET_WIDTH = 240;
+            <string>/*
+    FORMATTING KEY:
+    ; = linebreak marker (NOT # because we want to handle it manually and insert them later)
+    = = split into left/right strings here
+    / = centered name
+    * = centered header (gets custom display color)
+*/
 
-for (var i = 0; i &lt; CREDITS_LENGTH; i++) {
-    for (var j = 0; j &lt; 3; j++) {
-        /*
-            0 - first row
-            1 - second row
-            3 - (TO BE IMPLEMENTED) titles (so that they can have a different color/be centered)
-        */
+// Refer to key key
+text = "*Another " + global.monsterStr + " 2 Remake;;;;;;;;;;;;*Producer;/Milton 'DoctorM64' Guasti;;*Graphic Design;Ramiro Negri=MichaelGabrielR;Jasper=Jack Witty;/Steve 'Sabre230' Rothlisberger;/Kirill '1Eni1' Fevralev;;*Promo Art;/Azima 'Zim' Khan;;*Writing;/James 'Ridley' Hobbs;/Paulo 'Latinlingo' Villalobos;;*Platform Engine Code;/Martin Piecyk;;*Music Composition;/Milton 'DoctorM64' Guasti;/Darren Kerwin;/Torbjørn 'Falcool' Brandrud;;*Debug;/Dragondarch;/Hemse;/Esteban 'DruidVorse' Criado;/Verneri 'Naatiska' Viljanen;;*Playtesting;Jennifer Potter=Mario Crestanello;Live4Truths=Torbjørn 'Falcool' Brandrud;Lise Trehjørningen=Gabriel Kaplan;Nommiin=Nicolas 'Skol' Del Negro;Darren Kerwin=Robert Sephazon;;*Community Management;Dragonheart91=Ammypendent;/Karrde;;*Special Thanks;Nommiin=Nathan 'wickedclown' Hess;Tyler Rogers=Kousoru;Infinity's End=Isabelle Amponin;CapCom=The " + global.monsterStr + " Community;;;;*Source Code Reconstruction;/YellowAfterlife;;;;*Continued Revisions;;*Development;Gatordile=Lojemiru;/Alex 'Wanderer' Mack;;*Programming;Craig Kostelecky=" + global.monsterStr + "3D;;*Art Lead;/Dannon 'Shmegleskimo' Yates;;*Art;ShirtyScarab=Cooper Garvin;Chris 'Messianic' Oliveira=ChloePlz;;*Special Thanks;Banjo=Jean-Samuel Pelletier;King Bore=Scooterboot;Reaku The Crate=Grom PE;Sylandro=TheKhaosDemon;Unknown=Iwantdevil;PixHammer=CaptGlitch;Nokbient=EODTex;Electrix=gponys;/Japanese Community;;;;;;*Original " + global.monsterStr + " II Staff;;*Producer;/Gunpei Yokoi;;*Director;Hiroji Kiyotake=Hiroyuki Kimura;;*Main Programmer;/Takahiro Harada;;*Programmer;Masaru Yamanaka=Masao Yamamoto;/Isao Hirano;;*Graphic Designer;Hiroji Kiyotake=Hiroyuki Kimura;;*Program Assistant;Yuzuru Ogawa=Nobuhiro Ozaki;;*Sound Programmer;/Ryohji Yoshitomi;;*Designer;Makoto Kanoh=Masafumi Sakashita;Tomoyoshi Yamane=Takehiko Hosokawa;/Yasuo Inoue;;*Debug;Masaru Okadaga=Kenji Nishizawa;Hirofumi Matsuoka=Tohru Ohsawa;Kohta Fukui=Keisuke Terasaki;Kenichi Sugino=Hitoshi Yamagami;Katsuya Yamaoe=Yuji Hori;;;;;;;;;;/In Memory of Satoru Iwata;";
+
+// Constants
+TEXT_ROWS = string_count(";", text);
+X_POS = room_width / 2;
+
+// Vars
+var arrayIndex = 0;
+var subStr = "";
+var line = 0;
+
+// Generate blank space in 2D array...
+for (var i = 0; i &lt; TEXT_ROWS; i++) {
+    for (var j = 0; j &lt; 4; j++) {
         textArray[i, j] = "";
     }
 }
 
-
-var i = 0;
-textArray[i++, 0] = "Another " + global.monsterStr + " 2 Remake";
-i += 11;
-textArray[i++, 0] = "Producer";
-textArray[i++, 0] = "Milton 'DoctorM64' Guasti";
-i++;
-textArray[i++, 0] = "Graphic Design";
-textArray[i++, 0] = "Ramiro Negri";
-textArray[i++, 0] = "Steve 'Sabre230' Rothlisberger";
-textArray[i++, 0] = "Jack Witty";
-textArray[i++, 0] = "Kirill '1Eni1' Fevralev";
-textArray[i++, 0] = "Jasper";
-textArray[i++, 0] = "MichaelGabrielR";
-i++;
-textArray[i++, 0] = "Promo Art";
-textArray[i++, 0] = "Azima 'Zim' Khan";
-i++;
-textArray[i++, 0] = "Writing";
-textArray[i++, 0] = "James 'Ridley' Hobbs";
-textArray[i++, 0] = "Paulo 'Latinlingo' Villalobos";
-i++;
-textArray[i++, 0] = "Platform Engine Code";
-textArray[i++, 0] = "Martin Piecyk";
-i++;
-textArray[i++, 0] = "Music Composition";
-textArray[i++, 0] = "Milton 'DoctorM64' Guasti";
-textArray[i++, 0] = "Darren Kerwin";
-textArray[i++, 0] = "Torbjørn 'Falcool' Brandrud";
-i++;
-textArray[i++, 0] = "Debug";
-textArray[i++, 0] = "Hemse";
-textArray[i++, 0] = "Dragondarch";
-textArray[i++, 0] = "Esteban 'DruidVorse' Criado";
-textArray[i++, 0] = "Verneri 'Naatiska' Viljanen";
-i++;
-textArray[i++, 0] = "Playtest";
-textArray[i++, 0] = "Jennifer Potter";
-textArray[i++, 0] = "Mario Crestanello";
-textArray[i++, 0] = "Live4Truths";
-textArray[i++, 0] = "Torbjørn 'Falcool' Brandrud";
-textArray[i++, 0] = "Lise Trehjørningen";
-textArray[i++, 0] = "Nommiin";
-textArray[i++, 0] = "Gabriel Kaplan";
-textArray[i++, 0] = "Nicolas 'Skol' Del Negro";
-textArray[i++, 0] = "Darren Kerwin";
-textArray[i++, 0] = "Robert Sephazon";
-i++;
-textArray[i++, 0] = "Community Management";
-textArray[i++, 0] = "Dragonheart91";
-textArray[i++, 0] = "Ammypendent";
-textArray[i++, 0] = "Karrde";
-i++;
-textArray[i++, 0] = "Special Thanks";
-textArray[i++, 0] = "Nommiin";
-textArray[i++, 0] = "Nathan 'wickedclown' Hess";
-textArray[i++, 0] = "Tyler Rogers";
-textArray[i++, 0] = "Kousoru";
-textArray[i++, 0] = "Infinity's End";
-textArray[i++, 0] = "CapCom";
-textArray[i++, 0] = "Isabelle Amponin";
-textArray[i++, 0] = "The " + global.monsterStr + " Community";
-i += 3;
-textArray[i++, 0] = "Source Code Reconstruction";
-textArray[i++, 0] = "YellowAfterlife";
-i += 3;
-textArray[i++, 0] = "Continued Revisions";
-i++;
-textArray[i++, 0] = "Development";
-textArray[i++, 0] = "Gatordile";
-textArray[i++, 0] = "Alex 'Wanderer' Mack";
-textArray[i++, 0] = "Lojemiru";
-i++;
-textArray[i++, 0] = "Programming";
-textArray[i++, 0] = "Craig Kostelecky";
-textArray[i++, 0] = "" + global.monsterStr + "3D";
-i++;
-textArray[i++, 0] = "Art Lead";
-textArray[i++, 0] = "Dannon 'Shmegleskimo' Yates";
-i++;
-textArray[i++, 0] = "Art";
-textArray[i++, 0] = "ShirtyScarab";
-textArray[i++, 0] = "Cooper Garvin";
-textArray[i++, 0] = "Mccad00";
-textArray[i++, 0] = "Nao";
-textArray[i++, 0] = "Chris 'Messianic' Oliveira";
-textArray[i++, 0] = "ChloePlz";
-i++;
-textArray[i++, 0] = "Debug";
-textArray[i++, 0] = "DruidVorse";
-textArray[i++, 0] = "Miepee";
-i++;
-textArray[i++, 0] = "Special Thanks";
-textArray[i, 0] = "Banjo";                    textArray[i++, 1] = "Grom PE";
-textArray[i, 0] = "King Bore";                textArray[i++, 1] = "Jean-Samuel Pelletier";
-textArray[i, 0] = "Reaku The Crate";          textArray[i++, 1] = "Scooterboot";
-textArray[i, 0] = "Sylandro";                 textArray[i++, 1] = "TheKhaosDemon";
-textArray[i, 0] = "Unknown";                  textArray[i++, 1] = "Iwantdevil";
-textArray[i, 0] = "PixHammer";                textArray[i++, 1] = "CaptGlitch";
-textArray[i, 0] = "Nokbient";                 textArray[i++, 1] = "EODTex";
-textArray[i, 0] = "Electrix";                 textArray[i++, 1] = "gponys";
-textArray[i++, 0] = "Japanese Community";
-i += 5;
-textArray[i++, 0] = "Original " + global.monsterStr + " II Staff";
-i++;
-textArray[i++, 0] = "Producer";
-textArray[i++, 0] = "Gunpei Yokoi";
-i++;
-textArray[i++, 0] = "Director";
-textArray[i, 0] = "Hiroji Kiyotake";          textArray[i++, 1] = "Hiroyuki Kimura";
-i++;
-textArray[i++, 0] = "Main Programmer";
-textArray[i++, 0] = "Takahiro Harada";
-i++;
-textArray[i++, 0] = "Programmer";
-textArray[i, 0] = "Masaru Yamanaka";          textArray[i++, 1] = "Masao Yamamoto";
-textArray[i++, 0] = "Isao Hirano";
-i++;
-textArray[i++, 0] = "Graphic Designer";
-textArray[i, 0] = "Hiroji Kiyotake";          textArray[i++, 1] = "Hiroyuki Kimura";
-i++;
-textArray[i++, 0] = "Program Assistant";
-textArray[i, 0] = "Yuzuru Ogawa";             textArray[i++, 1] = "Nobuhiro Ozaki";
-i++;
-textArray[i++, 0] = "Sound Programmer";
-textArray[i++, 0] = "Ryohji Yoshitomi";
-i++;
-textArray[i++, 0] = "Designer";
-textArray[i, 0] = "Makoto Kanoh";             textArray[i++, 1] = "Masafumi Sakashita";
-textArray[i, 0] = "Tomoyoshi Yamane";         textArray[i++, 1] = "Takehiko Hosokawa";
-textArray[i++, 0] = "Yasuo Inoue";
-i++;
-textArray[i++, 0] = "Debug";
-textArray[i, 0] = "Masaru Okadaga";           textArray[i++, 1] = "Kenji Nishizawa";
-textArray[i, 0] = "Hirofumi Matsuoka";        textArray[i++, 1] = "Tohru Ohsawa";
-textArray[i, 0] = "Kohta Fukui";              textArray[i++, 1] = "Keisuke Terasaki";
-textArray[i, 0] = "Kenichi Sugino";           textArray[i++, 1] = "Hitoshi Yamagami";
-textArray[i, 0] = "Katsuya Yamaoe";           textArray[i++, 1] = "Yuji Hori";
-i += 9;
-textArray[i++, 0] = "In Memory of Satoru Iwata";
-
-text1 = "";
-text2 = "";
-
-for (var i = 0; i &lt; CREDITS_LENGTH; i++) {
-    text1 += textArray[i, 0] + "#";
-    text2 += textArray[i, 1] + "#";
+// Parse text
+for (var i = 1; i &lt;= string_length(text); i++) {
+    // Get next char
+    var nextChar = string_char_at(text, i);
+    
+    // Parsing - refer to key above
+    if (nextChar == "=") { // Split
+        // Store subStr as left (technically anything but left is what it /should/ be)
+        textArray[line, arrayIndex] = subStr;
+        
+        // Reset subStr
+        subStr = "";
+        
+        // Set next index to right
+        arrayIndex = 1;
+    }
+    else if (nextChar == ";") { // Linebreak
+        // Store subStr to index
+        textArray[line, arrayIndex] = subStr;
+        
+        // Reset subStr/index
+        subStr = ""; 
+        arrayIndex = 0;
+                
+        // Drop to next line
+        line++;
+    }
+    else if (nextChar == "/") { // Centered
+        // Set index to center
+        arrayIndex = 2;
+    }
+    else if (nextChar == "*") { // Centered header
+        // Set index to header
+        arrayIndex = 3;
+    }
+    else {
+        // Add current char to subStr
+        subStr += nextChar;
+    }
 }
 
+// Create text strings
+textLeft = "";
+textRight = "";
+textCenter = "";
+textHeader = "";
 
+// Compile arrays into their respective strings; add newlines
+for (var i = 0; i &lt; TEXT_ROWS; i++) {
+    textLeft += textArray[i, 0] + "#";
+    textRight += textArray[i, 1] + "#";
+    textCenter += textArray[i, 2] + "#";
+    textHeader += textArray[i, 3] + "#";
+}
 
 
 yoffset = 0;
 fadeout = 0;
 canfadeout = 0;
-//canfadeout = 1; //remove this!
 alarm[0] = 1;
 image_alpha = 0;
 if (global.creditsmenuopt == 1) {
@@ -207,170 +123,6 @@ if (global.creditsmenuopt == 1) {
 }
 
 if (os_type == os_android) os_powersave_enable(false);
-
-widespace = oControl.widescreen*53;
-
-/*
-text = "Another " + global.monsterStr + " 2 Remake
-
-
-
-
-
-
-
-
-
-
-
-Producer
-Milton 'DoctorM64' Guasti
-
-Graphic Design
-Ramiro Negri
-Steve 'Sabre230' Rothlisberger
-Jack Witty
-Kirill '1Eni1' Fevralev
-Jasper
-MichaelGabrielR
-
-Promo Art
-Azima 'Zim' Khan
-
-Writing
-James 'Ridley' Hobbs
-Paulo 'Latinlingo' Villalobos
-
-Platform Engine Code
-Martin Piecyk
-
-Music Composition
-Milton 'DoctorM64' Guasti
-Darren Kerwin
-Torbjørn 'Falcool' Brandrud
-
-Debug
-Hemse
-Dragondarch
-Esteban 'DruidVorse' Criado
-Verneri 'Naatiska' Viljanen
-
-Playtest
-Jennifer Potter
-Mario Crestanello
-Live4Truths
-Torbjørn 'Falcool' Brandrud
-Lise Trehjørningen
-Nommiin
-Gabriel Kaplan
-Nicolas 'Skol' Del Negro
-Darren Kerwin
-Robert Sephazon
-
-Community Management
-Dragonheart91
-Ammypendent
-Karrde
-
-Special Thanks
-Nommiin
-Nathan 'wickedclown' Hess
-Tyler Rogers
-Kousoru
-Infinity's End
-CapCom
-Isabelle Amponin
-The " + global.monsterStr + " Community
-
-
-
-Source Code Reconstruction
-YellowAfterlife
-
-
-
-Continued Revisions
-
-Lead - Former
-Gatordile
-Alex 'Wanderer' Mack
-
-Lead
-Lojemiru
-
-Development
-Craig Kostelecky
-" + global.monsterStr + "3D
-
-Art Lead
-Dannon 'Shmegleskimo' Yates
-
-Art
-ShirtyScarab
-Cooper Garvin
-Chris 'Messianic' Oliveira
-ChloePlz
-
-Special Thanks
-Banjo, Grom PE,
-King Bore, Jean-Samuel Pelletier,
-Reaku The Crate, Scooterboot, 
-Sylandro, TheKhaosDemon, 
-Unknown, Iwantdevil, 
-PixHammer, CaptGlitch,
-Nokbient, EODTex,
-Electrix, gponys,
-Japanese Community
-
-
-
-
-
-Original " + global.monsterStr + " II Staff
-
-Producer
-Gunpei Yokoi
-
-Director
-Hiroji Kiyotake, Hiroyuki Kimura
-
-Main Programmer
-Takahiro Harada
-
-Programmer
-Masaru Yamanaka, Masao Yamamoto,
-Isao Hirano
-
-Graphic Designer
-Hiroji Kiyotake, Hiroyuki Kimura
-
-Program Assistant
-Yuzuru Ogawa, Nobuhiro Ozaki
-
-Sound Programmer
-Ryohji Yoshitomi
-
-Designer
-Makoto Kanoh, Masafumi Sakashita,
-Tomoyoshi Yamane, Takehiko Hosokawa,
-Yasuo Inoue
-
-Debug
-Masaru Okadaga, Kenji Nishizawa,
-Hirofumi Matsuoka, Tohru Ohsawa,
-Kohta Fukui, Keisuke Terasaki,
-Kenichi Sugino, Hitoshi Yamagami,
-Katsuya Yamaoe, Yuji Hori
-
-
-
-
-
-
-
-
-
-In Memory of Satoru Iwata";
 </string>
           </argument>
         </arguments>
@@ -532,37 +284,32 @@ if (global.creditsmenuopt == 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>display_set_gui_size(320,240);
+            <string>// Setup
+display_set_gui_size(320, 240);
 draw_set_alpha(image_alpha);
 draw_set_font(fontGUI2);
-draw_set_color(c_black);
-draw_set_halign(fa_left);
-draw_text(x + 1 - widespace, y + 17, text1);
+
+// Left
 draw_set_halign(fa_right);
-draw_text(x + 1 - widespace + TARGET_WIDTH,y + 17, text2);
-draw_set_color(c_white);
+draw_cool_text(X_POS - 12, y + 17, textLeft, c_black, c_white, c_white, 1);
+
+// Right
 draw_set_halign(fa_left);
-draw_text(x - widespace, y + 16, text1);
-draw_set_halign(fa_right);
-draw_text(x - widespace + TARGET_WIDTH, y + 16, text2);
+draw_cool_text(X_POS + 12, y + 17, textRight, c_black, c_white, c_white, 1);
+
+// Center
+draw_set_halign(fa_center);
+draw_cool_text(X_POS, y + 17, textCenter, c_black, c_white, c_white, 1);
+
+// Header
+//draw_set_color(c_gray);
+draw_cool_text(X_POS, y + 17, textHeader, c_black, c_dkgray, c_gray, 1);
+
+// Draw black bars
 draw_set_alpha(1);
 draw_set_color(c_black);
 draw_rectangle(0 - widespace, 0, 330 + widespace, 120 - yoffset, false);
 draw_rectangle(0 - widespace, 120 + yoffset, 330 + widespace, 250, false);
-
-
-/* //Old code in draw event
-
-draw_set_alpha(image_alpha);
-draw_set_font(fontGUI2);
-draw_set_color(c_black);
-draw_text(round(x + 1), round(y + 17), text);
-draw_set_color(c_white);
-draw_text(round(x), round(y + 16), text);
-draw_set_alpha(1);
-draw_set_color(c_black);
-draw_rectangle(0, 0, 330, 120 - yoffset, false);
-draw_rectangle(0, 120 + yoffset, 330, 250, false);
 </string>
           </argument>
         </arguments>
