@@ -7,10 +7,10 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>1</bbox_left>
-  <bbox_right>16</bbox_right>
-  <bbox_top>1</bbox_top>
-  <bbox_bottom>15</bbox_bottom>
+  <bbox_left>17</bbox_left>
+  <bbox_right>0</bbox_right>
+  <bbox_top>16</bbox_top>
+  <bbox_bottom>0</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -21,7 +21,5 @@
   <height>17</height>
   <frames>
     <frame index="0">images\sZebbo2_0.png</frame>
-    <frame index="1">images\sZebbo2_1.png</frame>
-    <frame index="2">images\sZebbo2_2.png</frame>
   </frames>
 </sprite>

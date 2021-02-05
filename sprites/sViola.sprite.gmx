@@ -21,21 +21,5 @@
   <height>16</height>
   <frames>
     <frame index="0">images\sViola_0.png</frame>
-    <frame index="1">images\sViola_1.png</frame>
-    <frame index="2">images\sViola_2.png</frame>
-    <frame index="3">images\sViola_3.png</frame>
-    <frame index="4">images\sViola_4.png</frame>
-    <frame index="5">images\sViola_5.png</frame>
-    <frame index="6">images\sViola_6.png</frame>
-    <frame index="7">images\sViola_7.png</frame>
-    <frame index="8">images\sViola_8.png</frame>
-    <frame index="9">images\sViola_9.png</frame>
-    <frame index="10">images\sViola_10.png</frame>
-    <frame index="11">images\sViola_11.png</frame>
-    <frame index="12">images\sViola_12.png</frame>
-    <frame index="13">images\sViola_13.png</frame>
-    <frame index="14">images\sViola_14.png</frame>
-    <frame index="15">images\sViola_15.png</frame>
-    <frame index="16">images\sViola_16.png</frame>
   </frames>
 </sprite>

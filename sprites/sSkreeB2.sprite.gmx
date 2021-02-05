@@ -7,10 +7,10 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>0</bbox_left>
-  <bbox_right>21</bbox_right>
-  <bbox_top>0</bbox_top>
-  <bbox_bottom>28</bbox_bottom>
+  <bbox_left>21</bbox_left>
+  <bbox_right>0</bbox_right>
+  <bbox_top>28</bbox_top>
+  <bbox_bottom>0</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -21,9 +21,5 @@
   <height>29</height>
   <frames>
     <frame index="0">images\sSkreeB2_0.png</frame>
-    <frame index="1">images\sSkreeB2_1.png</frame>
-    <frame index="2">images\sSkreeB2_2.png</frame>
-    <frame index="3">images\sSkreeB2_3.png</frame>
-    <frame index="4">images\sSkreeB2_4.png</frame>
   </frames>
 </sprite>
