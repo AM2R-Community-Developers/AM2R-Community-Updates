@@ -467,7 +467,7 @@ dodamage = 1;
 if (frozen &gt; 0 || other.state == 30 || other.state == 31 || other.state == 29 || other.speedboost &gt; 0 || other.state == 15 &amp;&amp; other.vjump == 0 &amp;&amp; global.screwattack == 1) dodamage = 0;
 if (state == 100 || other.dash &gt;= 29) dodamage = 0;
 if (other.inwater == 1 &amp;&amp; other.state == 15 &amp;&amp; other.vjump == 0 &amp;&amp; global.screwattack == 1 &amp;&amp; global.currentsuit != 2) dodamage = 1; //added
-if (hitpseudoscrew == 1 &amp;&amp; other.chargebeam &gt;= 1 &amp;&amp; other.state == 15 &amp;&amp; other.vjump == 0 &amp;&amp; global.screwattack == 0) {
+if (hitpseudoscrew == 1 &amp;&amp; other.chargebeam &gt;= 1 &amp;&amp; other.state == 15 &amp;&amp; other.vjump == 0 &amp;&amp; global.screwattack == 0 &amp;&amp; other.speedboost == 0) {
     event_user(0);
     if (myhealth &lt;= 0) state = 100;
     other.chargebeam = 0;
