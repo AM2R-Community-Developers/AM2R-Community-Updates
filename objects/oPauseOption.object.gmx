@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>enabled = 1;
+color = c_white;
 </string>
           </argument>
         </arguments>
@@ -55,7 +56,7 @@ if (global.curropt == optionid) {
 }
 draw_set_color(c_black);
 draw_text(x + 1, y - 3, label);
-draw_set_color(c_white);
+draw_set_color(color);
 if (enabled == 0) {
     draw_set_alpha(0.5);
 } else draw_set_alpha(1);
