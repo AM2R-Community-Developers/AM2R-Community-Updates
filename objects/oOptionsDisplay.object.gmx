@@ -25,26 +25,76 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.curropt = 0;
-lastitem = 12; // og 10
+            <string>y -= 8; // Moved from user 0 to avoid reset issues.
+// Change to object creation position instead!
+
+global.curropt = 0;
 active = 0;
-alarm[0] = 5;
-i = 0;
-repeat (13) { // og 11
-    global.canedit[i] = 1;
-    i += 1;
-}
-targety = 0;
-view_object[0] = id;
+targetY = y;
 timer = 0;
-langno = array_length_1d(global.language);
-for (i = 0; i &lt; langno; i += 1) {
+SPACER = 16;
+
+view_object[0] = id;
+
+// Active in 5
+alarm[0] = 5;
+
+var i = 0;
+
+/*
+    This list dictates the order of selection in the Display Menu. 
+    Also, the lists in User Defined 0 and 3 need to be in order.
+*/
+
+// DISPLAY OPTIONS
+
+// Fullscreen and scale should NOT exist on Android
+if (os_type != os_android) {
+    opFullscreen = i++;
+    opScale = i++;
+}
+opVSync = i++;
+opSensitivity = i++;
+opWidescreen = i++;
+// HUD
+opShowHUD = i++;
+opShowMap = i++;
+opCounterStyle = i++;
+// NOTIFICATIONS
+opShowHints = i++;
+opButtonType = i++;
+opShowScans = i++;
+opLanguage = i++;
+
+menuSize = i; // 1 larger than last item
+
+vTargetY = 18 * menuSize + 72;
+
+i = 0;
+
+// Enable menu
+repeat (menuSize + 1) {
+    canEdit[i] = 1;
+    i++;
+}
+
+// Get lang info
+langCount = array_length_1d(global.language);
+for (i = 0; i &lt; langCount; i += 1) {
     ini_open(global.language[i]);
     lang[i] = ini_read_string("Header", "Language", "[!]");
+    langAuthor[i] = ini_read_string("Header", "Author", "[!]");
+    langAuthor2[i] = ini_read_string("Header", "Author2", "[!]");
     ini_close();
 }
+
+// Create menu items
 event_user(0);
+
+// Load tip text
 event_user(3);
+
+// Load current tip text
 global.tiptext = tip[global.curropt];
 </string>
           </argument>
@@ -68,7 +118,8 @@ global.tiptext = tip[global.curropt];
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_user(1);
+            <string>/// Destroy menu options
+event_user(1);
 </string>
           </argument>
         </arguments>
@@ -91,7 +142,8 @@ global.tiptext = tip[global.curropt];
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>set_window_scale(global.opscale);
+            <string>/// Update window scale
+set_window_scale(global.opscale);
 display_reset(0, global.opvsync);
 </string>
           </argument>
@@ -139,163 +191,86 @@ display_reset(0, global.opvsync);
           <argument>
             <kind>1</kind>
             <string>if (active) {
+    // Menu DOWN
     if (oControl.kDown &gt; 0 &amp;&amp; (oControl.kDownPushedSteps == 0 || oControl.kDownPushedSteps &gt; 30 &amp;&amp; timer == 0)) {      
-        if (os_type == os_android) {
-            switch global.curropt { 
-            // this is spaghetti but I am not going to shift every single
-            // menu id to add one option. This is dumb.
-                case 0: global.curropt = 10; break;
-                case 9: global.curropt = 12; break;
-                case 11: global.curropt = 3; break;
-                default: global.curropt += 1; break;
-            }
-        } else {
-            switch global.curropt { 
-            // this is spaghetti but I am not going to shift every single
-            // menu id to add one option. This is dumb.
-                case 2: global.curropt = 10; break;
-                case 9: global.curropt = 12; break;
-                case 11: global.curropt = 3; break;
-                default: global.curropt += 1; break;
-            }
+        global.curropt += 1;
+        // Wrap
+        if (global.curropt &gt; menuSize) global.curropt = 0;
+        // Skip inactive
+        while (canEdit[global.curropt] == 0) {
+            global.curropt += 1;
+            // Wrap again (safety)
+            if (global.curropt &gt; menuSize) global.curropt = 0;
         }
-        if (global.curropt &gt; lastitem) global.curropt = 0;
-        while (global.canedit[global.curropt] == 0) global.curropt += 1;
-        targety = op[global.curropt].y + 8 + 8;
-        if (targety &gt; 256 + (sep*2) &amp;&amp; op[7].visible) targety = 256 + (sep*2);
-        if (targety &gt; 240 + (sep*2) &amp;&amp; !op[7].visible) targety = 240 + (sep*2);
-        if(os_type == os_android) { if (targety &gt; 224) targety = 224; }
+        // New target
+        targetY = op[global.curropt].y + 16;
+        if (targetY &gt; vTargetY) targetY = vTargetY;
+        sfx_play(sndMenuMove);
+        global.tiptext = tip[global.curropt];
+    } // Menu UP
+    else if (oControl.kUp &gt; 0 &amp;&amp; (oControl.kUpPushedSteps == 0 || oControl.kUpPushedSteps &gt; 30 &amp;&amp; timer == 0)) {
+        global.curropt -= 1;
+        // Wrap
+        if (global.curropt &lt; 0) global.curropt = menuSize;
+        // Skip inactive
+        while (canEdit[global.curropt] == 0)
+        {
+            global.curropt -= 1;
+            // Wrap again (safety)
+            if (global.curropt &lt; 0) global.curropt = menuSize;
+        }
+        // New target
+        targetY = op[global.curropt].y + 16;
+        if (targetY &gt; vTargetY) targetY = vTargetY;
         sfx_play(sndMenuMove);
         global.tiptext = tip[global.curropt];
     }
-    if (oControl.kUp &gt; 0 &amp;&amp; (oControl.kUpPushedSteps == 0 || oControl.kUpPushedSteps &gt; 30 &amp;&amp; timer == 0)) {
-        //global.curropt -= 1;
-        if (os_type == os_android) {
-            switch global.curropt { // spaghetti woo
-                case 3: global.curropt = 11; break;
-                case 10: global.curropt = 0; break;
-                case 12: global.curropt = 9; break;
-                default: global.curropt -= 1; break;
-            }
-        } else {
-            switch global.curropt { // spaghetti woo
-                case 3: global.curropt = 11; break;
-                case 10: global.curropt = 2; break;
-                case 12: global.curropt = 9; break;
-                default: global.curropt -= 1; break;
-            }
-        }
-        if (global.curropt &lt; 0) global.curropt = lastitem;
-        while (global.canedit[global.curropt] == 0) global.curropt -= 1;
-        targety = op[global.curropt].y + 8 + 8;
-        if (targety &gt; 256 + (sep*2) &amp;&amp; op[7].visible) targety = 256 + (sep*2);
-        if (targety &gt; 240 + (sep*2) &amp;&amp; !op[7].visible) targety = 240 + (sep*2);
-        if(os_type == os_android) { if (targety &gt; 208) targety = 208; }
-        sfx_play(sndMenuMove);
-        global.tiptext = tip[global.curropt];
-    }
-    if (oControl.kLeft &gt; 0 &amp;&amp; oControl.kLeftPushedSteps == 0 &amp;&amp; oControl.kDown == 0 &amp;&amp; oControl.kUp == 0) {
-        if (global.curropt == 5) {
-            global.ophudshowmetrcount -= 1;
-            if (global.ophudshowmetrcount &lt; 0) global.ophudshowmetrcount = 2;
-        }
-        if (global.curropt == 1) {
-            global.opscale -= 1;
-            if (global.opfullscreen &amp;&amp; global.opscale &lt; 0) global.opscale = 4;
-            if (!global.opfullscreen) {
-                if (global.opscale &lt; 1) global.opscale = 4;
-                set_window_scale(global.opscale);
-            }
-        }
-        if (global.curropt == 7) {
-            oControl.mod_buttonsconfig -= 1;
-            if (os_type != os_android &amp;&amp; oControl.mod_buttonsconfig &lt; 0) oControl.mod_buttonsconfig = 3;
-            if (os_type == os_android &amp;&amp; oControl.mod_buttonsconfig &lt; 0) oControl.mod_buttonsconfig = 5;
-            event_user(2);
-            event_user(3);
-            event_user(4);
-        }
-        if (global.curropt == 9) {
-            global.currentlanguage -= 1;
-            if (global.currentlanguage &lt; 0) global.currentlanguage = langno - 1;
-            event_user(2);
-            event_user(3);
-            event_user(4);
-            global.tiptext = tip[global.curropt];
-        }
-    }
-    if (oControl.kRight &gt; 0 &amp;&amp; oControl.kRightPushedSteps == 0 &amp;&amp; oControl.kDown == 0 &amp;&amp; oControl.kUp == 0) {
-        if (global.curropt == 5) {
-            global.ophudshowmetrcount += 1;
-            if (global.ophudshowmetrcount &gt; 2) global.ophudshowmetrcount = 0;
-        }
-        if (global.curropt == 1) {
-            global.opscale += 1;
-            if (global.opfullscreen &amp;&amp; global.opscale &gt; 4) global.opscale = 0;
-            if (!global.opfullscreen) {
-                if (global.opscale &gt; 4) global.opscale = 1;
-                set_window_scale(global.opscale);
-            }
-        }
-        if (global.curropt == 7) {
-            oControl.mod_buttonsconfig += 1;
-            if (os_type != os_android &amp;&amp; oControl.mod_buttonsconfig &gt; 3) oControl.mod_buttonsconfig = 0;
-            if (os_type == os_android &amp;&amp; oControl.mod_buttonsconfig &gt; 5) oControl.mod_buttonsconfig = 0;
-            event_user(2);
-            event_user(3);
-            event_user(4);
-        }
-        if (global.curropt == 9) {
-            global.currentlanguage += 1;
-            if (global.currentlanguage &gt; langno - 1) global.currentlanguage = 0;
-            event_user(2);
-            event_user(3);
-            event_user(4);
-            global.tiptext = tip[global.curropt];
-        }
+    
+    var input = oControl.kRight - oControl.kLeft;
+    var inputSteps = oControl.kRightPushedSteps - oControl.kLeftPushedSteps;
+    
+    // Menu LEFT and RIGHT
+    if (input != 0 &amp;&amp; inputSteps == 0 &amp;&amp; global.curropt &lt; menuSize &amp;&amp; oControl.kDown == 0 &amp;&amp; oControl.kUp == 0) {
         
-        
-    }
-    if (oControl.kLeft &gt; 0 &amp;&amp; oControl.kLeftPushedSteps == 0 || oControl.kRight &gt; 0 &amp;&amp; oControl.kRightPushedSteps == 0 &amp;&amp; global.curropt &lt; 12 &amp;&amp; oControl.kDown == 0 &amp;&amp; oControl.kUp == 0) {
-        if (global.curropt == 0) {
-            if(os_type != os_android) {
+        if (os_type != os_android) {
+            // Fullscreen
+            if (global.curropt == opFullscreen) {
                 global.opfullscreen = !global.opfullscreen;
                 set_fullscreen(global.opfullscreen);
                 if (!global.opfullscreen) {
                     global.opscale = 1;
+                    // Update window scale
                     alarm[1] = 1;
                 }
             }
-            else {
-                global.opvsync = !global.opvsync;
-                sfx_play(sndMenuMove);
-                display_reset(0, global.opvsync);
+            
+            // Scale
+            if (global.curropt == opScale) {
+                if (global.opfullscreen) {
+                    global.opscale = wrap(global.opscale + input, 0, 4);
+                }
+                if (!global.opfullscreen) {
+                    global.opscale = wrap(global.opscale + input, 1, 4)
+                    set_window_scale(global.opscale);
+                }
             }
         }
-        if (global.curropt == 2) {
+        
+        // VSync
+        if (global.curropt == opVSync) {
             global.opvsync = !global.opvsync;
             display_reset(0, global.opvsync);
             if (!global.opfullscreen) set_window_scale(global.opscale);
         }
-        if (global.curropt == 3) global.opshowhud = !global.opshowhud;
-        if (global.curropt == 4) global.ophudshowmap = !global.ophudshowmap;
-        if (global.curropt == 6) global.ophudshowhints = !global.ophudshowhints;
-        if (global.curropt == 8) global.ophudshowlogmsg = !global.ophudshowlogmsg;
         
-        if (global.curropt == 10) { // sensitivity mode
-            if (global.sensitivitymode == 1) {
-                global.sensitivitymode = 0;
-            } else {
-                global.sensitivitymode = 1;
-            }
-            event_user(2); // update text
+        // Sensitivity Mode
+        if (global.curropt == opSensitivity) {
+            global.sensitivitymode = !global.sensitivitymode;
         }
-        if (global.curropt == 11) { // widescreen
-            if (global.widescreen_enabled == 1) {
-                global.widescreen_enabled = 0;
-            } else {
-                global.widescreen_enabled = 1;
-            }
+        
+        // Widescreen
+        if (global.curropt == opWidescreen) {
+            global.widescreen_enabled = !global.widescreen_enabled;
             if (room == rm_options) {
                 oControl.widescreen = global.widescreen_enabled;
                 if (global.widescreen_enabled == 0) {
@@ -310,20 +285,53 @@ display_reset(0, global.opvsync);
                     display_reset(0, global.opvsync);
                 }
             }
-
-            event_user(2); // update text
         }
         
-        if(os_type == os_android) {
-            if(global.curropt != 0) {
-                sfx_play(sndMenuMove);
-            }
+        // Show HUD
+        if (global.curropt == opShowHUD) global.opshowhud = !global.opshowhud;
+        
+        // Show Map
+        if (global.curropt == opShowMap) global.ophudshowmap = !global.ophudshowmap;
+        
+        // Monster Counter
+        if (global.curropt == opCounterStyle) {
+            global.ophudshowmetrcount = wrap(global.ophudshowmetrcount + input, 0, 2);
         }
-        else sfx_play(sndMenuMove);
+        
+        // Show Hints
+        if (global.curropt == opShowHints) global.ophudshowhints = !global.ophudshowhints;
+        
+        // Button Prompt Style
+        if (global.curropt == opButtonType) {
+            var inputMax = 5 - ((os_type == os_android) * 2);
+            oControl.mod_buttonsconfig = wrap(oControl.mod_buttonsconfig + input, 0, inputMax);
+            
+            // Update events
+            event_user(3);
+            event_user(4);
+        }
+        
+        // Show Scans
+        if (global.curropt == opShowScans) global.ophudshowlogmsg = !global.ophudshowlogmsg;
+        
+        // Language
+        if (global.curropt == opLanguage) {
+            global.currentlanguage = wrap(global.currentlanguage + input, 0, langCount - 1);
+            
+            // Update events
+            event_user(3);
+            event_user(4);
+            global.tiptext = tip[global.curropt];
+        }
+        
+        sfx_play(sndMenuMove);
+        
+        // Update text
         event_user(2);
     }
+
     if (oControl.kMenu1 &amp;&amp; oControl.kMenu1PushedSteps == 0) {
-        if (global.curropt == 12) {
+        if (global.curropt == menuSize) {
             load_resources();
             save_gameoptions();
             view_object[0] = noone;
@@ -333,9 +341,12 @@ display_reset(0, global.opvsync);
             sfx_play(sndMenuSel);
         }
     }
-} // if (active)
-if (targety != y) y += (targety - y) / 10;
+}
+
+if (targetY != y) y += (targetY - y) / 10;
+
 timer -= 1;
+
 if (timer &lt; 0) timer = 8;
 </string>
           </argument>
@@ -359,30 +370,39 @@ if (timer &lt; 0) timer = 8;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>op[50].text = get_text("OptionsDisplay", "Title_Display");
-op[0].label = get_text("OptionsDisplay", "Fullscreen");
-if(os_type == os_android) {
-    op[0].label = get_text("OptionsDisplay", "VSync");
+            <string>/// Reload ALL text (usually for lang files)
+
+// Label
+op[50].text = get_text("OptionsDisplay", "Title_Display");
+
+// Fullscreen, scale
+if (os_type != os_android) {
+    op[opFullscreen].label = get_text("OptionsDisplay", "Fullscreen");
+    
+    if (global.opfullscreen) {
+        op[opScale].label = get_text("OptionsDisplay", "DisplayScale");
+    } else op[opScale].label = get_text("OptionsDisplay", "WindowSize");
 }
-if (global.opfullscreen) {
-    op[1].label = get_text("OptionsDisplay", "DisplayScale");
-} else op[1].label = get_text("OptionsDisplay", "WindowSize");
-op[2].label = get_text("OptionsDisplay", "VSync");
+
+op[opVSync].label = get_text("OptionsDisplay", "VSync");
 op[51].text = get_text("OptionsDisplay", "Title_HUD");
-op[3].label = get_text("OptionsDisplay", "HUDDisplay");
-op[4].label = get_text("OptionsDisplay", "HUDMap");
-op[5].label = get_text("OptionsDisplay", "MonsterCounter");
+op[opSensitivity].label = get_text("Misc", "SensitivityMode");
+op[opWidescreen].label = get_text("Misc", "Widescreen");
+op[opShowHUD].label = get_text("OptionsDisplay", "HUDDisplay");
+op[opShowMap].label = get_text("OptionsDisplay", "HUDMap");
+op[opCounterStyle].label = get_text("OptionsDisplay", "MonsterCounter");
 op[52].text = get_text("OptionsDisplay", "Title_Notifications");
-op[6].label = get_text("OptionsDisplay", "Hints");
-op[7].label = get_text("ExtrasMenu", "Controller");
-op[8].label = get_text("OptionsDisplay", "ScanNotifications");
-op[9].label = get_text("OptionsDisplay", "Language");
+op[opShowHints].label = get_text("OptionsDisplay", "Hints");
+op[opButtonType].label = get_text("ExtrasMenu", "Controller");
+op[opShowScans].label = get_text("OptionsDisplay", "ScanNotifications");
+op[opLanguage].label = get_text("OptionsDisplay", "Language");
 
-op[10].label = get_text("Misc", "SensitivityMode");
+op[53].label = get_text("OptionsDisplay", "Author") + " " + langAuthor[global.currentlanguage];
 
-op[11].label = get_text("Misc", "Widescreen");
+op[54].label = langAuthor2[global.currentlanguage];
 
-op[12].label = get_text("GlobalOptions", "Exit");
+op[menuSize].label = get_text("GlobalOptions", "Exit");
+
 with (oSS_Fg) {
     opt_text1 = get_text("Subscreen", "Title_Options");
     tip1text = get_text("Subscreen", "Menu_Tip");
@@ -409,23 +429,23 @@ with (oSS_Fg) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>tip[0] = get_text("OptionsDisplay", "Fullscreen_Tip");
-if(os_type == os_android) tip[0] = get_text("OptionsDisplay", "VSync_Tip");
-tip[1] = get_text("OptionsDisplay", "DisplayScale_Tip");
-tip[2] = get_text("OptionsDisplay", "VSync_Tip");
-tip[3] = get_text("OptionsDisplay", "HUDDisplay_Tip");
-tip[4] = get_text("OptionsDisplay", "HUDMap_Tip");
-tip[5] = get_text("OptionsDisplay", "MonsterCounter_Tip");
-tip[6] = get_text("OptionsDisplay", "Hints_Tip");
-tip[7] = get_text("ExtrasMenu", "Controller_Tip");
-tip[8] = get_text("OptionsDisplay", "ScanNotifications_Tip");
-tip[9] = get_text("OptionsDisplay", "Language_Tip");
+            <string>/// Load tip text
 
-tip[10] = get_text("Misc", "SensitivityMode_Tip");
-
-tip[11] = get_text("Misc", "Widescreen_Tip");
-
-tip[12] = get_text("GlobalOptions", "ExitMain_Tip");
+if (os_type != os_android) {
+    tip[opFullscreen] = get_text("OptionsDisplay", "Fullscreen_Tip");
+    tip[opScale] = get_text("OptionsDisplay", "DisplayScale_Tip");
+}
+tip[opVSync] = get_text("OptionsDisplay", "VSync_Tip");
+tip[opSensitivity] = get_text("Misc", "SensitivityMode_Tip");
+tip[opWidescreen] = get_text("Misc", "Widescreen_Tip");
+tip[opShowHUD] = get_text("OptionsDisplay", "HUDDisplay_Tip");
+tip[opShowMap] = get_text("OptionsDisplay", "HUDMap_Tip");
+tip[opCounterStyle] = get_text("OptionsDisplay", "MonsterCounter_Tip");
+tip[opShowHints] = get_text("OptionsDisplay", "Hints_Tip");
+tip[opButtonType] = get_text("ExtrasMenu", "Controller_Tip");
+tip[opShowScans] = get_text("OptionsDisplay", "ScanNotifications_Tip");
+tip[opLanguage] = get_text("OptionsDisplay", "Language_Tip");
+tip[menuSize] = get_text("GlobalOptions", "ExitMain_Tip");
 </string>
           </argument>
         </arguments>
@@ -448,67 +468,99 @@ tip[12] = get_text("GlobalOptions", "ExitMain_Tip");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.opfullscreen) {
-    op[0].optext = get_text("GlobalOptions", "Enabled");
-    op[1].label = get_text("OptionsDisplay", "DisplayScale");
+            <string>/// Update option text
+
+// Fullscreen, Scale
+if (global.opfullscreen) {
+    op[opFullscreen].optext = get_text("GlobalOptions", "Enabled");
+    op[opScale].label = get_text("OptionsDisplay", "DisplayScale");
 } else {
-    op[0].optext = get_text("GlobalOptions", "Disabled");
-    op[1].label = get_text("OptionsDisplay", "WindowSize");
+    op[opFullscreen].optext = get_text("GlobalOptions", "Disabled");
+    op[opScale].label = get_text("OptionsDisplay", "WindowSize");
 }
-if (global.opscale == 0) op[1].optext = get_text("OptionsDisplay", "DisplayScale_Stretch");
-if (global.opscale == 1) op[1].optext = "1X";
-if (global.opscale == 2) op[1].optext = "2X";
-if (global.opscale == 3) op[1].optext = "3X";
-if (global.opscale == 4) op[1].optext = "4X";
+
+// Scale sizes
+switch (global.opscale) {
+    case 0: op[opScale].optext = get_text("OptionsDisplay", "DisplayScale_Stretch"); break;
+    case 1: op[opScale].optext = "1X"; break;
+    case 2: op[opScale].optext = "2X"; break;
+    case 3: op[opScale].optext = "3X"; break;
+    case 4: op[opScale].optext = "4X"; break;
+    default: op[opScale].optext = "[!]"; break;
+}
+
+// Vsync
 if (global.opvsync) {
-    op[2].optext = get_text("GlobalOptions", "Enabled");
-    if(os_type == os_android) op[0].optext = get_text("GlobalOptions", "Enabled");
+    op[opVSync].optext = get_text("GlobalOptions", "Enabled");
 } else {
-    op[2].optext = get_text("GlobalOptions", "Disabled");
-    if(os_type == os_android) op[0].optext = get_text("GlobalOptions", "Disabled");
-}
-if (global.opshowhud) {
-    op[3].optext = get_text("GlobalOptions", "Enabled");
-} else op[3].optext = get_text("GlobalOptions", "Disabled");
-if (global.ophudshowmap) {
-    op[4].optext = get_text("GlobalOptions", "Enabled");
-} else op[4].optext = get_text("GlobalOptions", "Disabled");
-if (global.ophudshowmetrcount == 0) op[5].optext = get_text("GlobalOptions", "Disabled");
-if (global.ophudshowmetrcount == 1) op[5].optext = get_text("OptionsDisplay", "MonsterCounter_Local");
-if (global.ophudshowmetrcount == 2) op[5].optext = get_text("OptionsDisplay", "MonsterCounter_Global");
-if (global.ophudshowhints) {
-    op[6].optext = get_text("GlobalOptions", "Enabled");
-} else op[6].optext = get_text("GlobalOptions", "Disabled");
-switch (oControl.mod_buttonsconfig) {
-    case 0: op[7].optext = get_text("ExtrasMenu", "XBox"); break;
-    case 1: op[7].optext = get_text("ExtrasMenu", "Playstation"); break;
-    case 2: op[7].optext = get_text("ExtrasMenu", "NintendoPro"); break;
-    case 3: op[7].optext = get_text("ExtrasMenu", "SNESColored"); break;
-    case 4: op[7].optext = get_text("ExtrasMenu", "MOGA"); break;
-    case 5: op[7].optext = get_text("ExtrasMenu", "OUYA"); break;
-    default: op[7].optext = "[!]";
-}
-if (global.ophudshowlogmsg) {
-    op[8].optext = get_text("GlobalOptions", "Enabled");
-} else op[8].optext = get_text("GlobalOptions", "Disabled");
-op[9].optext = lang[global.currentlanguage];
-if (global.curropt == 5) {
-    if (global.ophudshowmetrcount == 0) global.tiptext = get_text("OptionsDisplay", "MonsterCounter_Disabled_Tip");
-    if (global.ophudshowmetrcount == 1) global.tiptext = get_text("OptionsDisplay", "MonsterCounter_Local_Tip");
-    if (global.ophudshowmetrcount == 2) global.tiptext = get_text("OptionsDisplay", "MonsterCounter_Global_Tip");
+    op[opVSync].optext = get_text("GlobalOptions", "Disabled");
 }
 
+// Sensitivity Mode
 if (global.sensitivitymode) {
-    op[10].optext = get_text("GlobalOptions", "Enabled");
+    op[opSensitivity].optext = get_text("GlobalOptions", "Enabled");
 } else {
-    op[10].optext = get_text("GlobalOptions", "Disabled");
+    op[opSensitivity].optext = get_text("GlobalOptions", "Disabled");
 }
 
+// Widescreen
 if (global.widescreen_enabled) {
-    op[11].optext = get_text("GlobalOptions", "Enabled");
+    op[opWidescreen].optext = get_text("GlobalOptions", "Enabled");
 } else {
-    op[11].optext = get_text("GlobalOptions", "Disabled");
+    op[opWidescreen].optext = get_text("GlobalOptions", "Disabled");
 }
+
+// Show HUD
+if (global.opshowhud) {
+    op[opShowHUD].optext = get_text("GlobalOptions", "Enabled");
+} else op[opShowHUD].optext = get_text("GlobalOptions", "Disabled");
+
+// Show Map
+if (global.ophudshowmap) {
+    op[opShowMap].optext = get_text("GlobalOptions", "Enabled");
+} else op[opShowMap].optext = get_text("GlobalOptions", "Disabled");
+
+// Monster Counter Style
+switch (global.ophudshowmetrcount) {
+    case 0: op[opCounterStyle].optext = get_text("GlobalOptions", "Disabled"); break;
+    case 1: op[opCounterStyle].optext = get_text("OptionsDisplay", "MonsterCounter_Local"); break;
+    case 2: op[opCounterStyle].optext = get_text("OptionsDisplay", "MonsterCounter_Global"); break;
+    default: op[opCounterStyle].optext = "[!]"; break;
+}
+
+// Update Monster Counter tip text
+if (global.curropt == opCounterStyle) {
+    switch (global.ophudshowmetrcount) {
+        case 0: global.tiptext = get_text("OptionsDisplay", "MonsterCounter_Disabled_Tip"); break;
+        case 1: global.tiptext = get_text("OptionsDisplay", "MonsterCounter_Local_Tip"); break;
+        case 2: global.tiptext = get_text("OptionsDisplay", "MonsterCounter_Global_Tip"); break;
+        default: global.tiptext = "[!]"; break;
+    }
+}
+
+// Show Hints
+if (global.ophudshowhints) {
+    op[opShowHints].optext = get_text("GlobalOptions", "Enabled");
+} else op[opShowHints].optext = get_text("GlobalOptions", "Disabled");
+
+// Button Display Type
+switch (oControl.mod_buttonsconfig) {
+    case 0: op[opButtonType].optext = get_text("ExtrasMenu", "XBox"); break;
+    case 1: op[opButtonType].optext = get_text("ExtrasMenu", "Playstation"); break;
+    case 2: op[opButtonType].optext = get_text("ExtrasMenu", "NintendoPro"); break;
+    case 3: op[opButtonType].optext = get_text("ExtrasMenu", "SNESColored"); break;
+    case 4: op[opButtonType].optext = get_text("ExtrasMenu", "MOGA"); break;
+    case 5: op[opButtonType].optext = get_text("ExtrasMenu", "OUYA"); break;
+    default: op[opButtonType].optext = "[!]"; break;
+}
+
+// Show Scans
+if (global.ophudshowlogmsg) {
+    op[opShowScans].optext = get_text("GlobalOptions", "Enabled");
+} else op[opShowScans].optext = get_text("GlobalOptions", "Disabled");
+
+// Language
+op[opLanguage].optext = lang[global.currentlanguage];
 </string>
           </argument>
         </arguments>
@@ -531,22 +583,15 @@ if (global.widescreen_enabled) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with (op[0]) instance_destroy();
-with (op[1]) instance_destroy();
-with (op[2]) instance_destroy();
-with (op[3]) instance_destroy();
-with (op[4]) instance_destroy();
-with (op[5]) instance_destroy();
-with (op[6]) instance_destroy();
-with (op[7]) instance_destroy();
-with (op[8]) instance_destroy();
-with (op[9]) instance_destroy();
-with (op[10]) instance_destroy();
-with (op[11]) instance_destroy();
-with (op[12]) instance_destroy();
-with (op[50]) instance_destroy();
-with (op[51]) instance_destroy();
-with (op[52]) instance_destroy();
+            <string>/// Delete menu options
+for (var i = 0; i &lt;= menuSize; i++) {
+    with (op[i]) instance_destroy();
+}
+
+// Delete headers
+for (var i = 50; i &lt;= 54; i++) {
+    with (op[i]) instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -569,92 +614,129 @@ with (op[52]) instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y -= 8;
-sep = 16;
+            <string>/// Create menu options
+
 var i = 1;
-op[50] = instance_create(x, y * i, oMenuLabel);
+
+// Label
+op[50] = instance_create(x, y, oMenuLabel);
 op[50].text = get_text("OptionsDisplay", "Title_Display");
-op[0] = instance_create(x, y + sep * i, oOptionLR);
-op[0].label = get_text("OptionsDisplay", "Fullscreen");
-op[0].optionid = 0;
-i++;
-if(os_type == os_android) { // android, replace fullscreen op with vsync
-    op[0].label = get_text("OptionsDisplay", "VSync");
-}
-op[1] = instance_create(x, y + sep * i, oOptionLR);
-if (global.opfullscreen) {
-    op[1].label = get_text("OptionsDisplay", "DisplayScale");
-} else op[1].label = get_text("OptionsDisplay", "WindowSize");
-op[1].optionid = 1;
-if(os_type == os_android) { // android, make op[1] vsync invis
-    op[1].visible = false;
-    global.canedit[1] = 0;
-}
-i++;
-op[2] = instance_create(x, y + sep * i, oOptionLR); 
-op[2].label = get_text("OptionsDisplay", "VSync");
-op[2].optionid = 2;
-if(os_type == os_android) { // invis vsync op[2] on android
-    op[2].visible = false;
-    global.canedit[2] = 0;
-    i = 1;
+
+// Fullscreen and scale should NOT exist on Android
+if (os_type != os_android) {
+    // Fullscreen
+    op[opFullscreen] = instance_create(x, y + SPACER * i, oOptionLR);
+    op[opFullscreen].label = get_text("OptionsDisplay", "Fullscreen");
+    op[opFullscreen].optionid = opFullscreen;
+    i++;
+    
+    // Scale
+    op[opScale] = instance_create(x, y + SPACER * i, oOptionLR);
+    
+    // Scale on fullscreen, size on not
+    if (global.opfullscreen) {
+        op[opScale].label = get_text("OptionsDisplay", "DisplayScale");
+    } else op[opScale].label = get_text("OptionsDisplay", "WindowSize");
+    op[opScale].optionid = opScale;
+    i++;
 }
 
+// VSync
+op[opVSync] = instance_create(x, y + SPACER * i, oOptionLR);
+op[opVSync].label = get_text("OptionsDisplay", "VSync");
+op[opVSync].optionid = opVSync;
 i++;
-op[10] = instance_create(x, y + sep * i, oOptionLR);
-op[10].label = get_text("Misc", "SensitivityMode");
-op[10].optionid = 10;
 
+// Sensitivity Mode
+op[opSensitivity] = instance_create(x, y + SPACER * i, oOptionLR);
+op[opSensitivity].label = get_text("Misc", "SensitivityMode");
+op[opSensitivity].optionid = opSensitivity;
 i++;
-op[11] = instance_create(x, y + sep * i, oOptionLR);
-op[11].label = get_text("Misc", "Widescreen");
-op[11].optionid = 11;
 
+// Widescreen
+op[opWidescreen] = instance_create(x, y + SPACER * i, oOptionLR);
+op[opWidescreen].label = get_text("Misc", "Widescreen");
+op[opWidescreen].optionid = opWidescreen;
 i++;
-op[51] = instance_create(x, y + sep * i, oMenuLabel);
+
+// HUD Header
+op[51] = instance_create(x, y + SPACER * i, oMenuLabel);
 op[51].text = get_text("OptionsDisplay", "Title_HUD");
 i++;
-op[3] = instance_create(x, y + sep * i, oOptionLR);
-op[3].label = get_text("OptionsDisplay", "HUDDisplay");
-op[3].optionid = 3;
+
+// HUD Display
+op[opShowHUD] = instance_create(x, y + SPACER * i, oOptionLR);
+op[opShowHUD].label = get_text("OptionsDisplay", "HUDDisplay");
+op[opShowHUD].optionid = opShowHUD;
 i++;
-op[4] = instance_create(x, y + sep * i, oOptionLR);
-op[4].label = get_text("OptionsDisplay", "HUDMap");
-op[4].optionid = 4;
+
+// Map Display
+op[opShowMap] = instance_create(x, y + SPACER * i, oOptionLR);
+op[opShowMap].label = get_text("OptionsDisplay", "HUDMap");
+op[opShowMap].optionid = opShowMap;
 i++;
-op[5] = instance_create(x, y + sep * i, oOptionLR);
-op[5].label = get_text("OptionsDisplay", "MonsterCounter");
-op[5].optionid = 5;
+
+// Monster Counter Style
+op[opCounterStyle] = instance_create(x, y + SPACER * i, oOptionLR);
+op[opCounterStyle].label = get_text("OptionsDisplay", "MonsterCounter");
+op[opCounterStyle].optionid = opCounterStyle;
 i++;
-op[52] = instance_create(x, y + sep * i, oMenuLabel);
+
+// Notification Header
+op[52] = instance_create(x, y + SPACER * i, oMenuLabel);
 op[52].text = get_text("OptionsDisplay", "Title_Notifications");
 i++;
-op[6] = instance_create(x, y + sep * i, oOptionLR);
-op[6].label = get_text("OptionsDisplay", "Hints");
-op[6].optionid = 6;
+
+// Show Hints
+op[opShowHints] = instance_create(x, y + SPACER * i, oOptionLR);
+op[opShowHints].label = get_text("OptionsDisplay", "Hints");
+op[opShowHints].optionid = opShowHints;
 i++;
-op[7] = instance_create(x, y + sep * i, oOptionLR);
-op[7].label = get_text("ExtrasMenu", "Controller");
-op[7].optionid = 7;
+
+// Button Display Type
 if ((os_type != os_android &amp;&amp; !gamepad_is_connected(global.gamepadIndex)) || (os_type == os_android &amp;&amp; (!global.joydetected || global.compatibilitymode)) || (os_type == os_android &amp;&amp; global.compatibilitymode)) {
-    op[7].visible = false;
-    global.canedit[7] = 0;
+    op[opButtonType] = instance_create(x, y + SPACER * i, oOptionLR);
+    op[opButtonType].label = get_text("ExtrasMenu", "Controller");
+    op[opButtonType].optionid = opButtonType;
+    i++;
 }
-else i++;
-op[8] = instance_create(x, y + sep * i, oOptionLR);
-op[8].label = get_text("OptionsDisplay", "ScanNotifications");
-op[8].optionid = 8;
+
+// Show Scans
+op[opShowScans] = instance_create(x, y + SPACER * i, oOptionLR);
+op[opShowScans].label = get_text("OptionsDisplay", "ScanNotifications");
+op[opShowScans].optionid = opShowScans;
 i++;
-op[9] = instance_create(x, y + sep * i, oOptionLR);
-op[9].label = get_text("OptionsDisplay", "Language");
-op[9].optionid = 9;
 
-
+// Language
+op[opLanguage] = instance_create(x, y + SPACER * i, oOptionLR);
+op[opLanguage].label = get_text("OptionsDisplay", "Language");
+op[opLanguage].optionid = opLanguage;
 i++;
-op[12] = instance_create(x, y + sep * i, oPauseOption);
-op[12].optionid = 12;
-op[12].label = get_text("GlobalOptions", "Exit");
 
+// Author display
+op[53] = instance_create(x, y + SPACER * i, oPauseOption);
+// The space here will not carry from the lang file, so we manually insert it.
+op[53].label = get_text("OptionsDisplay", "Author") + " " + langAuthor[global.currentlanguage];
+op[53].optionid = 53;
+op[53].canEdit = 0;
+op[53].color = c_gray;
+i++;
+
+var author2text = get_text("OptionsDisplay", "Author");
+op[54] = instance_create(x + 8, y + SPACER * i, oPauseOption);
+// The space here will not carry from the lang file, so we manually insert it.
+op[54].label = langAuthor2[global.currentlanguage];
+op[54].optionid = 54;
+op[54].canEdit = 0;
+op[54].color = c_gray;
+i++;
+
+// Exit - This will always be the last option
+op[menuSize] = instance_create(x, y + SPACER * i, oPauseOption);
+op[menuSize].optionid = menuSize;
+op[menuSize].label = get_text("GlobalOptions", "Exit");
+
+// Update options text
 event_user(2);
 </string>
           </argument>

@@ -7,10 +7,10 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>1</bbox_left>
-  <bbox_right>16</bbox_right>
-  <bbox_top>1</bbox_top>
-  <bbox_bottom>16</bbox_bottom>
+  <bbox_left>17</bbox_left>
+  <bbox_right>0</bbox_right>
+  <bbox_top>17</bbox_top>
+  <bbox_bottom>0</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -21,8 +21,5 @@
   <height>18</height>
   <frames>
     <frame index="0">images\sGeega2_0.png</frame>
-    <frame index="1">images\sGeega2_1.png</frame>
-    <frame index="2">images\sGeega2_2.png</frame>
-    <frame index="3">images\sGeega2_3.png</frame>
   </frames>
 </sprite>

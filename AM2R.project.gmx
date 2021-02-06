@@ -4303,6 +4303,7 @@
       <script>scripts\save_modifiers.gml</script>
       <script>scripts\linux_keys.gml</script>
       <script>scripts\choose_axis_linux.gml</script>
+      <script>scripts\wrap.gml</script>
     </scripts>
     <scripts name="Wanderer">
       <script>scripts\add_trooper_log.gml</script>
