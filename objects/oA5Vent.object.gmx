@@ -107,7 +107,12 @@ alarm[0] = 120 + random(300);
             <kind>1</kind>
             <string>if (open) {
     if (image_index &lt; 2) image_index += 0.1;
-} else if (image_index &gt; 0) image_index -= 0.1;
+} else {
+    if (image_index &gt; 0) image_index -= 0.1;
+}
+
+// YYC fix
+image_index = clamp(image_index, 0, 2);
 </string>
           </argument>
         </arguments>
