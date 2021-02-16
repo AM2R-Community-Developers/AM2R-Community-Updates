@@ -9,9 +9,6 @@ if (mystr != "0") {
     wallD = string_char_at(mystr, 3);
     wallL = string_char_at(mystr, 4);
     color = string_char_at(mystr, 5);
-    //This line seems to change the underlying map color when the 8-bit shader is active
-    //It causes the 8-bit shader to miscolor map blocks; commented out
-    //if (oControl.shader_on == true) color = "2";
     special = string_char_at(mystr, 6);
     corner = string_char_at(mystr, 7);
     draw_mapblock(x, y, wallU, wallR, wallD, wallL, color, special, global.dmap[argument0, argument1], corner);
