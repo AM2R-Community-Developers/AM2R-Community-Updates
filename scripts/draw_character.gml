@@ -8,7 +8,7 @@ if ((oControl.mod_fusion) && (!oControl.msr_fusionsuit)) { // Fusion suit
     } else if (global.currentsuit == 2) { // Gravity
         pal_swap_set(sPalFusion2, 1, false);
     }
-} else { // Custom color swaps
+} else if (os_type != os_android) { // Custom color swaps
     if (global.currentsuit == 0) { // Power
         pal_swap_set(oControl.PowerPalette, 1, false);
     } else if (global.currentsuit == 1) { // Varia

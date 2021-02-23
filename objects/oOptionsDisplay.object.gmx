@@ -471,22 +471,24 @@ tip[menuSize] = get_text("GlobalOptions", "ExitMain_Tip");
             <string>/// Update option text
 
 // Fullscreen, Scale
-if (global.opfullscreen) {
-    op[opFullscreen].optext = get_text("GlobalOptions", "Enabled");
-    op[opScale].label = get_text("OptionsDisplay", "DisplayScale");
-} else {
-    op[opFullscreen].optext = get_text("GlobalOptions", "Disabled");
-    op[opScale].label = get_text("OptionsDisplay", "WindowSize");
-}
+if (os_type != os_android) {
+    if (global.opfullscreen) {
+        op[opFullscreen].optext = get_text("GlobalOptions", "Enabled");
+        op[opScale].label = get_text("OptionsDisplay", "DisplayScale");
+    } else {
+        op[opFullscreen].optext = get_text("GlobalOptions", "Disabled");
+        op[opScale].label = get_text("OptionsDisplay", "WindowSize");
+    }
 
-// Scale sizes
-switch (global.opscale) {
-    case 0: op[opScale].optext = get_text("OptionsDisplay", "DisplayScale_Stretch"); break;
-    case 1: op[opScale].optext = "1X"; break;
-    case 2: op[opScale].optext = "2X"; break;
-    case 3: op[opScale].optext = "3X"; break;
-    case 4: op[opScale].optext = "4X"; break;
-    default: op[opScale].optext = "[!]"; break;
+    // Scale sizes
+    switch (global.opscale) {
+        case 0: op[opScale].optext = get_text("OptionsDisplay", "DisplayScale_Stretch"); break;
+        case 1: op[opScale].optext = "1X"; break;
+        case 2: op[opScale].optext = "2X"; break;
+        case 3: op[opScale].optext = "3X"; break;
+        case 4: op[opScale].optext = "4X"; break;
+        default: op[opScale].optext = "[!]"; break;
+    }
 }
 
 // Vsync

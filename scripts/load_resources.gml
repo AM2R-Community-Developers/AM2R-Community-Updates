@@ -28,100 +28,87 @@ oControl.mod_header[7, 4] = 17;
 oControl.mod_header[8, 3] = 15;
 oControl.mod_header[8, 4] = 17;
 
+/*
 var lin = "";
 
 if (os_type == os_linux) {
     lin = "/assets";
 }
+*/
 
 if(os_type == os_android) exit; // "Safety Check" on Android
 
 //Area Headers
 // Changed from program_directory to working_directory
 // Format: language_aArea_fFrames_bPause1_cPause2_dPause3_ePause4.png
-if (directory_exists(working_directory + "/lang/headers")) {
-    var filename = file_find_first(working_directory + "/lang/headers/" + "*.png", 0);
-    while(filename != "") {
-        //show_debug_message(filename);
-        //var introString = , );
-        if(string_pos(string_lower(string_replace(get_text("Header", "Language"), " (16:9)", "")), string_lower(filename)) != 0) {
-            var harea = string_pos("_a", string_lower(filename)),
-                hframes = string_pos("_f", string_lower(filename)),
-                hd1 = string_pos("_b", string_lower(filename)),
-                hd2 = string_pos("_c", string_lower(filename)),
-                hd3 = string_pos("_d", string_lower(filename)),
-                hd4 = string_pos("_e", string_lower(filename));
-                //show_debug_message("harea = " + string(harea));
-            
-            if(harea != 0) {
-                harea = real(string_digits(string_char_at(filename, harea + 2)));
-                //show_debug_message("harea = " + string(harea));
-                if(hframes != 0) {
-                    hframes = real(string_digits(string_char_at(filename, hframes + 2) + string_char_at(filename, hframes + 3)));
-                    oControl.mod_header[harea, 0] = hframes;
-                }
-                if(hd1 != 0) oControl.mod_header[harea, 1] = real(string_digits(string_char_at(filename, hd1 + 2) + string_char_at(filename, hd1 + 3)));
-                if(hd2 != 0) oControl.mod_header[harea, 2] = real(string_digits(string_char_at(filename, hd2 + 2) + string_char_at(filename, hd2 + 3)));
-                if(hd3 != 0) oControl.mod_header[harea, 3] = real(string_digits(string_char_at(filename, hd3 + 2) + string_char_at(filename, hd3 + 3)));
-                if(hd4 != 0) oControl.mod_header[harea, 4] = real(string_digits(string_char_at(filename, hd4 + 2) + string_char_at(filename, hd4 + 3)));
-                
-                spr = sprite_add(working_directory + "/lang/headers/" + filename, hframes, false, false, 0, 0);
-                sprite_assign(asset_get_index("sIntro_A" + string(harea)), spr);
-                sprite_delete(spr);
+var filename = file_find_first("lang/headers/" + "*.png", 0);
+while(filename != "") {
+    if(string_pos(string_lower(string_replace(get_text("Header", "Language"), " (16:9)", "")), string_lower(filename)) != 0) {
+        var harea = string_pos("_a", string_lower(filename)),
+            hframes = string_pos("_f", string_lower(filename)),
+            hd1 = string_pos("_b", string_lower(filename)),
+            hd2 = string_pos("_c", string_lower(filename)),
+            hd3 = string_pos("_d", string_lower(filename)),
+            hd4 = string_pos("_e", string_lower(filename));
+            //show_debug_message("harea = " + string(harea));
+        
+        if(harea != 0) {
+            harea = real(string_digits(string_char_at(filename, harea + 2)));
+            //show_debug_message("harea = " + string(harea));
+            if(hframes != 0) {
+                hframes = real(string_digits(string_char_at(filename, hframes + 2) + string_char_at(filename, hframes + 3)));
+                oControl.mod_header[harea, 0] = hframes;
             }
+            if(hd1 != 0) oControl.mod_header[harea, 1] = real(string_digits(string_char_at(filename, hd1 + 2) + string_char_at(filename, hd1 + 3)));
+            if(hd2 != 0) oControl.mod_header[harea, 2] = real(string_digits(string_char_at(filename, hd2 + 2) + string_char_at(filename, hd2 + 3)));
+            if(hd3 != 0) oControl.mod_header[harea, 3] = real(string_digits(string_char_at(filename, hd3 + 2) + string_char_at(filename, hd3 + 3)));
+            if(hd4 != 0) oControl.mod_header[harea, 4] = real(string_digits(string_char_at(filename, hd4 + 2) + string_char_at(filename, hd4 + 3)));
+            
+            sprite_replace(asset_get_index("sIntro_A" + string(harea)), "lang/headers/" + filename, hframes, false, false, 0, 0);
         }
-        filename = file_find_next();
     }
-    file_find_close();
+    filename = file_find_next();
 }
-
-
+file_find_close();
 
 //Title Logo
-if (directory_exists(program_directory + lin + "/lang/titles")) {
-    var filename = file_find_first(program_directory + lin + "/lang/titles/" + "*.png", 0);
-    while(filename != "") {
-        if(string_pos(string_lower(string_replace(get_text("Header", "Language"), " (16:9)", "")), string_lower(filename)) != 0) {            
-            var titlex = string_pos("x", string_lower(filename)),
-                titley =  string_pos("y", string_lower(filename));   
-                
-            var xnegative = string_pos("-x", string_lower(filename));
-                
-            if(titlex != 0) oControl.mod_xcoordinate = real(string_digits(string_char_at(filename, titlex + 1) + string_char_at(filename, titlex + 2) + string_char_at(filename, titlex + 3)));
-            if(titley != 0) oControl.mod_ycoordinate = real(string_digits(string_char_at(filename, titley + 1) + string_char_at(filename, titley + 2) + string_char_at(filename, titley + 3)));
-            if(xnegative != 0) oControl.mod_xcoordinate = -oControl.mod_xcoordinate;
+var filename = file_find_first("lang/titles/" + "*.png", 0);
+while(filename != "") {
+    if(string_pos(string_lower(string_replace(get_text("Header", "Language"), " (16:9)", "")), string_lower(filename)) != 0) {            
+        var titlex = string_pos("x", string_lower(filename)),
+            titley =  string_pos("y", string_lower(filename));   
             
-            bck = background_add(program_directory + lin + "/lang/titles/" + filename, false, false);
-            background_assign(bgAM2RTitle, bck);
-            background_delete(bck);
-        }
-        filename = file_find_next();
+        var xnegative = string_pos("-x", string_lower(filename));
+            
+        if(titlex != 0) oControl.mod_xcoordinate = real(string_digits(string_char_at(filename, titlex + 1) + string_char_at(filename, titlex + 2) + string_char_at(filename, titlex + 3)));
+        if(titley != 0) oControl.mod_ycoordinate = real(string_digits(string_char_at(filename, titley + 1) + string_char_at(filename, titley + 2) + string_char_at(filename, titley + 3)));
+        if(xnegative != 0) oControl.mod_xcoordinate = -oControl.mod_xcoordinate;
+
+        background_replace(bgAM2RTitle, "lang/titles/" + filename, false, false);
     }
-    file_find_close();
+    filename = file_find_next();
 }
+file_find_close();
 
 //Title Background
-if (directory_exists(program_directory)) {
-    var filename = file_find_first(program_directory + "*.png", 0);
-    while(filename != "") {
-        if(string_pos("titlebackground", filename) != 0) {
-            oControl.mod_backgroundframes = 1;
-            oControl.mod_backgroundspeed = 60;
-            
-            var bgframes = string_pos("f", string_lower(filename)),
-                bgspeed =  string_pos("s", string_lower(filename));   
+var filename = file_find_first("*.png", 0);
+while(filename != "") {
+    if(string_pos("titlebackground", filename) != 0) {
+        oControl.mod_backgroundframes = 1;
+        oControl.mod_backgroundspeed = 60;
         
-            if(bgframes != 0) oControl.mod_backgroundframes = real(string_digits(string_char_at(filename, bgframes + 1) + string_char_at(filename, bgframes + 2)));
-            if(bgspeed != 0) oControl.mod_backgroundspeed = real(string_digits(string_char_at(filename, bgspeed + 1) + string_char_at(filename, bgspeed + 2)));
-            
-            spr = sprite_add(program_directory + filename, oControl.mod_backgroundframes, false, false, 0, 0);
-            sprite_assign(sTitleAnimated, spr);
-            sprite_delete(spr);
-        }
-        filename = file_find_next();
+        var bgframes = string_pos("f", string_lower(filename)),
+            bgspeed =  string_pos("s", string_lower(filename));   
+    
+        if(bgframes != 0) oControl.mod_backgroundframes = real(string_digits(string_char_at(filename, bgframes + 1) + string_char_at(filename, bgframes + 2)));
+        if(bgspeed != 0) oControl.mod_backgroundspeed = real(string_digits(string_char_at(filename, bgspeed + 1) + string_char_at(filename, bgspeed + 2)));
+
+        sprite_replace(sTitleAnimated, filename, oControl.mod_backgroundframes, false, false, 0, 0);
     }
-    file_find_close();
+    filename = file_find_next();
 }
+file_find_close();
+
 
 
 // ***Suit palettes***
