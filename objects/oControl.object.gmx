@@ -288,27 +288,27 @@ subScrItemOffset   = 0;
 ini_open("lang/fonts/sizes.ini");
 
 if(file_exists("lang/fonts/04b09.ttf")) {
-    font_replace(fontGUI, "lang/fonts/04b09.ttf", ini_read_real('Sizes', '04b09_(large)', 16), false, false, 32, 255);
-    font_replace(fontSubScr, "lang/fonts/04b09.ttf", ini_read_real('Sizes', '04b09_(small)', 8), false, false, 32, 255);
+    fontGUI = font_add("lang/fonts/04b09.ttf", ini_read_real('Sizes', '04b09_(large)', 16), false, false, 32, 255);
+    fontSubScr = font_add("lang/fonts/04b09.ttf", ini_read_real('Sizes', '04b09_(small)', 8), false, false, 32, 255);
     GUIOffset          = ini_read_real('Offsets', '04b09_(large)_offset', 0);
     subScrHeaderOffset = ini_read_real('Offsets', '04b09_(small)_offset', 0);
 }
 
 if(file_exists("lang/fonts/Acknowledge_TT_BRK.ttf")) {
-    font_replace(fontGUI2, "lang/fonts/Acknowledge_TT_BRK.ttf", ini_read_real('Sizes', 'Acknowledge_TT_BRK', 13), false, false, 32, 255);
+    fontGUI2 = font_add("lang/fonts/Acknowledge_TT_BRK.ttf", ini_read_real('Sizes', 'Acknowledge_TT_BRK', 13), false, false, 32, 255);
 }
 
 if(file_exists("lang/fonts/uni_05_53.ttf")) {
-    font_replace(fontMenuSmall, "lang/fonts/uni_05_53.ttf", ini_read_real('Sizes', 'uni_05_53', 8), false, false, 32, 255);
+    fontMenuSmall = font_add("lang/fonts/uni_05_53.ttf", ini_read_real('Sizes', 'uni_05_53', 8), false, false, 32, 255);
 }
 
 if(file_exists("lang/fonts/04b24.ttf")) {
-    font_replace(fontMenuTiny, "lang/fonts/04b24.ttf", ini_read_real('Sizes', '04b24', 16), false, false, 32, 255);
+    fontMenuTiny = font_add("lang/fonts/04b24.ttf", ini_read_real('Sizes', '04b24', 16), false, false, 32, 255);
     subScrItemOffset = ini_read_real('Offsets', '04b24_offset', -6);
 }
 
 if(file_exists("lang/fonts/Glasstown_NBP.ttf")) {
-    font_replace(fontMenuSmall2, "lang/fonts/Glasstown_NBP.ttf", ini_read_real('Sizes', 'Glasstown_NBP', 16), false, false, 32, 255);
+    fontMenuSmall2 = font_add("lang/fonts/Glasstown_NBP.ttf", ini_read_real('Sizes', 'Glasstown_NBP', 16), false, false, 32, 255);
 }
 
 ini_close();
