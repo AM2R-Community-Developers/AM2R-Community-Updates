@@ -6,7 +6,7 @@ If you have not played the AM2R Community Updates before, this will be of no use
 
 This source code is based on [AM2Rrc](https://gitlab.com/yellowafterlife/AM2Rrc) by YellowAfterlife. It could be considered a fork.
 
-If you are looking for a playable build of the game, please download the [AM2RLauncher](https://www.reddit.com/r/AM2R/comments/iajukx/am2r_152_release_the_am2rlauncher/) to install the latest update.
+If you are looking for a playable build of the game, please download the [AM2RLauncher](https://www.reddit.com/r/AM2R/comments/me73i2/am2rlauncher_20_release_now_with_linux_support/) to install the latest update.
 
 ## Copyright clarifications
 This source code does not contain any copyrighted assets or trademarks - in fact, it does not contain *any* assets at all, just like the AM2Rrc repository.
@@ -22,10 +22,10 @@ You will need to replace them with default shader code in order for the project 
 Finally, we have excluded the datafiles and changelog from this repository to further enforce the removal of trademarks.
 
 ## License
-Please read our [license](https://github.com/Lojemiru/AM2R-Community-Updates/blob/main/LICENSE) before distributing, modifying, contributing to, or otherwise interacting with this project.
+Please read our [license](https://github.com/AM2R-Community-Developers/AM2R-Community-Updates/blob/main/LICENSE) before distributing, modifying, contributing to, or otherwise interacting with this project.
 
 ## Contributing
-Please read our [Contribution Guidelines](https://github.com/Lojemiru/AM2R-Community-Updates/blob/main/CONTRIBUTING.md) before opening any issues or creating pull requests.
+Please read our [Contribution Guidelines](https://github.com/AM2R-Community-Developers/AM2R-Community-Updates/blob/main/CONTRIBUTING.md) before opening any issues or creating pull requests.
 
 Additionally, it would be most helpful if you joined the [Official AM2R Discord Server](https://discord.gg/HAeG8spkSu) if you plan on contributing to the project.
 
@@ -43,7 +43,7 @@ Much of this code is messy, uses unusual solutions, and does not hold to our est
 
 [GMXDataSync](https://raw.githubusercontent.com/YAL-GameMaker-Tools/GmxDataSync/master/Executable/GmxDataSync.exe) - a utility created by YellowAfterlife to populate project files with matching game assets.
 
-A copy of the latest release build of the AM2R Community Updates, which can be installed via the [AM2RLauncher](https://www.reddit.com/r/AM2R/comments/iajukx/am2r_152_release_the_am2rlauncher/).
+A copy of the latest release build of the AM2R Community Updates, which can be installed via the [AM2RLauncher](https://www.reddit.com/r/AM2R/comments/me73i2/am2rlauncher_20_release_now_with_linux_support/).
 
 ## Installation
 This repository, being based on YellowAfterlife's source reconstruction, is installed in a very similar fashion. Please refer to his installation instructions [here](https://gitlab.com/yellowafterlife/AM2Rrc/-/tree/master/), but replace 1.1's `data.win` with the latest Community Update `AM2R.exe`.
