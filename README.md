@@ -14,8 +14,7 @@ This source code does not contain any copyrighted assets or trademarks - in fact
 Assets must be extracted from your copy of the AM2R Community Updates using [GMXDataSync](https://github.com/YAL-GameMaker-Tools/GmxDataSync/blob/master/Executable/GmxDataSync.exe) in order to compile this project properly.
 
 Furthermore, there are two paid shader assets included in the Community Updates: 
-[Pixelated Pope's Retro Palette Swapper](https://pixelatedpope.itch.io/retro-palette-swapper) and
-[PixHammer's GameBoy Shader](https://pixhammer.itch.io/gameboy-shader).
+[Pixelated Pope's Retro Palette Swapper](https://pixelatedpope.itch.io/retro-palette-swapper) (make sure you get the GameMaker: Studio 1.4 version! It should be a .gmz, **not** a .yyz) and [PixHammer's GameBoy Shader](https://pixhammer.itch.io/gameboy-shader).
 We do not curently have permission to distribute either of these assets, so they are excluded from this repository.
 You will need to replace them with default shader code in order for the project to compile.
 
