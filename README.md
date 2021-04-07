@@ -47,6 +47,8 @@ A copy of the latest release build of the AM2R Community Updates, which can be i
 ## Installation
 This repository, being based on YellowAfterlife's source reconstruction, is installed in a very similar fashion. Please refer to his installation instructions [here](https://gitlab.com/yellowafterlife/AM2Rrc/-/tree/master/), but replace 1.1's `data.win` with the latest Community Update `AM2R.exe`.
 
+**NOTE:** Read YAL's instructions!!! Do NOT come to us with project issues unless you are SURE you have followed EVERY STEP in his instructions, and then the ones below.
+
 Afterwards, replace the two blank shader assets with default GM:S shader skeletons or your own copy of each shader, as well as the accompanying script files for the Retro Palette Swapper: `pal_swap_init_system` and `pal_swap_set`.
 
 **WARNING:** If the two above scripts are not replaced *before* opening the project file, GM:S 1.4 will replace them with `<undefined>` references in the asset tree at `Scripts/Lojical/Shaders/`. This will produce numerous seemingly unrelated errors until they are deleted and replaced with the appropriately named scripts.
