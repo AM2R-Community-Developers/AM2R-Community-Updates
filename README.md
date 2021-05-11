@@ -1,5 +1,7 @@
 # AM2R-Community-Updates
 
+**Please do not request help until you have read this entire document. The vast majority of your questions should be answered within it, and we will be able to easily tell if you have not followed the installation instructions thoroughly.**
+
 ## What is this?
 The source code for the AM2R Community Updates 1.5.x branch, free of copyrighted assets and trademarks.
 If you have not played the AM2R Community Updates before, this will be of no use to you!
@@ -61,7 +63,3 @@ This repository, being based on YellowAfterlife's source reconstruction, is inst
 **WARNING:** If the two above scripts are not replaced *before* opening the project file, GM:S 1.4 will replace them with `<undefined>` references in the asset tree at `Scripts/Lojical/Shaders/`. This will produce numerous seemingly unrelated errors until they are deleted and replaced with the appropriately named scripts.
 6. Finally, you will need to install `modifiers.ini` as well as the `lang` and `mods` folders as datafiles within the GM:S project. The default ones do not contain the actual assets and are merely references. These can be copied from your `Community Updates (Latest)` folder.
 7. [optional] Copy music files (.ogg) from game directory into "audio" directory inside the "sound" directory of the project (the game will still work without music, though).
-8. [optional] Edit datafiles/lang/english.ini to use original names (if you are concerned).
-
-**NOTE:** Read these instructions!!! Do NOT come to us with project issues unless you are SURE you have followed EVERY STEP in these instructions.
-
