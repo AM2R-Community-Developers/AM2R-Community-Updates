@@ -49,14 +49,14 @@ Much of this code is messy, uses unusual solutions, and does not hold to our est
 - [PixHammer's GameBoy Shader](https://pixhammer.itch.io/gameboy-shader)
 
 ## Installation
-This repository, being based on YellowAfterlife's source reconstruction, is installed in a very similar fashion. but replace 1.1's `data.win` with the latest Community Update `AM2R.exe`.
+This repository, being based on YellowAfterlife's source reconstruction, is installed in a very similar fashion.
 
-1. Download all Requirements above.
+1. Download all everything from the requirements section above.
 2. Download and extract [this repository](https://github.com/AM2R-Community-Developers/AM2R-Community-Updates/archive/refs/heads/main.zip) somewhere.
 3. Go to where you have your AM2Rlauncher located, then into the `Profiles` folder, and after that the `Community Updates (Latest)`. Place the `AM2R.exe` file from there into the project directory.  
-PIC!!!!
+![https://cdn.discordapp.com/attachments/509717926807601182/841708939980570655/unknown.png](https://cdn.discordapp.com/attachments/509717926807601182/841708939980570655/unknown.png)
 4. Drag the `AM2R.exe` file onto the GmxDataSync executable. If everything is correct, this will populate the project  with art/audio assets from the binary.  
-PIC!!!
+![https://cdn.discordapp.com/attachments/509717926807601182/841709919542706176/unknown.png](https://cdn.discordapp.com/attachments/509717926807601182/841709919542706176/unknown.png)
 5. Replace the two blank shader assets with default GM:S shader skeletons or your own copy of each shader, as well as the accompanying script files for the Retro Palette Swapper: `pal_swap_init_system` and `pal_swap_set`.
 **WARNING:** If the two above scripts are not replaced *before* opening the project file, GM:S 1.4 will replace them with `<undefined>` references in the asset tree at `Scripts/Lojical/Shaders/`. This will produce numerous seemingly unrelated errors until they are deleted and replaced with the appropriately named scripts.
 6. Finally, you will need to install `modifiers.ini` as well as the `lang` and `mods` folders as datafiles within the GM:S project. The default ones do not contain the actual assets and are merely references. These can be copied from your `Community Updates (Latest)` folder.
