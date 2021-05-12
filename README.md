@@ -53,7 +53,7 @@ Much of this code is messy, uses unusual solutions, and does not hold to our est
 ## Installation
 This repository, being based on YellowAfterlife's source reconstruction, is installed in a very similar fashion.
 
-1. Download all everything from the requirements section above.
+1. Download everything from the requirements section above.
 2. Download and extract [this repository](https://github.com/AM2R-Community-Developers/AM2R-Community-Updates/archive/refs/heads/main.zip) somewhere.
 3. Go to where you have your AM2Rlauncher located, then into the `Profiles` folder, and after that the `Community Updates (Latest)`. Place the `AM2R.exe` file from there into the project directory.  
 ![https://cdn.discordapp.com/attachments/509717926807601182/841708939980570655/unknown.png](https://cdn.discordapp.com/attachments/509717926807601182/841708939980570655/unknown.png)
