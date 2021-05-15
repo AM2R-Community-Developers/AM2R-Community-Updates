@@ -714,16 +714,16 @@ refill_heath_ammo();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!instance_exists(oCharacter)) {
-    room_goto(rm_secretEnding);
+            <string>/*if (!instance_exists(oCharacter)) {
+    room_goto(rm_secretEnding);*/
     
     /*mus_stop_all();
     mus_play_once(musCredits);
     room_goto(rm_credits);*/
-}
+//}
 
 
-if (instance_exists(oCharacter) &amp;&amp; (keyboard_check(vk_shift))) {
+/*if (instance_exists(oCharacter) &amp;&amp; (keyboard_check(vk_shift))) {
     //room_goto(rm_a8h01);
     msg = get_string("WARP TO", "rm_a0h01");
     var rm = asset_get_index(msg);
@@ -732,7 +732,7 @@ if (instance_exists(oCharacter) &amp;&amp; (keyboard_check(vk_shift))) {
     } else {
         popup_text("Room index does not exist!");
     }
-}
+}*/
 
 /*if (keyboard_check(vk_shift)) {
     msg = get_integer_async("WARP TO", 0);
