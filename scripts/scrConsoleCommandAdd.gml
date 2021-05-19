@@ -10,6 +10,7 @@ if(argument_count > 1){
     if(is_string(argument[1])){
         var _name = CommandPrefix + argument[1], _args;
         
+        //the first element stores the id of the command
         _args[0] = argument[0];
         
         if(argument_count > 2){

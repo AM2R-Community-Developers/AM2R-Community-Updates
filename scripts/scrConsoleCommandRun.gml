@@ -62,9 +62,9 @@ if(string_char_at(ConsoleEntry, 1) == CommandPrefix){
                 //default swaps its current value
                 //like duhhh. I'm here treating you like you're 12 or sum shit
                 case COMMANDS.Debug :
-                    if(CommandArg == _command[1]){ global.DEBUG = true;}
+                    /*if(CommandArg == _command[1]){ global.DEBUG = true;}
                     if(CommandArg == _command[2]){ global.DEBUG = false;}
-                    if(CommandArg == ""){ global.DEBUG = !global.DEBUG;}
+                    if(CommandArg == ""){ global.DEBUG = !global.DEBUG;}*/
                     
                 break;
                 

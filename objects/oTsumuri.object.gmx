@@ -46,48 +46,6 @@ rotationspeed = 0;
 falling = false;
 xVel = 0;
 yVel = 0;
-
-mask_index = sprCrawlieMask;
-
-//make sure creature isn't inside any solids
-var _adjust = 0;
-while(place_meeting(x, y, oSolid)){
-    _adjust++;
-    
-    if(!place_meeting(x + _adjust, y, oSolid)){
-        x += _adjust;
-        break;
-    }
-    if(!place_meeting(x, y + _adjust, oSolid)){
-        y += _adjust;
-        break;
-    }
-    if(!place_meeting(x - _adjust, y, oSolid)){
-        x -= _adjust;
-        break;
-    }
-    if(!place_meeting(x, y - _adjust, oSolid)){
-        y -= _adjust;
-        break;
-    }
-}
-
-MoveTo[0] = 0;
-MoveTo[1] = 0;
-
-PreviousCollision[0] = 0;
-PreviousCollision[1] = 0;
-PreviousCollision[2] = 0;
-PreviousCollision[3] = 0;
-
-var _tile = instance_place(x, y+1, all);
-
-if(instance_exists(_tile)){
-    OnTile = object_get_name(_tile);
-}
-
-TilePos[0] = 0;
-TilePos[1] = 1;
 </string>
           </argument>
         </arguments>
@@ -180,15 +138,11 @@ if (room_width &lt;= 320) { // just in case we have flush rooms, we don't want t
             <kind>1</kind>
             <string>action_inherited();
 if (active == 1 &amp;&amp; frozen == 0) {
+    update = !update;
+    
     // movement // Run the movement code every other step, effectively resulting in 0.5 speed. 
-    if(update == 0){
-        mask_index = sprCrawlieMask;
-        event_user(2);
-        
-    }else{
-        update--;
-        //swap the mask to maintain people's ability to hit this creature
-        mask_index = sprite_index;
+    if(update){
+        event_user(1);
     }
     
     var inst1 = collision_line(x-2, y, x+2, y, oSolid, false, true),
@@ -226,7 +180,7 @@ if (state == 100) enemy_death();
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="24">
+    <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -243,7 +197,8 @@ if (state == 100) enemy_death();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Movement OG
+            <string>///Movement Refactor Attempt 1
+
 sbstateprevious = sbstate;
 sbstate = 0;
 edgedl = position_meeting(x - 2, y + 1, oSolid);
@@ -256,7 +211,34 @@ if (isCollisionTop(0) == 1) y += 1;
 if (isCollisionLeft(0) == 1) x += 1;
 if (isCollisionRight(0) == 1) x -= 1;
 
-if (isCollisionBottom(1) == 1 &amp;&amp; isCollisionRight(1) == 0 &amp;&amp; isCollisionLeft(1) == 0) sbstate = 1;
+var _collisionRight = isCollisionRight(1);
+var _collisionLeft = isCollisionLeft(1);
+var _collisionBottom = isCollisionBottom(1);
+var _collisionTop = isCollisionTop(1);
+
+if (_collisionBottom &amp;&amp; !_collisionRight &amp;&amp; !_collisionLeft) sbstate = 1;
+if (_collisionRight &amp;&amp; !_collisionBottom &amp;&amp; !_collisionTop) sbstate = 2;
+if (_collisionTop &amp;&amp; !_collisionRight &amp;&amp; !_collisionLeft) sbstate = 3;
+if (_collisionLeft &amp;&amp; !_collisionBottom &amp;&amp; !_collisionTop) sbstate = 4;
+
+if (_collisionBottom &amp;&amp; _collisionRight) sbstate = 5;
+if (_collisionTop &amp;&amp; _collisionRight) sbstate = 6;
+if (_collisionTop &amp;&amp; _collisionLeft) sbstate = 7;
+if (_collisionBottom &amp;&amp; _collisionLeft) sbstate = 8;
+
+if (!_collisionRight &amp;&amp; !_collisionLeft &amp;&amp; !_collisionBottom &amp;&amp; !_collisionTop) {
+    if (edgedl == 1 &amp;&amp; edgeul == 0 &amp;&amp; edgeur == 0 &amp;&amp; edgedr == 0) sbstate = 9;
+    if (edgeul == 1 &amp;&amp; edgedl == 0 &amp;&amp; edgeur == 0 &amp;&amp; edgedr == 0) sbstate = 10;
+    if (edgeur == 1 &amp;&amp; edgedl == 0 &amp;&amp; edgeul == 0 &amp;&amp; edgedr == 0) sbstate = 11;
+    if (edgedr == 1 &amp;&amp; edgedl == 0 &amp;&amp; edgeul == 0 &amp;&amp; edgeur == 0) sbstate = 12;
+    
+    if (edgedl == 1 &amp;&amp; edgeul == 0 &amp;&amp; edgeur == 0 &amp;&amp; edgedr == 1) sbstate = 1;
+    if (edgedl == 0 &amp;&amp; edgeul == 0 &amp;&amp; edgeur == 1 &amp;&amp; edgedr == 1) sbstate = 2;
+    if (edgedl == 0 &amp;&amp; edgeul == 1 &amp;&amp; edgeur == 1 &amp;&amp; edgedr == 0) sbstate = 3;
+    if (edgedl == 1 &amp;&amp; edgeul == 1 &amp;&amp; edgeur == 0 &amp;&amp; edgedr == 0) sbstate = 4;
+}
+
+/*if (isCollisionBottom(1) == 1 &amp;&amp; isCollisionRight(1) == 0 &amp;&amp; isCollisionLeft(1) == 0) sbstate = 1;
 if (isCollisionRight(1) == 1 &amp;&amp; isCollisionBottom(1) == 0 &amp;&amp; isCollisionTop(1) == 0) sbstate = 2;
 if (isCollisionTop(1) == 1 &amp;&amp; isCollisionRight(1) == 0 &amp;&amp; isCollisionLeft(1) == 0) sbstate = 3;
 if (isCollisionLeft(1) == 1 &amp;&amp; isCollisionBottom(1) == 0 &amp;&amp; isCollisionTop(1) == 0) sbstate = 4;
@@ -276,512 +258,8 @@ if (isCollisionBottom(1) == 0 &amp;&amp; isCollisionLeft(1) == 0 &amp;&amp; isCo
     if (edgedl == 0 &amp;&amp; edgeul == 0 &amp;&amp; edgeur == 1 &amp;&amp; edgedr == 1) sbstate = 2;
     if (edgedl == 0 &amp;&amp; edgeul == 1 &amp;&amp; edgeur == 1 &amp;&amp; edgedr == 0) sbstate = 3;
     if (edgedl == 1 &amp;&amp; edgeul == 1 &amp;&amp; edgeur == 0 &amp;&amp; edgedr == 0) sbstate = 4;
-}
-// falling
-if (sbstate == 0 &amp;&amp; falling == false) {
-    falling = true;
-    if(image_angle &gt; 270 || image_angle &lt; 90) xVel = 0.5 * facing;
-    if(image_angle &gt; 90 &amp;&amp; image_angle &lt; 270) xVel = -0.5 * facing;
-    alarm[0] = 1;
-}
-if (facing == 1 &amp;&amp; sbmove == 0) {
-    if (sbstate == 1) sbmove = 1;
-    if (sbstate == 3) sbmove = -1;
-    if (sbstate == 5) sbmove = 1;
-    if (sbstate == 6) sbmove = -1;
-    if (sbstate == 7) sbmove = -1;
-    if (sbstate == 8) sbmove = 1;
-    if (sbstate == 9) sbmove = 1;
-    if (sbstate == 10) sbmove = -1;
-    if (sbstate == 11) sbmove = -1;
-    if (sbstate == 12) sbmove = 1;
-}
-if (facing == -1 &amp;&amp; sbmove == 0) {
-    if (sbstate == 1) sbmove = -1;
-    if (sbstate == 3) sbmove = 1;
-    if (sbstate == 5) sbmove = -1;
-    if (sbstate == 6) sbmove = 1;
-    if (sbstate == 7) sbmove = 1;
-    if (sbstate == 8) sbmove = -1;
-    if (sbstate == 9) sbmove = -1;
-    if (sbstate == 10) sbmove = 1;
-    if (sbstate == 11) sbmove = 1;
-    if (sbstate == 12) sbmove = -1;
-}
-if (sbstate == 1) x += sbmove;
-if (sbstate == 2) y -= sbmove;
-if (sbstate == 3) x -= sbmove;
-if (sbstate == 4) y += sbmove;
-if (sbstate == 5) {
-    if (sbmove == 1) y -= 1;
-    if (sbmove == -1) x -= 1;
-}
-if (sbstate == 6) {
-    if (sbmove == 1) x -= 1;
-    if (sbmove == -1) y += 1;
-}
-if (sbstate == 7) {
-    if (sbmove == 1) y += 1;
-    if (sbmove == -1) x += 1;
-}
-if (sbstate == 8) {
-    if (sbmove == 1) x += 1;
-    if (sbmove == -1) y -= 1;
-}
-if (sbstate == 9) {
-    if (sbmove == 1) y += 1;
-    if (sbmove == -1) x -= 1;
-}
-if (sbstate == 10) {
-    if (sbmove == 1) x -= 1;
-    if (sbmove == -1) y -= 1;
-}
-if (sbstate == 11) {
-    if (sbmove == 1) y -= 1;
-    if (sbmove == -1) x += 1;
-}
-if (sbstate == 12) {
-    if (sbmove == 1) x += 1;
-    if (sbmove == -1) y += 1;
-}
-
- // rotation
-switch (sbstate) {
-     case 1: myangle = 0; break;
-     case 2: myangle = 90; break;
-     case 3: myangle = 180; break;
-     case 4: myangle = 270; break;
- }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="13">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///movement refactor attempt 3
-//tried to be big brained with this one
-//totally either ignores oSolid tiles, or does random ass giberish depending on how you check for collisions
-//couldn't even get to working with sloped tiles cuz it straight up doesn't work
-//also decided not to throw me an error on something that should've been fatal...
-//don't ask me wtf cuz I don't
-
-//if the creature is just created we need to define where it will crawl
-//this is done here because room-specific creation code runs after the create event
-if(MoveTo[0] == 0 &amp;&amp; MoveTo[1] == 0){
-    MoveTo[0] = facing;
-}
-
-var _tile = noone, _tileSlope = noone, _tileName = noone, _maskSize = 8 - 1;
-
-//bitwise operations limits checks to when the character is in a position divisible by 8
-//this only works with mask sizes that are a power of 2
-if(x&amp; ~4 == x &amp; ~_maskSize || y&amp; ~4 == y &amp; ~_maskSize){
-    
-    //see if there is a tile in the character's path and make sure it's a collision object
-    _tile = instance_place(x + (MoveTo[0]&lt;&lt;1), y + (MoveTo[1]&lt;&lt;1), oSolid);
-    
-    if(_tile == noone){
-        _tile = instance_place(x + (MoveTo[0]&lt;&lt;1), y + (MoveTo[1]&lt;&lt;1), oSlope);
-    }
-    
-    if(_tile != noone){
-        _tileName = object_get_name(_tile);
-        
-        //direction changes
-        //sloped tiles
-        if(object_get_parent(_tileName) == oSlope){
-            OnTile = _tileName;
-            
-            switch (_tileName){
-                case oSlope1 :
-                    
-                    break;
-                
-                default : break;
-            }
-            
-            
-        }else{
-            //square tiles
-            OnTile = _tileName;
-            
-            MoveTo[0] = sign(MoveTo[0]);
-            MoveTo[1] = sign(MoveTo[1]);
-            
-            if(MoveTo[0] == 0){
-                TilePos[0] = 0;
-                TilePos[1] = MoveTo[1];
-                
-                //check if aproaching from above
-                if(MoveTo[1] == 1){
-                    MoveTo[0] = -facing;
-                
-                //check if coming from bellow
-                }else{
-                    MoveTo[0] = facing;
-                }
-                MoveTo[1] = 0;
-                
-            }else{
-                TilePos[0] = MoveTo[0];
-                TilePos[1] = 0;
-                
-                //if from the sides
-                if(MoveTo[0] == 1){
-                    MoveTo[1] = -facing;
-                }else{
-                    MoveTo[1] = facing;
-                }
-                MoveTo[0] = 0;
-            }
-        }
-    
-    }
-    
-    //if no tile, make sure the character is still standing on a tile
-    //if not, change directions towards the direction we were standing
-    //like with my second refactor, this works fine
-    if(!place_meeting(x + TilePos[0], y + TilePos[1], oSolid)){
-        if(!place_meeting(x + TilePos[0], y + TilePos[1], oSlope)){
-            MoveTo[0] = TilePos[0];
-            MoveTo[1] = TilePos[1];
-            
-            if(TilePos[0] == 0){
-                if(TilePos[1] == 1){
-                    TilePos[0] = -facing;
-                }else{
-                    TilePos[0] = facing;
-                }
-                TilePos[1] = 0;
-                
-            }else{
-                if(TilePos[0] == 1){
-                    TilePos[1] = facing;
-                }else{
-                    TilePos[1] = -facing;
-                }
-                TilePos[0] = 0;
-            }
-        }
-    }
-    
-}
-//move in the current direction
-x += MoveTo[0];
-y += MoveTo[1];
-update++;
-
-//image rotation
-if(!falling){
-    if(facing == 1){
-        if(TilePos[1] != 0){
-            if(MoveTo[0] == 1){
-                myangle = 0;
-            }
-            if(MoveTo[0] == -1){
-                myangle = 180;
-            }
-        }
-        
-        if(TilePos[0] != 0){
-            if(MoveTo[1] == -1){
-                myangle = 90;
-            }
-            if(MoveTo[1] == 1){
-                myangle = 270;
-            }
-        }
-        
-    }else{
-        if(TilePos[1] != 0){
-            if(MoveTo[0] == 1){
-                myangle = 180;
-            }
-            if(MoveTo[0] == -1){
-                myangle = 0;
-            }
-        }
-        
-        if(TilePos[0] != 0){
-            if(MoveTo[1] == -1){
-                myangle = 270;
-            }
-            if(MoveTo[1] == 1){
-                myangle = 90;
-            }
-        }
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="12">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Movement Refactor Attempt 2
-//struggles with slopes, I don't fucking know why
-//everything else works fine
-//what's funny is adding the oSlope checks made everything else work slightly worse, and slopes sightly better, but utimately it was the same result
-
-//define the local collision checking variable
-//I'm using arrays as vec2's here 0 represents x, and 1 represents y
-var _collision;
-_collision[0] = 0;
-_collision[1] = 0;
-
-//if the creature is just created we need to define where it will crawl
-//this is done here because room-specific creation code runs after the create event
-if(MoveTo[0] == 0 &amp;&amp; MoveTo[1] == 0){
-    MoveTo[0] = facing;
-    _collision[0] = 0;
-    _collision[1] = place_meeting(x, y + 1, oSolid) - place_meeting(x, y - 1, oSolid);
-    
-//get the lay of the land immediately around the creature
-}else{
-    if(MoveTo[0] != 0){
-        _collision[0] = place_meeting(x + MoveTo[0], y, oSolid) * MoveTo[0];
-        _collision[1] = place_meeting(x, y + PreviousCollision[1], oSolid) * PreviousCollision[1];
-        
-        if(_collision[0] == 0){
-            _collision[0] = place_meeting(x + MoveTo[0], y, oSlope) * MoveTo[0];
-        }
-        if(_collision[1] == 0){
-            _collision[1] = place_meeting(x, y + PreviousCollision[1], oSlope) * PreviousCollision[1];
-        }
-    }else{
-        _collision[0] = place_meeting(x + PreviousCollision[0], y, oSolid) * PreviousCollision[0];
-        _collision[1] = place_meeting(x, y + MoveTo[1], oSolid) * MoveTo[1];
-        
-        if(_collision[0] == 0){
-            _collision[0] = place_meeting(x + PreviousCollision[0], y, oSlope) * PreviousCollision[0];
-        }
-        if(_collision[1] == 0){
-            _collision[1] = place_meeting(x, y + MoveTo[1], oSlope) * MoveTo[1];
-        }
-    }
-    
-}
-
-//direction changes
-//convex corner
-if(_collision[0] == 0 &amp;&amp; _collision[1] == 0){
-    if(MoveTo[0] != 0){
-        
-        //downward slope movement
-        if(place_meeting(x, y + (2*PreviousCollision[1]), oSolid) || place_meeting(x, y + (2*PreviousCollision[1]), oSlope)){
-            y += PreviousCollision[1];
-            _collision[1] = PreviousCollision[1];
-            update++;
-            
-        }else{
-            _collision[0] = -MoveTo[0];
-            MoveTo[0] = 0;
-            MoveTo[1] = PreviousCollision[1];
-        }
-        
-    }else{
-    
-        //sideways slope
-        if(place_meeting(x + (2*PreviousCollision[0]), y, oSolid) || place_meeting(x + (2*PreviousCollision[0]), y, oSlope)){
-            x += PreviousCollision[0];
-            _collision[0] = PreviousCollision[0];
-            update++;
-            
-        }else{
-            MoveTo[0] = PreviousCollision[0];
-            _collision[1] = -MoveTo[1];
-            MoveTo[1] = 0;
-        }
-    }
-    
-}
-
-//concave corner
-if(_collision[0] != 0 &amp;&amp; _collision[1] != 0){
-        
-    //upward slope movement
-    if(MoveTo[0] != 0){
-        if(place_meeting(x + MoveTo[0], y - _collision[1], oSolid) || place_meeting(x + MoveTo[0], y - _collision[1], oSlope)){
-            MoveTo[0] = 0;
-            MoveTo[1] = -_collision[1];
-        }else{
-            y -= _collision[1];
-            _collision[0] = 0;
-            update++;
-        }
-    
-    //sideways slope movement
-    }else{
-        if(place_meeting(x - _collision[0], y + MoveTo[1], oSolid) || place_meeting(x - _collision[0], y + MoveTo[1], oSlope)){
-            MoveTo[0] = -_collision[0];
-            MoveTo[1] = 0;
-        }else{
-            x -= _collision[0];
-            _collision[1] = 0;
-            update++;
-        }
-    }
-
-}
-
-//move
-x += MoveTo[0];
-y += MoveTo[1];
-update++;
-
-// falling
-/*if(_collision[0] == 0 &amp;&amp; _collision[1] == 0){
-    if(PreviousCollision[0] == 0 &amp;&amp; PreviousCollision[1] == 0){
-        falling = 1;
-        if(image_angle &gt; 270 || image_angle &lt; 90) xVel = 0.5 * facing;
-        if(image_angle &gt; 90 &amp;&amp; image_angle &lt; 270) xVel = -0.5 * facing;
-        alarm[0] = 1;
-    }
 }*/
 
-//rotation
-if(!falling){
-    if(facing == 1){
-        if(_collision[0] == PreviousCollision[0] &amp;&amp; PreviousCollision[0] == PreviousCollision[2]){
-            if(MoveTo[0] == 1){
-                myangle = 0;
-            }
-            if(MoveTo[0] == -1){
-                myangle = 180;
-            }
-        }
-        
-        if(_collision[1] == PreviousCollision[1] &amp;&amp; PreviousCollision[1] == PreviousCollision[3]){
-            if(MoveTo[1] == -1){
-                myangle = 90;
-            }
-            if(MoveTo[1] == 1){
-                myangle = 270;
-            }
-        }
-        
-    }else{
-        if(_collision[0] == PreviousCollision[0] &amp;&amp; PreviousCollision[0] == PreviousCollision[2]){
-            if(MoveTo[0] == 1){
-                myangle = 180;
-            }
-            if(MoveTo[0] == -1){
-                myangle = 0;
-            }
-        }
-        
-        if(_collision[1] == PreviousCollision[1] &amp;&amp; PreviousCollision[1] == PreviousCollision[3]){
-            if(MoveTo[1] == -1){
-                myangle = 270;
-            }
-            if(MoveTo[1] == 1){
-                myangle = 90;
-            }
-        }
-    }
-}
-
-//update tracking
-PreviousCollision[0] = _collision[0];
-PreviousCollision[1] = _collision[1];
-PreviousCollision[2] = PreviousCollision[0];
-PreviousCollision[3] = PreviousCollision[1];
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="11">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Movement Refactor Attempt 1
-//added two local variables to reduce the overall number of collision checks by a huge margine
-//functionally the same as og, but it fails now for some reason :/
-//and I can't be fucked to tweak this code to make it work cuz it hurts my eyes
-
-sbstateprevious = sbstate;
-sbstate = 0;
-edgedl = position_meeting(x - 2, y + 1, oSolid);
-edgedr = position_meeting(x + 2, y + 1, oSolid);
-edgeul = position_meeting(x - 2, y - 2, oSolid);
-edgeur = position_meeting(x + 2, y - 2, oSolid);
-
-if (isCollisionBottom(0) == 1) y -= 1;
-if (isCollisionTop(0) == 1) y += 1;
-if (isCollisionLeft(0) == 1) x += 1;
-if (isCollisionRight(0) == 1) x -= 1;
-
-var _check;
-_check[0] = isCollisionRight(1) - isCollisionLeft(1);
-_check[1] = isCollisionDown(1) - isCollisionTop(1);
-
-if (_check[1] == 1 &amp;&amp; _check[0] == 0) sbstate = 1;
-if (_check[0] == 1 &amp;&amp; _check[1] == 0) sbstate = 2;
-if (_check[1] == -1 &amp;&amp; _check[0] == 0) sbstate = 3;
-if (_check[0] == -1 &amp;&amp; _check[1] == 0) sbstate = 4;
-
-if (_check[1] == 1 &amp;&amp; _check[0] == 1) sbstate = 5;
-if (_check[1] == -1 &amp;&amp; _check[0] == 1) sbstate = 6;
-if (_check[1] == -1 &amp;&amp; _check[0] == -1) sbstate = 7;
-if (_check[1] == 1 &amp;&amp; _check[0] == -1) sbstate = 8;
-
-if (_check[0] == 0 &amp;&amp; _check[1] == 0) {
-    if (edgedl == 1 &amp;&amp; edgeul == 0 &amp;&amp; edgeur == 0 &amp;&amp; edgedr == 0) sbstate = 9;
-    if (edgeul == 1 &amp;&amp; edgedl == 0 &amp;&amp; edgeur == 0 &amp;&amp; edgedr == 0) sbstate = 10;
-    if (edgeur == 1 &amp;&amp; edgedl == 0 &amp;&amp; edgeul == 0 &amp;&amp; edgedr == 0) sbstate = 11;
-    if (edgedr == 1 &amp;&amp; edgedl == 0 &amp;&amp; edgeul == 0 &amp;&amp; edgeur == 0) sbstate = 12;
-    
-    if (edgedl == 1 &amp;&amp; edgeul == 0 &amp;&amp; edgeur == 0 &amp;&amp; edgedr == 1) sbstate = 1;
-    if (edgedl == 0 &amp;&amp; edgeul == 0 &amp;&amp; edgeur == 1 &amp;&amp; edgedr == 1) sbstate = 2;
-    if (edgedl == 0 &amp;&amp; edgeul == 1 &amp;&amp; edgeur == 1 &amp;&amp; edgedr == 0) sbstate = 3;
-    if (edgedl == 1 &amp;&amp; edgeul == 1 &amp;&amp; edgeur == 0 &amp;&amp; edgedr == 0) sbstate = 4;
-}
 // falling
 if (sbstate == 0 &amp;&amp; falling == false) {
     falling = true;
@@ -880,29 +358,6 @@ switch (sbstate) {
           <argument>
             <kind>1</kind>
             <string>/// dummied
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_sprite(mask_index, 0, x, y);
 </string>
           </argument>
         </arguments>

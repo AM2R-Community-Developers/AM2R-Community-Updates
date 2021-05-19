@@ -3389,9 +3389,6 @@
       </sprites>
       <sprite>sprites\sShipGlow</sprite>
     </sprites>
-    <sprites name="Zacko">
-      <sprite>sprites\sprCrawlieMask</sprite>
-    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bgScreenGuide</background>
