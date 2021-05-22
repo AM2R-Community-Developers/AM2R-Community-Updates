@@ -125,18 +125,20 @@ if (y &gt; 150 &amp;&amp; falling) {
     mus_current_stop();
 }
 if (enablespikes &amp;&amp; spikeoffset &gt; 0) spikeoffset -= 1;
+
 if (facing == 1) {
     if (x &lt; oBoss1Head.edge_l - 48) {
         hspeed = 0.25;
     } else hspeed = 0;
-}
-if (facing == -1) {
+    
+   spike.x = x + 18 - spikeoffset;
+}else{
     if (x &gt; oBoss1Head.edge_r + 48) {
         hspeed = -0.25;
     } else hspeed = 0;
+    
+   spike.x = x - 34 + spikeoffset;
 }
-if (facing == 1) spike.x = x + 18 - spikeoffset;
-if (facing == -1) spike.x = x - 34 + spikeoffset;
 </string>
           </argument>
         </arguments>
@@ -218,19 +220,8 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (facing == 1) {
-    i = 1;
-    repeat (10) {
-        draw_sprite_ext(sBoss1Spike, -1, x + 18 - spikeoffset, y - 8 * i, 1, 1, 0, -1, 1);
-        i += 1;
-    }
-}
-if (facing == -1) {
-    i = 1;
-    repeat (10) {
-        draw_sprite_ext(sBoss1Spike, -1, x - 18 + spikeoffset, y - 8 * i, -1, 1, 0, -1, 1);
-        i += 1;
-    }
+            <string>for(i = 1; i &lt;= 10; i++){
+    draw_sprite_ext(sBoss1Spike, -1, x + (18 * facing) - (spikeoffset * facing), y - 8 * i, facing, 1, 0, -1, 1);
 }
 draw_sprite_ext(sprite_index, -1, x, y, facing, 1, 0, -1, 1);
 draw_sprite_ext(sprite_index, -1, x, y - 32, facing, 1, 0, -1, 1);
