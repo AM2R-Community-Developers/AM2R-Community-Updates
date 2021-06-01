@@ -51,7 +51,6 @@ image_speed = 0;
 edge_l = 64;
 edge_r = 256;
 phase = 1;
-//movetime = 120; //unused variable
 block1 = instance_create(16, 32, oBoss1Block);
 block1.facing = 1;
 block2 = instance_create(304, 32, oBoss1Block);
@@ -64,24 +63,7 @@ wheel = instance_create(x, y, oBoss1Wheel);
 
 sparkcounter = 0;
 
-//find ground
-//used for replacement Yellow attack
-GroundHeight = y;
-var _foundAir = false;
-
-while( !position_meeting(x, GroundHeight, oSolid) || !_foundAir){
-    if(!_foundAir){
-        if(position_meeting(x, y + GroundHeight, oSolid)){
-            _foundAir = true;
-        }
-    }
-    
-    GroundHeight++;
-}
-
-GroundHeight--;
-
-//~TIMEING~//
+//~TIMING~//
 enum BOSS1_ATTACKTIME {
     Initial = 120,
     Normal = 90
@@ -124,30 +106,12 @@ enum BOSS1_DEATH {
 
 
 //~PHASE PROGRESSION ARRAY~//
-PhaseProgression[0] = 600; //the hp at which to switch to this phase
-//PhaseProgression[0, 1] = 80; //the new left-most position the head is allowed in 
-//PhaseProgression[0, 2] = 240; //right edge
-//PhaseProgression[0, 3] = 90; //the new move time
-
+//hp at each phase
+PhaseProgression[0] = 600;
 PhaseProgression[1] = 500;
-//PhaseProgression[1, 1] = 96;
-//PhaseProgression[1, 2] = 224;
-//PhaseProgression[1, 3] = 70;
-
 PhaseProgression[2] = 450;
-//PhaseProgression[2, 1] = 112;
-//PhaseProgression[2, 2] = 208;
-//PhaseProgression[2, 3] = 60;
-
 PhaseProgression[3] = 300;
-//PhaseProgression[3, 1] = 128;
-//PhaseProgression[3, 2] = 192;
-//PhaseProgression[3, 3] = 50;
-
 PhaseProgression[4] = 150;
-//PhaseProgression[4, 1] = 144;
-//PhaseProgression[4, 2] = 176;
-//PhaseProgression[4, 3] = 30;
 
 EdgeStepAmount = 16;
 </string>
@@ -264,6 +228,22 @@ alarm[1] = 5;
           <argument>
             <kind>1</kind>
             <string>action_inherited();
+
+switch(state){
+    case 0 : event_user(1); break; //intro
+    case 1 : event_user(2); break; //normal
+    case 2 : event_user(3); break; //attack
+    
+    default : event_user(4); break; //death
+}
+
+if (fxtimer &lt; 5) {
+    fxtimer += 1;
+} else fxtimer = 0;
+if (flashing &gt; 0) flashing -= 1;
+
+//old code//
+
 /*if (state == 0) {
     if (statetime == 90) {
         mus_play(musAncientGuardian);
@@ -449,18 +429,6 @@ if (state == 100) {
         instance_destroy();
     }
 } // if (state == 100)*/
-switch(state){
-    case 0 : event_user(1); break;
-    case 1 : event_user(2); break;
-    case 2 : event_user(3); break;
-    
-    default : event_user(4); break;
-}
-
-if (fxtimer &lt; 5) {
-    fxtimer += 1;
-} else fxtimer = 0;
-if (flashing &gt; 0) flashing -= 1;
 </string>
           </argument>
         </arguments>
@@ -485,18 +453,7 @@ if (flashing &gt; 0) flashing -= 1;
             <kind>1</kind>
             <string>if (sparkcounter == 0) {
     state = 100;
-   /* sfx_play(sndBoss1Death);
-    with (wall1) instance_destroy();
-    with (wall2) instance_destroy();
-    with (wheel) instance_destroy();
-    with (block1) event_user(0);
-    with (block2) event_user(0);
-    with (inst_107511) instance_destroy();
-    global.event[51] = 1;
-    mus_fadeout(musAncientGuardian);
-    oMusicV2.bossbgm = sndJump;
-    mus_current_fadein();*/
-    event_user(5);
+    event_user(5); //clean up arena
     sparkcounter = 1;
 }
 </string>
@@ -590,48 +547,12 @@ mus_current_fadein();
             <string>///state: death
 speed = 0;
 canbehit = 0;
-/*if (statetime == 1) {
-    alarm[1] = 1;
-   //sfx_play(sndBoss1Death);
-    //with (wall1) instance_destroy();
-    //with (wall2) instance_destroy();
-    //with (wheel) instance_destroy();
-    //with (block1) event_user(0);
-    //with (block2) event_user(0);
-    //with (inst_107511) instance_destroy();
-    //global.event[51] = 1;
-    //mus_fadeout(musAncientGuardian);
-    //oMusicV2.bossbgm = sndJump;
-    //mus_current_fadein();
-    event_user(5);
-}
-if (statetime == 250) {
-    repeat (10) {
-        expl = instance_create(x - 16 + random(32), y - 16 + random(32), oFXAnimSpark);
-        expl.image_speed = 0.5 + random(0.5);
-        expl.additive = 0;
-        expl.sprite_index = sExpl1;
-        expl.direction = 180 + random(180);
-        expl.speed = 2 + random(1);
-    }
-    repeat (10) make_explosion3(x + random_range(-30, 30), y + random_range(-30, 30));
-    repeat (60) instance_create(x, y + 28, oDebris);
-    spawn_many_powerups(128, 80, 64, 64);
-    instance_create(x, y, oScreenFlash);
-    sfx_play(sndBoss1Stomp);
-    sfx_play(sndSMissileExpl);
-    quake = instance_create(0, 0, oQuake);
-    quake.delay = 0;
-    quake.duration = 15;
-    quake.intensity = 8;
-    instance_destroy();
-}*/
 
 switch (statetime) {
     case BOSS1_DEATH.Burn :
         alarm[1] = 1;
         event_user(5);
-        break;
+    break;
         
     case BOSS1_DEATH.Explode :
         repeat (10) {
@@ -653,7 +574,7 @@ switch (statetime) {
         quake.duration = 15;
         quake.intensity = 8;
         instance_destroy();
-        break;
+    break;
     
     default : break;
 }
@@ -686,146 +607,79 @@ hitmissile = 0;
 hitbomb = 0;
 hitpbomb = 0;
 if (image_index &lt; 9) image_index += 0.25;
-
-/* if (statetime == 1) { //moved to timer
-     attack = floor(random(4));
-     if (phase &gt;= 4) {
-         if (attack == 0) attack = 2;
-     }
- }*/
-
- /*if (statetime == 5) {
-     eyes = instance_create(x, y, oBoss1Eyes); // og y + 14
-     eyes.image_index = attack;
-     if (attack == 0) sfx_play(sndBoss1Eyes2);
-     if (attack == 1) sfx_play(sndBoss1Eyes1);
-     if (attack == 2) sfx_play(sndBoss1Eyes4);
-     if (attack == 3) sfx_play(sndBoss1Eyes3);
- }
- if (statetime == 80) {
-     if (attack == 0) {
-         instance_create(x, y + 12, oBoss1FBall);
-         sfx_play(sndBoss1FBall);
-     }
-     if (attack == 1) {
-         prj1 = instance_create(x + 4, y + 18, oBoss1FBall2);
-         prj2 = instance_create(x - 4, y + 18, oBoss1FBall2);
-         prj3 = instance_create(x + 4, y + 18, oBoss1FBall2);
-         prj4 = instance_create(x - 4, y + 18, oBoss1FBall2);
-         prj5 = instance_create(x + 4, y + 18, oBoss1FBall2);
-         prj6 = instance_create(x - 4, y + 18, oBoss1FBall2);
-         prj1.hspeed = 3;
-         prj2.hspeed = -3;
-         prj3.hspeed = 6;
-         prj4.hspeed = -6;
-         prj5.hspeed = 9;
-         prj6.hspeed = -9;
-         sfx_play(sndBoss1FBall);
-     }
-     if (attack == 2) {
-         prj1 = instance_create(x + 6, y + 11, oBoss1Beam);
-         prj2 = instance_create(x - 6, y + 11, oBoss1Beam);
-         prj1.image_xscale = -1;
-         sfx_play(sndBoss1Laser);
-     }
-     if (attack == 3) {
-         prj1 = instance_create(x + 4, y + 18, oBoss1FBall3);
-         prj2 = instance_create(x - 4, y + 18, oBoss1FBall3);
-         prj3 = instance_create(x + 4, y + 18, oBoss1FBall3);
-         prj4 = instance_create(x - 4, y + 18, oBoss1FBall3);
-         prj5 = instance_create(x + 4, y + 18, oBoss1FBall3);
-         prj6 = instance_create(x - 4, y + 18, oBoss1FBall3);
-         prj1.hspeed = 0.4;
-         prj1.time = 60;
-         prj2.hspeed = -0.4;
-         prj2.time = 70;
-         prj3.hspeed = 1.2;
-         prj3.time = 80;
-         prj4.hspeed = -1.2;
-         prj4.time = 90;
-         prj5.hspeed = 2;
-         prj5.time = 100;
-         prj6.hspeed = -2;
-         prj6.time = 110;
-         sfx_play(sndBoss1FBall);
-     }
- } // if (statetime == 80)
- if (statetime == 120) {
-     state = 1;
-     alarm[0] = AttackTime[1];
- }*/
  
- switch (statetime) {
+switch (statetime) {
     case BOSS1_ATTACK.EyeFlash : //Telegrah
         eyes = instance_create(x, y, oBoss1Eyes); // og y + 14
         eyes.image_index = attack;
         switch (attack){
-        case 0 : sfx_play(sndBoss1Eyes2); break;
-        case 1 : sfx_play(sndBoss1Eyes1); break;
-        case 2 : sfx_play(sndBoss1Eyes4); break;
-        case 3 : sfx_play(sndBoss1Eyes3); break;
+            case 0 : sfx_play(sndBoss1Eyes2); break;
+            case 1 : sfx_play(sndBoss1Eyes1); break;
+            case 2 : sfx_play(sndBoss1Eyes4); break;
+            case 3 : sfx_play(sndBoss1Eyes3); break;
         }
-        break;
+    break;
      
     case BOSS1_ATTACK.Attack : //Attack
         switch (attack) {
             case 0 : //Yellow Fire Ball
-            instance_create(x, y + 12, oBoss1FBall);
-            sfx_play(sndBoss1FBall);
+                instance_create(x, y + 12, oBoss1FBall);
+                sfx_play(sndBoss1FBall);
             break;
             
             case 1 : //Green Fire Ball
-            prj1 = instance_create(x + 4, y + 18, oBoss1FBall2);
-            prj2 = instance_create(x - 4, y + 18, oBoss1FBall2);
-            prj3 = instance_create(x + 4, y + 18, oBoss1FBall2);
-            prj4 = instance_create(x - 4, y + 18, oBoss1FBall2);
-            prj5 = instance_create(x + 4, y + 18, oBoss1FBall2);
-            prj6 = instance_create(x - 4, y + 18, oBoss1FBall2);
-            prj1.hspeed = 3;
-            prj2.hspeed = -3;
-            prj3.hspeed = 6;
-            prj4.hspeed = -6;
-            prj5.hspeed = 9;
-            prj6.hspeed = -9;
-            sfx_play(sndBoss1FBall);
+                prj1 = instance_create(x + 4, y + 18, oBoss1FBall2);
+                prj2 = instance_create(x - 4, y + 18, oBoss1FBall2);
+                prj3 = instance_create(x + 4, y + 18, oBoss1FBall2);
+                prj4 = instance_create(x - 4, y + 18, oBoss1FBall2);
+                prj5 = instance_create(x + 4, y + 18, oBoss1FBall2);
+                prj6 = instance_create(x - 4, y + 18, oBoss1FBall2);
+                prj1.hspeed = 3;
+                prj2.hspeed = -3;
+                prj3.hspeed = 6;
+                prj4.hspeed = -6;
+                prj5.hspeed = 9;
+                prj6.hspeed = -9;
+                sfx_play(sndBoss1FBall);
             break;
             
             case 2 : //Laser
-            prj1 = instance_create(x + 6, y + 11, oBoss1Beam);
-            prj2 = instance_create(x - 6, y + 11, oBoss1Beam);
-            prj1.image_xscale = -1;
-            sfx_play(sndBoss1Laser);
+                prj1 = instance_create(x + 6, y + 11, oBoss1Beam);
+                prj2 = instance_create(x - 6, y + 11, oBoss1Beam);
+                prj1.image_xscale = -1;
+                sfx_play(sndBoss1Laser);
             break;
             
             case 3 : //Red Fire Ball
-            prj1 = instance_create(x + 4, y + 18, oBoss1FBall3);
-            prj2 = instance_create(x - 4, y + 18, oBoss1FBall3);
-            prj3 = instance_create(x + 4, y + 18, oBoss1FBall3);
-            prj4 = instance_create(x - 4, y + 18, oBoss1FBall3);
-            prj5 = instance_create(x + 4, y + 18, oBoss1FBall3);
-            prj6 = instance_create(x - 4, y + 18, oBoss1FBall3);
-            prj1.hspeed = 0.4;
-            prj1.time = 60;
-            prj2.hspeed = -0.4;
-            prj2.time = 70;
-            prj3.hspeed = 1.2;
-            prj3.time = 80;
-            prj4.hspeed = -1.2;
-            prj4.time = 90;
-            prj5.hspeed = 2;
-            prj5.time = 100;
-            prj6.hspeed = -2;
-            prj6.time = 110;
-            sfx_play(sndBoss1FBall);
+                prj1 = instance_create(x + 4, y + 18, oBoss1FBall3);
+                prj2 = instance_create(x - 4, y + 18, oBoss1FBall3);
+                prj3 = instance_create(x + 4, y + 18, oBoss1FBall3);
+                prj4 = instance_create(x - 4, y + 18, oBoss1FBall3);
+                prj5 = instance_create(x + 4, y + 18, oBoss1FBall3);
+                prj6 = instance_create(x - 4, y + 18, oBoss1FBall3);
+                prj1.hspeed = 0.4;
+                prj1.time = 60;
+                prj2.hspeed = -0.4;
+                prj2.time = 70;
+                prj3.hspeed = 1.2;
+                prj3.time = 80;
+                prj4.hspeed = -1.2;
+                prj4.time = 90;
+                prj5.hspeed = 2;
+                prj5.time = 100;
+                prj6.hspeed = -2;
+                prj6.time = 110;
+                sfx_play(sndBoss1FBall);
             break;
          }
-         break;
+    break;
          
-      case BOSS1_ATTACK.ToNormal : //To Normal State
-         event_user(6);
-         break;
+         
+    case BOSS1_ATTACK.ToNormal : //To Normal State
+        event_user(6);
+    break;
  
-      default : break;
+    default : break;
  }
 </string>
           </argument>
@@ -851,10 +705,6 @@ if (image_index &lt; 9) image_index += 0.25;
             <kind>1</kind>
             <string>///state: normal
 
-/*hitbeam = 1;
-hitmissile = 1;
-hitbomb = 1;
-hitpbomb = 1;*/
 if (image_index &gt; 5) image_index -= 0.5;
 if (x &gt; oCharacter.x) hspeed -= 0.1;
 if (x &lt; oCharacter.x) hspeed += 0.1;
@@ -862,49 +712,14 @@ if (x &lt; edge_l &amp;&amp; hspeed &lt; 0) hspeed = 0;
 if (x &gt; edge_r &amp;&amp; hspeed &gt; 0) hspeed = 0;
 if (hspeed &gt; 3) hspeed = 3;
 if (hspeed &lt; -3) hspeed = -3;
-/*if (myhealth &lt; 600) {
-    edge_l = 80;
-    edge_r = 240;
-    phase = 1;
-    movetime = 90;
-}
-if (myhealth &lt; 500) {
-    edge_l = 96;
-    edge_r = 224;
-    phase = 2;
-    movetime = 70;
-}
-if (myhealth &lt; 450) {
-    edge_l = 112;
-    edge_r = 208;
-    phase = 3;
-    movetime = 60;
-}
-if (myhealth &lt; 300) {
-    edge_l = 128;
-    edge_r = 192;
-    phase = 4;
-    movetime = 50;
-}
-if (myhealth &lt; 150) {
-    edge_l = 144;
-    edge_r = 176;
-    phase = 5;
-    movetime = 30;
-}*/
 
 if(phase &lt;= array_length_1d(PhaseProgression)){
-   /* if(myhealth &lt; PhaseProgression[phase-1, 0]){
-        edge_l = PhaseProgression[phase-1, 1];
-        edge_r = PhaseProgression[phase-1, 2];
-        //movetime = PhaseProgression[phase-1, 3];
-        phase++;
-    }*/
-    
     if(myhealth &lt; PhaseProgression[phase-1]){
         phase++;
-        edge_l += EdgeStepAmount;
-        edge_r -= EdgeStepAmount;
+        if(edge_r - edge_l &gt; 16 * 5){
+            edge_l += EdgeStepAmount;
+            edge_r -= EdgeStepAmount;
+        }
     }
 }
 </string>
@@ -930,31 +745,6 @@ if(phase &lt;= array_length_1d(PhaseProgression)){
           <argument>
             <kind>1</kind>
             <string>///state: boss intro
-
-/*if (statetime == IntroTime[2]) {
-    mus_play(musAncientGuardian);
-    oMusicV2.bossbgm = musAncientGuardian;
-}*/
-
-//if (statetime == IntroTime[3]) sfx_play(sndBoss1Appear);
-
-//if (statetime == IntroTime[4]) scan_log(32, get_text("ScanEvents", "ScanMechanism"), 180, 0);
-/*if (statetime == IntroTime[5]) {
-    quake = instance_create(0, 0, oQuake);
-    quake.delay = 0;
-    quake.duration = 10;
-    quake.intensity = 2;
-}*/
-
-/*if (statetime == IntroTime[7]) {
-    state = 1;
-    statetime = 0;
-    canbehit = 1;
-    alarm[0] = AttackTime[0];
-    image_index = 5;
-}*/
-
-
 //move tiles sideways
 if (statetime &gt; BOSS1_INTRO.MoveTiles0 &amp;&amp; statetime &lt;= BOSS1_INTRO.MoveTiles1) {
     tile_layer_shift(-99, -1, 0);
