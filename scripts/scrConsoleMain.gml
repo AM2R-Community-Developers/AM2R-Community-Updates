@@ -1,4 +1,4 @@
-//Run this method in any step event. no extra code is required for it to run as intended
+//Run this script in any step event. no extra code is required for it to run as intended
 
 //toggle the console
 if(keyboard_check_pressed(global.CONSOLE_KEY)){
@@ -55,9 +55,9 @@ if(global.CONSOLE){
             //I made that easy with a simple global variable that toggles the console
             case vk_enter :
                 
-                scrConsoleCommandRun();
+                console_command_run();
                 
-                scrConsoleHistoryUpdate(ConsoleEntry);
+                console_history_update(ConsoleEntry);
                 ConsoleEntry = "";
                 CommandName = "";
                 CommandArg = "";

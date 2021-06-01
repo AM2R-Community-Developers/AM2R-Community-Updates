@@ -28,9 +28,9 @@ ConsoleViewLine = 0; //the currently viewed past entry
 ConsoleCommands = ds_map_create();
 
 enum COMMANDS{
-Help,
-Debug
+HELP,
+DEBUG
 }
 
-scrConsoleCommandAdd(COMMANDS.Help, "help");
-scrConsoleCommandAdd(COMMANDS.Debug, "debug", "true", "false");
+console_command_add(COMMANDS.HELP, "help");
+console_command_add(COMMANDS.DEBUG, "debug", "true", "false");

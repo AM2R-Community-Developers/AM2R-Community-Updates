@@ -4329,12 +4329,12 @@
     </scripts>
     <scripts name="Zacko">
       <script>scripts\scrConsoleInit.gml</script>
-      <script>scripts\scrConsoleCommandRun.gml</script>
-      <script>scripts\scrConsoleCommandAdd.gml</script>
       <script>scripts\scrConsoleMain.gml</script>
       <script>scripts\scrConsoleCleanup.gml</script>
-      <script>scripts\scrConsoleHistoryUpdate.gml</script>
-      <script>scripts\scrConsolePrint.gml</script>
+      <script>scripts\console_command_add.gml</script>
+      <script>scripts\console_command_run.gml</script>
+      <script>scripts\console_history_update.gml</script>
+      <script>scripts\console_print.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">

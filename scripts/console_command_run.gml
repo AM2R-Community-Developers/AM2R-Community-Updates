@@ -16,7 +16,7 @@ if(string_char_at(ConsoleEntry, 1) == CommandPrefix){
                 //output set as : "command (arg1 / arg2)"
                 //these will be listed as new lines in the ConsoleHistory list. I provided an easy means of scrolling the history with the arrow keys
                 //recommend disabling input collection when using this and/or switching the controls around
-                case COMMANDS.Help :
+                case COMMANDS.HELP :
                     
                     if(ds_exists(ConsoleCommands, ds_type_map)){
                         var _commandKey = ds_map_find_first(ConsoleCommands);
@@ -44,7 +44,7 @@ if(string_char_at(ConsoleEntry, 1) == CommandPrefix){
                             }
                             
                             //write the command to the console
-                            scrConsoleHistoryUpdate(_commandString);
+                            console_history_update(_commandString);
                             
                             _commandKey = ds_map_find_next(ConsoleCommands, _commandKey);
                             
@@ -56,12 +56,8 @@ if(string_char_at(ConsoleEntry, 1) == CommandPrefix){
                     
                 break;
                 
-                //toggles the debug boolean
-                //true sets it to true
-                //false sets it to false
-                //default swaps its current value
-                //like duhhh. I'm here treating you like you're 12 or sum shit
-                case COMMANDS.Debug :
+                //included as an example of a debug toggle
+                case COMMANDS.DEBUG :
                     /*if(CommandArg == _command[1]){ global.DEBUG = true;}
                     if(CommandArg == _command[2]){ global.DEBUG = false;}
                     if(CommandArg == ""){ global.DEBUG = !global.DEBUG;}*/
