@@ -36,7 +36,7 @@ In keeping with GM:S conventions, all functions/methods should use `snake_case`.
 
 Variables (local, global, and temporary) should use `camelCase`.
 
-Enums and variables used as constants should use `UPPERCASE`.
+Enums and variables used as constants should use `UPPER_CASE`.
 
 Sprites, sounds, backgrounds/tilesets, shaders, fonts, and objects should all hold to a `camelCase` format with an appropriate prefix:
 
