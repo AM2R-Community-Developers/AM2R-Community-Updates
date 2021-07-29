@@ -49,7 +49,12 @@ layer = 99;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>falpha = random(1);
+            <string>if (global.sensitivitymode) {
+    falpha = 0.5;
+}
+else {
+    falpha = random(1);
+}
 event_user(0);
 </string>
           </argument>

@@ -153,7 +153,7 @@ if (fadeout) {
 if (spark_fadeout) {
     if (spark_alpha &gt; 0) spark_alpha -= 0.02;
 }
-alpha2 = !alpha2;
+if (!global.sensitivitymode) alpha2 = !alpha2;
 </string>
           </argument>
         </arguments>
@@ -179,7 +179,7 @@ alpha2 = !alpha2;
             <string>if (global.currentsuit &lt;= 1) {
     if (!instance_exists(oEMPNoise)) {
         instance_create(0, 0, oEMPNoise);
-    } else with (oEMPNoise) image_alpha = 1;
+    } else with (oEMPNoise) image_alpha = 1 - (0.5 * global.sensitivitymode);
 }
 </string>
           </argument>
