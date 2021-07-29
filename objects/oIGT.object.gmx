@@ -132,7 +132,7 @@ if (!surface_exists(igt_surface)) igt_surface = surface_create(320 + oControl.wi
           <argument>
             <kind>1</kind>
             <string>var d = application_get_position();
-if(room != rm_transition &amp;&amp; instance_exists(oCharacter) &amp;&amp; global.ingame &amp;&amp; oControl.displaygui) draw_surface_ext(igt_surface, oControl.displayx - d[0], oControl.displayy - d[1], oControl.display_scale, oControl.display_scale, 0, -1, 1);
+if(room != rm_transition &amp;&amp; instance_exists(oCharacter) &amp;&amp; global.ingame &amp;&amp; oControl.displaygui &amp;&amp; global.opshowhud) draw_surface_ext(igt_surface, oControl.displayx - d[0], oControl.displayy - d[1], oControl.display_scale, oControl.display_scale, 0, -1, 1);
 </string>
           </argument>
         </arguments>
