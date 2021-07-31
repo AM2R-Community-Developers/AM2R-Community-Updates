@@ -104,7 +104,8 @@ if (tileid != 0) visible = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var mtid;
+            <string>///reveal breakable tile
+var mtid;
 if (tileid != 0) {
     if (tile_exists(tileid)) {
         tile_delete(tileid);

@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="243" name="datafiles">
-    <datafiles number="243" name="lang">
+  <datafiles number="254" name="datafiles">
+    <datafiles number="254" name="lang">
       <datafile>
         <name>czech.ini</name>
         <exists>-1</exists>
@@ -158,7 +158,7 @@
         </ConfigOptions>
         <filename>languages.txt</filename>
       </datafile>
-      <datafiles number="243" name="fonts">
+      <datafiles number="254" name="fonts">
         <datafile>
           <name>04b09.ttf</name>
           <exists>-1</exists>
@@ -298,23 +298,6 @@
       <filename>explanations.txt</filename>
     </datafile>
     <datafile>
-      <name>modifiers.ini</name>
-      <exists>-1</exists>
-      <size>0</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>modifiers.ini</filename>
-    </datafile>
-    <datafile>
       <name>readme.txt</name>
       <exists>-1</exists>
       <size>2802</size>
@@ -331,8 +314,8 @@
       </ConfigOptions>
       <filename>readme.txt</filename>
     </datafile>
-    <datafiles number="243" name="mods">
-      <datafiles number="243" name="titles">
+    <datafiles number="254" name="mods">
+      <datafiles number="254" name="titles">
         <datafile>
           <name>config.ini</name>
           <exists>-1</exists>
@@ -368,8 +351,8 @@
           <filename>titlebackground.png</filename>
         </datafile>
       </datafiles>
-      <datafiles number="243" name="palettes">
-        <datafiles number="243" name="monsters">
+      <datafiles number="254" name="palettes">
+        <datafiles number="254" name="monsters">
           <datafile>
             <name>alpha.png</name>
             <exists>-1</exists>
@@ -390,7 +373,7 @@
           <datafile>
             <name>config.ini</name>
             <exists>-1</exists>
-            <size>138</size>
+            <size>135</size>
             <exportAction>2</exportAction>
             <exportDir></exportDir>
             <overwrite>0</overwrite>
@@ -541,7 +524,7 @@
             <filename>zeta_blur.png</filename>
           </datafile>
         </datafiles>
-        <datafiles number="243" name="suits">
+        <datafiles number="254" name="suits">
           <datafile>
             <name>fusion_gravity.png</name>
             <exists>-1</exists>
@@ -644,7 +627,7 @@
             </ConfigOptions>
             <filename>varia.png</filename>
           </datafile>
-          <datafiles number="243" name="MorphTrailColors">
+          <datafiles number="254" name="MorphTrailColors">
             <datafile>
               <name>fusion_gravity.png</name>
               <exists>-1</exists>
@@ -748,7 +731,7 @@
               <filename>varia.png</filename>
             </datafile>
           </datafiles>
-          <datafiles number="243" name="SpaceJumpTrails">
+          <datafiles number="254" name="SpaceJumpTrails">
             <datafile>
               <name>fusion_gravity.png</name>
               <exists>-1</exists>
@@ -852,7 +835,7 @@
               <filename>varia.png</filename>
             </datafile>
           </datafiles>
-          <datafiles number="243" name="SpiderBallGlow">
+          <datafiles number="254" name="SpiderBallGlow">
             <datafile>
               <name>fusion_gravity.png</name>
               <exists>-1</exists>
@@ -959,6 +942,23 @@
         </datafiles>
       </datafiles>
     </datafiles>
+    <datafile>
+      <name>modifiers.ini</name>
+      <exists>-1</exists>
+      <size>6957</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>modifiers.ini</filename>
+    </datafile>
   </datafiles>
   <NewExtensions/>
   <sounds name="sound">
@@ -4326,6 +4326,15 @@
       <script>scripts\set_8bit_shader.gml</script>
       <script>scripts\mus_boss_fadein.gml</script>
       <script>scripts\set_widescreen.gml</script>
+    </scripts>
+    <scripts name="Zacko">
+      <script>scripts\scrConsoleInit.gml</script>
+      <script>scripts\scrConsoleMain.gml</script>
+      <script>scripts\scrConsoleCleanup.gml</script>
+      <script>scripts\console_command_add.gml</script>
+      <script>scripts\console_command_run.gml</script>
+      <script>scripts\console_history_update.gml</script>
+      <script>scripts\console_print.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">

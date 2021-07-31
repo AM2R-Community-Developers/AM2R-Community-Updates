@@ -50,8 +50,7 @@ image_alpha = 0;
 image_speed = 0;
 edge_l = 64;
 edge_r = 256;
-phase = 0;
-movetime = 120;
+phase = 1;
 block1 = instance_create(16, 32, oBoss1Block);
 block1.facing = 1;
 block2 = instance_create(304, 32, oBoss1Block);
@@ -63,6 +62,63 @@ wall2.image_yscale = 3;
 wheel = instance_create(x, y, oBoss1Wheel);
 
 sparkcounter = 0;
+
+//~TIMING~//
+enum BOSS1_ATTACKTIME {
+    INITIAL = 120,
+    NORMAL = 90
+}
+
+
+//these didn't work right after the refactor
+//I think I made him too efficient lol
+/*
+
+enum BOSS1_INTRO { //old times
+    MoveTiles0 = 60,
+    MoveTiles1 = 92,
+    PlayMusic = 90,
+    FadeIn = 120,
+    ScanEvent = 150,
+    Quake = 210,
+    Animate = 220,
+    ToNormal = 280
+}
+
+*/
+
+enum BOSS1_INTRO {
+    MOVETILES0 = 60,
+    MOVETILES1 = 92,
+    PLAYMUSIC = 90,
+    FADEIN = 120,
+    SCANEVENT = 150,
+    QUAKE = 160,
+    ANIMATE = 180,
+    TONORMAL = 200
+}
+
+enum BOSS1_ATTACK {
+    EYEFLASH = 5,
+    ATTACK = 80,
+    TONORMAL = 120
+}
+
+enum BOSS1_DEATH {
+    BURN = 1,
+    EXPLODE = 250
+}
+
+
+//~PHASE PROGRESSION ARRAY~//
+//hp at each phase
+PhaseProgression[0] = 600;
+PhaseProgression[1] = 500;
+PhaseProgression[2] = 450;
+PhaseProgression[3] = 300;
+PhaseProgression[4] = 150;
+
+EdgeStepAmount = 16;
 </string>
           </argument>
         </arguments>
@@ -85,7 +141,9 @@ sparkcounter = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>expl = instance_create(x - 16 + random(32), y - 8 + random(24), oFXAnimSpark);
+            <string>///Burn Timer
+
+expl = instance_create(x - 16 + random(32), y - 8 + random(24), oFXAnimSpark);
 expl.image_speed = 0.5;
 expl.additive = 0;
 expl.sprite_index = sExpl1;
@@ -113,9 +171,16 @@ alarm[1] = 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (state == 1) {
+            <string>///Attack Timer
+
+if (state == 1) {
     state = 2;
     statetime = 0;
+    
+    attack = floor(random(4));
+    if (phase &gt;= 4) {
+        if (attack == 0) attack = 2;
+    }
 }
 </string>
           </argument>
@@ -142,6 +207,7 @@ alarm[1] = 5;
             <string>if (state != 100) {
     wall1.x = edge_l - 64;
     wall2.x = edge_r + 32;
+    
     with (oCharacter) {
         if (x &lt; oBoss1Head.edge_l - 16) x = oBoss1Head.edge_l - 16;
         if (x &gt; oBoss1Head.edge_r + 16) x = oBoss1Head.edge_r + 16;
@@ -170,190 +236,15 @@ alarm[1] = 5;
           <argument>
             <kind>1</kind>
             <string>action_inherited();
-if (state == 0) {
-    if (statetime == 90) {
-        mus_play(musAncientGuardian);
-        oMusicV2.bossbgm = musAncientGuardian;
-    }
-    if (statetime &gt; 60 &amp;&amp; statetime &lt;= 92) {
-        tile_layer_shift(-99, -1, 0);
-        tile_layer_shift(-98, 1, 0);
-    }
-    if (statetime &gt; 120 &amp;&amp; image_alpha &lt; 1) image_alpha += 0.05;
-    if (statetime == 120) sfx_play(sndBoss1Appear);
-    if (statetime &gt; 150 &amp;&amp; y &lt; 64) y += 0.5;
-    if (statetime == 150) scan_log(32, get_text("ScanEvents", "ScanMechanism"), 180, 0);
-    if (statetime == 210) {
-        quake = instance_create(0, 0, oQuake);
-        quake.delay = 0;
-        quake.duration = 10;
-        quake.intensity = 2;
-    }
-    if (statetime &gt; 220 &amp;&amp; floor(image_index) &lt; 5) image_index += 0.2;
-    if (statetime == 280) {
-        state = 1;
-        statetime = 0;
-        canbehit = 1;
-        alarm[0] = 120;
-        image_index = 5;
-    }
-} // if (state == 0)
-if (state == 1) {
-    hitbeam = 1;
-    hitmissile = 1;
-    hitbomb = 1;
-    hitpbomb = 1;
-    if (image_index &gt; 5) image_index -= 0.5;
-    if (x &gt; oCharacter.x) hspeed -= 0.1;
-    if (x &lt; oCharacter.x) hspeed += 0.1;
-    if (x &lt; edge_l &amp;&amp; hspeed &lt; 0) hspeed = 0;
-    if (x &gt; edge_r &amp;&amp; hspeed &gt; 0) hspeed = 0;
-    if (hspeed &gt; 3) hspeed = 3;
-    if (hspeed &lt; -3) hspeed = -3;
-    if (myhealth &lt; 600) {
-        edge_l = 80;
-        edge_r = 240;
-        phase = 1;
-        movetime = 90;
-    }
-    if (myhealth &lt; 500) {
-        edge_l = 96;
-        edge_r = 224;
-        phase = 2;
-        movetime = 70;
-    }
-    if (myhealth &lt; 450) {
-        edge_l = 112;
-        edge_r = 208;
-        phase = 3;
-        movetime = 60;
-    }
-    if (myhealth &lt; 300) {
-        edge_l = 128;
-        edge_r = 192;
-        phase = 4;
-        movetime = 50;
-    }
-    if (myhealth &lt; 150) {
-        edge_l = 144;
-        edge_r = 176;
-        phase = 5;
-        movetime = 30;
-    }
-} // if (state == 1)
-if (state == 2) {
-    speed = 0;
-    hitbeam = 0;
-    hitmissile = 0;
-    hitbomb = 0;
-    hitpbomb = 0;
-    if (statetime == 1) {
-        attack = floor(random(4));
-        if (phase &gt;= 4) {
-            if (attack == 0) attack = 2;
-        }
-    }
-    if (image_index &lt; 9) image_index += 0.25;
-    if (statetime == 5) {
-        eyes = instance_create(x, y, oBoss1Eyes); // og y + 14
-        eyes.image_index = attack;
-        if (attack == 0) sfx_play(sndBoss1Eyes2);
-        if (attack == 1) sfx_play(sndBoss1Eyes1);
-        if (attack == 2) sfx_play(sndBoss1Eyes4);
-        if (attack == 3) sfx_play(sndBoss1Eyes3);
-    }
-    if (statetime == 80) {
-        if (attack == 0) {
-            instance_create(x, y + 12, oBoss1FBall);
-            sfx_play(sndBoss1FBall);
-        }
-        if (attack == 1) {
-            prj1 = instance_create(x + 4, y + 18, oBoss1FBall2);
-            prj2 = instance_create(x - 4, y + 18, oBoss1FBall2);
-            prj3 = instance_create(x + 4, y + 18, oBoss1FBall2);
-            prj4 = instance_create(x - 4, y + 18, oBoss1FBall2);
-            prj5 = instance_create(x + 4, y + 18, oBoss1FBall2);
-            prj6 = instance_create(x - 4, y + 18, oBoss1FBall2);
-            prj1.hspeed = 3;
-            prj2.hspeed = -3;
-            prj3.hspeed = 6;
-            prj4.hspeed = -6;
-            prj5.hspeed = 9;
-            prj6.hspeed = -9;
-            sfx_play(sndBoss1FBall);
-        }
-        if (attack == 2) {
-            prj1 = instance_create(x + 6, y + 11, oBoss1Beam);
-            prj2 = instance_create(x - 6, y + 11, oBoss1Beam);
-            prj1.image_xscale = -1;
-            sfx_play(sndBoss1Laser);
-        }
-        if (attack == 3) {
-            prj1 = instance_create(x + 4, y + 18, oBoss1FBall3);
-            prj2 = instance_create(x - 4, y + 18, oBoss1FBall3);
-            prj3 = instance_create(x + 4, y + 18, oBoss1FBall3);
-            prj4 = instance_create(x - 4, y + 18, oBoss1FBall3);
-            prj5 = instance_create(x + 4, y + 18, oBoss1FBall3);
-            prj6 = instance_create(x - 4, y + 18, oBoss1FBall3);
-            prj1.hspeed = 0.4;
-            prj1.time = 60;
-            prj2.hspeed = -0.4;
-            prj2.time = 70;
-            prj3.hspeed = 1.2;
-            prj3.time = 80;
-            prj4.hspeed = -1.2;
-            prj4.time = 90;
-            prj5.hspeed = 2;
-            prj5.time = 100;
-            prj6.hspeed = -2;
-            prj6.time = 110;
-            sfx_play(sndBoss1FBall);
-        }
-    } // if (statetime == 80)
-    if (statetime == 120) {
-        state = 1;
-        alarm[0] = 90;
-    }
-} // if (state == 2)
-if (state == 100) {
-    speed = 0;
-    canbehit = 0;
-    if (statetime == 1) {
-        alarm[1] = 1;
-        sfx_play(sndBoss1Death);
-        with (wall1) instance_destroy();
-        with (wall2) instance_destroy();
-        with (wheel) instance_destroy();
-        with (block1) event_user(0);
-        with (block2) event_user(0);
-        with (inst_107511) instance_destroy();
-        global.event[51] = 1;
-        mus_fadeout(musAncientGuardian);
-        oMusicV2.bossbgm = sndJump;
-        mus_current_fadein();
-    }
-    if (statetime == 250) {
-        repeat (10) {
-            expl = instance_create(x - 16 + random(32), y - 16 + random(32), oFXAnimSpark);
-            expl.image_speed = 0.5 + random(0.5);
-            expl.additive = 0;
-            expl.sprite_index = sExpl1;
-            expl.direction = 180 + random(180);
-            expl.speed = 2 + random(1);
-        }
-        repeat (10) make_explosion3(x + random_range(-30, 30), y + random_range(-30, 30));
-        repeat (60) instance_create(x, y + 28, oDebris);
-        spawn_many_powerups(128, 80, 64, 64);
-        instance_create(x, y, oScreenFlash);
-        sfx_play(sndBoss1Stomp);
-        sfx_play(sndSMissileExpl);
-        quake = instance_create(0, 0, oQuake);
-        quake.delay = 0;
-        quake.duration = 15;
-        quake.intensity = 8;
-        instance_destroy();
-    }
-} // if (state == 100)
+
+switch(state){
+    case 0 : event_user(1); break; //intro
+    case 1 : event_user(2); break; //normal
+    case 2 : event_user(3); break; //attack
+    
+    default : event_user(4); break; //death
+}
+
 if (fxtimer &lt; 5) {
     fxtimer += 1;
 } else fxtimer = 0;
@@ -382,18 +273,341 @@ if (flashing &gt; 0) flashing -= 1;
             <kind>1</kind>
             <string>if (sparkcounter == 0) {
     state = 100;
-    sfx_play(sndBoss1Death);
-    with (wall1) instance_destroy();
-    with (wall2) instance_destroy();
-    with (wheel) instance_destroy();
-    with (block1) event_user(0);
-    with (block2) event_user(0);
-    with (inst_107511) instance_destroy();
-    global.event[51] = 1;
-    mus_fadeout(musAncientGuardian);
-    oMusicV2.bossbgm = sndJump;
-    mus_current_fadein();
+    event_user(5); //clean up arena
     sparkcounter = 1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///To Normal State
+state = 1;
+statetime = 0;
+canbehit = 1;
+hitbeam = 1;
+hitmissile = 1;
+hitbomb = 1;
+hitpbomb = 1;
+alarm[0] = BOSS1_ATTACKTIME.NORMAL;
+image_index = 5;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="15">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///clear arena
+sfx_play(sndBoss1Death);
+with (wall1) instance_destroy();
+with (wall2) instance_destroy();
+with (wheel) instance_destroy();
+with (block1) event_user(0);
+with (block2) event_user(0);
+with (inst_107511) instance_destroy();
+global.event[51] = 1;
+mus_fadeout(musAncientGuardian);
+oMusicV2.bossbgm = sndJump;
+mus_current_fadein();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="14">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///state: death
+speed = 0;
+canbehit = 0;
+
+switch (statetime) {
+    case BOSS1_DEATH.BURN :
+        alarm[1] = 1;
+        event_user(5);
+    break;
+        
+    case BOSS1_DEATH.EXPLODE :
+        repeat (10) {
+            expl = instance_create(x - 16 + random(32), y - 16 + random(32), oFXAnimSpark);
+            expl.image_speed = 0.5 + random(0.5);
+            expl.additive = 0;
+            expl.sprite_index = sExpl1;
+            expl.direction = 180 + random(180);
+            expl.speed = 2 + random(1);
+        }
+        repeat (10) make_explosion3(x + random_range(-30, 30), y + random_range(-30, 30));
+        repeat (60) instance_create(x, y + 28, oDebris);
+        spawn_many_powerups(128, 80, 64, 64);
+        instance_create(x, y, oScreenFlash);
+        sfx_play(sndBoss1Stomp);
+        sfx_play(sndSMissileExpl);
+        quake = instance_create(0, 0, oQuake);
+        quake.delay = 0;
+        quake.duration = 15;
+        quake.intensity = 8;
+        instance_destroy();
+    break;
+    
+    default : break;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///state: attack
+speed = 0;
+hitbeam = 0;
+hitmissile = 0;
+hitbomb = 0;
+hitpbomb = 0;
+if (image_index &lt; 9) image_index += 0.25;
+ 
+switch (statetime) {
+    case BOSS1_ATTACK.EYEFLASH : //Telegraph
+        eyes = instance_create(x, y, oBoss1Eyes); // og y + 14
+        eyes.image_index = attack;
+        switch (attack){
+            case 0 : sfx_play(sndBoss1Eyes2); break;
+            case 1 : sfx_play(sndBoss1Eyes1); break;
+            case 2 : sfx_play(sndBoss1Eyes4); break;
+            case 3 : sfx_play(sndBoss1Eyes3); break;
+        }
+    break;
+     
+    case BOSS1_ATTACK.ATTACK : //Attack
+        switch (attack) {
+            case 0 : //Yellow Fire Ball
+                instance_create(x, y + 12, oBoss1FBall);
+                sfx_play(sndBoss1FBall);
+            break;
+            
+            case 1 : //Green Fire Ball
+                prj1 = instance_create(x + 4, y + 18, oBoss1FBall2);
+                prj2 = instance_create(x - 4, y + 18, oBoss1FBall2);
+                prj3 = instance_create(x + 4, y + 18, oBoss1FBall2);
+                prj4 = instance_create(x - 4, y + 18, oBoss1FBall2);
+                prj5 = instance_create(x + 4, y + 18, oBoss1FBall2);
+                prj6 = instance_create(x - 4, y + 18, oBoss1FBall2);
+                prj1.hspeed = 3;
+                prj2.hspeed = -3;
+                prj3.hspeed = 6;
+                prj4.hspeed = -6;
+                prj5.hspeed = 9;
+                prj6.hspeed = -9;
+                sfx_play(sndBoss1FBall);
+            break;
+            
+            case 2 : //Laser
+                prj1 = instance_create(x + 6, y + 11, oBoss1Beam);
+                prj2 = instance_create(x - 6, y + 11, oBoss1Beam);
+                prj1.image_xscale = -1;
+                sfx_play(sndBoss1Laser);
+            break;
+            
+            case 3 : //Red Fire Ball
+                prj1 = instance_create(x + 4, y + 18, oBoss1FBall3);
+                prj2 = instance_create(x - 4, y + 18, oBoss1FBall3);
+                prj3 = instance_create(x + 4, y + 18, oBoss1FBall3);
+                prj4 = instance_create(x - 4, y + 18, oBoss1FBall3);
+                prj5 = instance_create(x + 4, y + 18, oBoss1FBall3);
+                prj6 = instance_create(x - 4, y + 18, oBoss1FBall3);
+                prj1.hspeed = 0.4;
+                prj1.time = 60;
+                prj2.hspeed = -0.4;
+                prj2.time = 70;
+                prj3.hspeed = 1.2;
+                prj3.time = 80;
+                prj4.hspeed = -1.2;
+                prj4.time = 90;
+                prj5.hspeed = 2;
+                prj5.time = 100;
+                prj6.hspeed = -2;
+                prj6.time = 110;
+                sfx_play(sndBoss1FBall);
+            break;
+         }
+    break;
+         
+         
+    case BOSS1_ATTACK.TONORMAL : //To Normal State
+        event_user(6);
+    break;
+ 
+    default : break;
+ }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///state: normal
+
+if (image_index &gt; 5) image_index -= 0.5;
+if (x &gt; oCharacter.x) hspeed -= 0.1;
+if (x &lt; oCharacter.x) hspeed += 0.1;
+if (x &lt; edge_l &amp;&amp; hspeed &lt; 0) hspeed = 0;
+if (x &gt; edge_r &amp;&amp; hspeed &gt; 0) hspeed = 0;
+if (hspeed &gt; 3) hspeed = 3;
+if (hspeed &lt; -3) hspeed = -3;
+
+if(phase &lt;= array_length_1d(PhaseProgression)){
+    if(myhealth &lt; PhaseProgression[phase-1]){
+        phase++;
+        if(edge_r - edge_l &gt; 16 * 5){
+            edge_l += EdgeStepAmount;
+            edge_r -= EdgeStepAmount;
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///state: boss intro
+
+//move tiles sideways
+if (statetime &gt; BOSS1_INTRO.MOVETILES0 &amp;&amp; statetime &lt;= BOSS1_INTRO.MOVETILES1) {
+    tile_layer_shift(-99, -1, 0);
+    tile_layer_shift(-98, 1, 0);
+}
+
+//fade in
+if (statetime &gt; BOSS1_INTRO.FADEIN &amp;&amp; image_alpha &lt; 1) image_alpha += 0.05;
+
+//move down
+if (statetime &gt; BOSS1_INTRO.PLAYMUSIC &amp;&amp; y &lt; 64) y += 0.5;
+
+//animate
+if (statetime &gt; BOSS1_INTRO.ANIMATE &amp;&amp; floor(image_index) &lt; 5) image_index += 0.2;
+
+switch(statetime){
+    case BOSS1_INTRO.PLAYMUSIC : //play music
+        mus_play(musAncientGuardian);
+        oMusicV2.bossbgm = musAncientGuardian;
+        break;
+        
+    case BOSS1_INTRO.FADEIN : //play appearance sound effect
+        sfx_play(sndBoss1Appear);
+        break;
+        
+    case BOSS1_INTRO.SCANEVENT : //trigger scan event
+        scan_log(32, get_text("ScanEvents", "ScanMechanism"), 180, 0);
+        break;
+        
+    case BOSS1_INTRO.QUAKE : //trigger earthquake
+        quake = instance_create(0, 0, oQuake);
+        quake.delay = 0;
+        quake.duration = 10;
+        quake.intensity = 2;
+        break;
+        
+    case BOSS1_INTRO.TONORMAL : //go to normal state
+        event_user(6);
+        alarm[0] = BOSS1_ATTACKTIME.INITIAL;
+        break;
+        
+    default : break;
 }
 </string>
           </argument>

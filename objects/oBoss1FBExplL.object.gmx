@@ -53,7 +53,9 @@ damage = global.mod_boss1DfireballExOL;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (oBoss1Head.myhealth &gt; 0 &amp;&amp; x &gt; oBoss1Head.edge_l) instance_create(x - 12, y, oBoss1FBExplL);
+            <string>if (oBoss1Head.myhealth &gt; 0 &amp;&amp; x &gt; oBoss1Head.edge_l) {
+    instance_create(x - 12, y, oBoss1FBExplL);
+}
 </string>
           </argument>
         </arguments>

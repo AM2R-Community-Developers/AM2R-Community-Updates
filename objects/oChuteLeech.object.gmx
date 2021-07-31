@@ -120,46 +120,52 @@ image_speed = 0;
 enemy_active_check(20);
 enemy_target_check(90, 1);
 if (active == 1 &amp;&amp; frozen == 0) {
-    if (state == 1) {
-        image_index = 2;
-        xVel = 0;
-        yVel = 0;
-        if (target &amp;&amp; canattack) {
-            yVel = -5;
-            y -= 4;
-            state = 2;
-            image_index = 1;
-        }
-    }
-    if (state == 2) {
-        if (image_index &gt;= 1) image_index -= 0.5;
-        if (isCollisionTop(2)) yVel = 0;
-        if (oCharacter.x &gt; x) {
-            facing = 1;
-        } else facing = -1;
-        if (yVel &gt;= 0) {
-            yVel = 0;
-            state = 3;
-        }
-    }
-    if (state == 3) {
-        if (image_index &lt;= 6) image_index += 0.5;
-        if (isCollisionBottom(1)) {
-            yVel = 0;
+    switch(state){
+        case 1 :
+            image_index = 2;
             xVel = 0;
-            canattack = 0;
-            alarm[0] = 60;
-            state = 1;
-        }
-        if ((global.difficulty != 2) &amp;&amp; (noglide == 0)) {
-            xVel += 0.2 * facing;
-            if (abs(xVel) &gt; 3) facing = -facing;
-            if (abs(xVel) &gt; 1.3) yVel -= 0.16;
-        }
-        if (target == 1 &amp;&amp; noglide == 0 &amp;&amp; global.difficulty == 2) {
-            if (oCharacter.x &gt; x &amp;&amp; xVel &lt; 4) xVel += 0.2;
-            if (oCharacter.x &lt; x &amp;&amp; xVel &gt; -4) xVel -= 0.2;
-        }
+            yVel = 0;
+            if (target &amp;&amp; canattack) {
+                yVel = -5;
+                y -= 4;
+                state = 2;
+                image_index = 1;
+            }
+        break;
+        
+        case 2 :
+            if (image_index &gt;= 1) image_index -= 0.5;
+            if (isCollisionTop(2)) yVel = 0;
+            if (oCharacter.x &gt; x) {
+                facing = 1;
+            } else facing = -1;
+            if (yVel &gt;= 0) {
+                yVel = 0;
+                state = 3;
+            }
+        break;
+        
+        case 3 :
+            if (image_index &lt;= 6) image_index += 0.5;
+            if (isCollisionBottom(1)) {
+                yVel = 0;
+                xVel = 0;
+                canattack = 0;
+                alarm[0] = 60;
+                state = 1;
+            }
+            if ((global.difficulty != 2) &amp;&amp; (noglide == 0)) {
+                xVel += 0.2 * facing;
+                if (abs(xVel) &gt; 3) facing = -facing;
+                if (abs(xVel) &gt; 1.3) yVel -= 0.16;
+            }
+            if (target == 1 &amp;&amp; noglide == 0 &amp;&amp; global.difficulty == 2) {
+                if (oCharacter.x &gt; x &amp;&amp; xVel &lt; 4) xVel += 0.2;
+                if (oCharacter.x &lt; x &amp;&amp; xVel &gt; -4) xVel -= 0.2;
+            }
+        break;
+        
+        default : break;
     }
     if (state != 1) { // 1.5.1 fix
         yVel += 0.1;

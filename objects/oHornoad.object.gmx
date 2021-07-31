@@ -187,15 +187,21 @@ if (active == 1 &amp;&amp; frozen == 0) {
     }
     if (stun == 0) moveTo(xVel, yVel);
 } // if (active == 1 &amp;&amp; frozen == 0)
-if (state == 100) enemy_death();
+
+//if (state == 100) enemy_death();
 if (frozen == 0) {
     image_speed = 0.2;
 } else image_speed = 0;
-if (state == 1) sprite_index = sHornoadIdle;
-if (state == 2) sprite_index = sHornoadShake;
-if (state == 3) sprite_index = sHornoadTurn;
-if (state == 4) sprite_index = sHornoadJump;
-if (state == 5) sprite_index = sHornoadAttack;
+
+switch (state){
+    case 1 : sprite_index = sHornoadIdle; break;
+    case 2 : sprite_index = sHornoadShake; break;
+    case 3 : sprite_index = sHornoadTurn; break;
+    case 4 : sprite_index = sHornoadJump; break;
+    case 5 : sprite_index = sHornoadAttack; break;
+    
+    default : enemy_death(); break;
+}
 </string>
           </argument>
         </arguments>

@@ -75,6 +75,7 @@ mus_change(musCaveAmbience);</code>
     <instance objName="oSolid4x1" x="320" y="64" name="inst_177D5828" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid4x1" x="-64" y="64" name="inst_C0D25628" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid4x1" x="-64" y="160" name="inst_142A998B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oBoss1Trigger" x="96" y="64" name="inst_8A50A9F2" locked="0" code="" scaleX="1" scaleY="6" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tlBrick1BG" x="32" y="64" w="32" h="16" xo="48" yo="96" id="10020956" name="tile_10020956" depth="100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
