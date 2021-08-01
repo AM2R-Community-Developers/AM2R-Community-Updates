@@ -70,7 +70,7 @@ draw_set_color(c_black);
 draw_text(x + 1, y - 3, label);
 //draw_text(x + textoffset + 1, y - 3, optext);
 var voff = 0;
-for (var i = 0; i &lt; string_length(optext) - 1; i++) {
+for (var i = 0; i &lt; string_length(optext); i++) {
     var str = string_char_at(optext, i + 1);
     draw_text(x + textoffset + (i * 7) - (4 * voff) + 1, y - 3, str);
     if (str == "1") voff += 1; // special case to make 1 not be super awkward
