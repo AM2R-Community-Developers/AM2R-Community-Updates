@@ -71,7 +71,7 @@ vulnerable = 0;
 
 var inst = instance_place(x, y, oBeam);
 if(inst != noone) {
-    if(inst.ibeam) exit
+    if(inst.ibeam) exit;
 }
 
 repeat (2) {

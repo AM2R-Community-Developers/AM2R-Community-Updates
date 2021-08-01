@@ -1,20 +1,22 @@
 /// draw_character(sprite, x, y, sprite2, s2ox, s2oy, sprite3, s3ox, s3oy, s3angle, facing, color, alpha, s3show)
 
-if ((oControl.mod_fusion) && (!oControl.msr_fusionsuit)) { // Fusion suit
-    if (global.currentsuit == 0) { // Power
-        pal_swap_set(sPalFusion0, 1, false);
-    } else if (global.currentsuit == 1) { // Varia
-        pal_swap_set(sPalFusion1, 1, false);
-    } else if (global.currentsuit == 2) { // Gravity
-        pal_swap_set(sPalFusion2, 1, false);
-    }
-} else if (os_type != os_android) { // Custom color swaps
-    if (global.currentsuit == 0) { // Power
-        pal_swap_set(oControl.PowerPalette, 1, false);
-    } else if (global.currentsuit == 1) { // Varia
-        pal_swap_set(oControl.VariaPalette, 1, false);
-    } else if (global.currentsuit == 2) { // Gravity
-        pal_swap_set(oControl.GravityPalette, 1, false);
+if (!oControl.msr_fusionsuit) {
+    if ((oControl.mod_fusion)) { // Fusion suit
+        if (global.currentsuit == 0) { // Power
+            pal_swap_set(sPalFusion0, 1, false);
+        } else if (global.currentsuit == 1) { // Varia
+            pal_swap_set(sPalFusion1, 1, false);
+        } else if (global.currentsuit == 2) { // Gravity
+            pal_swap_set(sPalFusion2, 1, false);
+        }
+    } else if (os_type != os_android) { // Custom color swaps
+        if (global.currentsuit == 0 && oControl.PowerPalette != -1) { // Power
+            pal_swap_set(oControl.PowerPalette, 1, false);
+        } else if (global.currentsuit == 1 && oControl.VariaPalette != -1) { // Varia
+            pal_swap_set(oControl.VariaPalette, 1, false);
+        } else if (global.currentsuit == 2 && oControl.GravityPalette != -1) { // Gravity
+            pal_swap_set(oControl.GravityPalette, 1, false);
+        }
     }
 }
 
