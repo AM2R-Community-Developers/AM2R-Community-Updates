@@ -542,108 +542,6 @@
           </datafile>
         </datafiles>
         <datafiles number="243" name="suits">
-          <datafile>
-            <name>fusion_gravity.png</name>
-            <exists>-1</exists>
-            <size>305</size>
-            <exportAction>2</exportAction>
-            <exportDir></exportDir>
-            <overwrite>0</overwrite>
-            <freeData>-1</freeData>
-            <removeEnd>0</removeEnd>
-            <store>0</store>
-            <ConfigOptions>
-              <Config name="Default">
-                <CopyToMask>9223372036854775807</CopyToMask>
-              </Config>
-            </ConfigOptions>
-            <filename>fusion_gravity.png</filename>
-          </datafile>
-          <datafile>
-            <name>fusion_power.png</name>
-            <exists>-1</exists>
-            <size>302</size>
-            <exportAction>2</exportAction>
-            <exportDir></exportDir>
-            <overwrite>0</overwrite>
-            <freeData>-1</freeData>
-            <removeEnd>0</removeEnd>
-            <store>0</store>
-            <ConfigOptions>
-              <Config name="Default">
-                <CopyToMask>9223372036854775807</CopyToMask>
-              </Config>
-            </ConfigOptions>
-            <filename>fusion_power.png</filename>
-          </datafile>
-          <datafile>
-            <name>fusion_varia.png</name>
-            <exists>-1</exists>
-            <size>300</size>
-            <exportAction>2</exportAction>
-            <exportDir></exportDir>
-            <overwrite>0</overwrite>
-            <freeData>-1</freeData>
-            <removeEnd>0</removeEnd>
-            <store>0</store>
-            <ConfigOptions>
-              <Config name="Default">
-                <CopyToMask>9223372036854775807</CopyToMask>
-              </Config>
-            </ConfigOptions>
-            <filename>fusion_varia.png</filename>
-          </datafile>
-          <datafile>
-            <name>gravity.png</name>
-            <exists>-1</exists>
-            <size>370</size>
-            <exportAction>2</exportAction>
-            <exportDir></exportDir>
-            <overwrite>0</overwrite>
-            <freeData>-1</freeData>
-            <removeEnd>0</removeEnd>
-            <store>0</store>
-            <ConfigOptions>
-              <Config name="Default">
-                <CopyToMask>9223372036854775807</CopyToMask>
-              </Config>
-            </ConfigOptions>
-            <filename>gravity.png</filename>
-          </datafile>
-          <datafile>
-            <name>power.png</name>
-            <exists>-1</exists>
-            <size>286</size>
-            <exportAction>2</exportAction>
-            <exportDir></exportDir>
-            <overwrite>0</overwrite>
-            <freeData>-1</freeData>
-            <removeEnd>0</removeEnd>
-            <store>0</store>
-            <ConfigOptions>
-              <Config name="Default">
-                <CopyToMask>9223372036854775807</CopyToMask>
-              </Config>
-            </ConfigOptions>
-            <filename>power.png</filename>
-          </datafile>
-          <datafile>
-            <name>varia.png</name>
-            <exists>-1</exists>
-            <size>257</size>
-            <exportAction>2</exportAction>
-            <exportDir></exportDir>
-            <overwrite>0</overwrite>
-            <freeData>-1</freeData>
-            <removeEnd>0</removeEnd>
-            <store>0</store>
-            <ConfigOptions>
-              <Config name="Default">
-                <CopyToMask>9223372036854775807</CopyToMask>
-              </Config>
-            </ConfigOptions>
-            <filename>varia.png</filename>
-          </datafile>
           <datafiles number="243" name="MorphTrailColors">
             <datafile>
               <name>fusion_gravity.png</name>
@@ -942,6 +840,110 @@
               <name>varia.png</name>
               <exists>-1</exists>
               <size>649</size>
+              <exportAction>2</exportAction>
+              <exportDir></exportDir>
+              <overwrite>0</overwrite>
+              <freeData>-1</freeData>
+              <removeEnd>0</removeEnd>
+              <store>0</store>
+              <ConfigOptions>
+                <Config name="Default">
+                  <CopyToMask>9223372036854775807</CopyToMask>
+                </Config>
+              </ConfigOptions>
+              <filename>varia.png</filename>
+            </datafile>
+          </datafiles>
+          <datafiles number="243" name="Inactive">
+            <datafile>
+              <name>fusion_gravity.png</name>
+              <exists>-1</exists>
+              <size>305</size>
+              <exportAction>2</exportAction>
+              <exportDir></exportDir>
+              <overwrite>0</overwrite>
+              <freeData>-1</freeData>
+              <removeEnd>0</removeEnd>
+              <store>0</store>
+              <ConfigOptions>
+                <Config name="Default">
+                  <CopyToMask>9223372036854775807</CopyToMask>
+                </Config>
+              </ConfigOptions>
+              <filename>fusion_gravity.png</filename>
+            </datafile>
+            <datafile>
+              <name>fusion_power.png</name>
+              <exists>-1</exists>
+              <size>302</size>
+              <exportAction>2</exportAction>
+              <exportDir></exportDir>
+              <overwrite>0</overwrite>
+              <freeData>-1</freeData>
+              <removeEnd>0</removeEnd>
+              <store>0</store>
+              <ConfigOptions>
+                <Config name="Default">
+                  <CopyToMask>9223372036854775807</CopyToMask>
+                </Config>
+              </ConfigOptions>
+              <filename>fusion_power.png</filename>
+            </datafile>
+            <datafile>
+              <name>fusion_varia.png</name>
+              <exists>-1</exists>
+              <size>300</size>
+              <exportAction>2</exportAction>
+              <exportDir></exportDir>
+              <overwrite>0</overwrite>
+              <freeData>-1</freeData>
+              <removeEnd>0</removeEnd>
+              <store>0</store>
+              <ConfigOptions>
+                <Config name="Default">
+                  <CopyToMask>9223372036854775807</CopyToMask>
+                </Config>
+              </ConfigOptions>
+              <filename>fusion_varia.png</filename>
+            </datafile>
+            <datafile>
+              <name>gravity.png</name>
+              <exists>-1</exists>
+              <size>370</size>
+              <exportAction>2</exportAction>
+              <exportDir></exportDir>
+              <overwrite>0</overwrite>
+              <freeData>-1</freeData>
+              <removeEnd>0</removeEnd>
+              <store>0</store>
+              <ConfigOptions>
+                <Config name="Default">
+                  <CopyToMask>9223372036854775807</CopyToMask>
+                </Config>
+              </ConfigOptions>
+              <filename>gravity.png</filename>
+            </datafile>
+            <datafile>
+              <name>power.png</name>
+              <exists>-1</exists>
+              <size>286</size>
+              <exportAction>2</exportAction>
+              <exportDir></exportDir>
+              <overwrite>0</overwrite>
+              <freeData>-1</freeData>
+              <removeEnd>0</removeEnd>
+              <store>0</store>
+              <ConfigOptions>
+                <Config name="Default">
+                  <CopyToMask>9223372036854775807</CopyToMask>
+                </Config>
+              </ConfigOptions>
+              <filename>power.png</filename>
+            </datafile>
+            <datafile>
+              <name>varia.png</name>
+              <exists>-1</exists>
+              <size>257</size>
               <exportAction>2</exportAction>
               <exportDir></exportDir>
               <overwrite>0</overwrite>
