@@ -81,13 +81,15 @@ speed = random(0.5);
             <kind>1</kind>
             <string>if (!fadeout) {
     if (image_alpha &lt; max_alpha) image_alpha += 0.02;
-} else if (image_alpha &gt; 0) {
-    image_alpha -= 0.02;
-} 
-if (image_alpha &lt; 0) { // fix for YYC
-    instance_destroy();
 }
-
+else {
+    if (image_alpha &gt; 0) {
+        image_alpha -= 0.02;
+    }
+    else {
+        instance_destroy();
+    }
+}
 </string>
           </argument>
         </arguments>
