@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//instance_destroy();
+            <string>instance_destroy();
 
 /// The object for debug keyboard shortcuts. Lots of them.
 
@@ -61,7 +61,7 @@ msg_loadout = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//instance_destroy()
+            <string>instance_destroy()
 
 if (os_type == os_android) instance_destroy();
 
