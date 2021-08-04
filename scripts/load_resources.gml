@@ -36,6 +36,23 @@ if (os_type == os_linux) {
 }
 */
 
+// Suit Palettes, MonsterPalettesFusionOnly and Metroid Pallettes definition
+oControl.PowerPalette = -1;
+oControl.VariaPalette = -1;
+oControl.GravityPalette = -1;
+
+oControl.MonsterPalettesFusionOnly = 1;
+
+oControl.AlphaPalette = -1;
+oControl.GammaPalette = -1;
+oControl.ZetaPalette = -1;
+oControl.OmegaPalette = -1;
+oControl.QueenPalette = -1;
+oControl.ZetaBlur = -1;
+oControl.QueenDead = -1;
+oControl.QueenBloodDrop = -1;
+oControl.QueenBloodParticle = -1;
+
 if(os_type == os_android) exit; // "Safety Check" on Android
 
 //Area Headers
@@ -112,10 +129,6 @@ file_find_close();
 
 
 // ***Suit palettes***
-oControl.PowerPalette = -1;
-oControl.VariaPalette = -1;
-oControl.GravityPalette = -1;
-
 if (file_exists("mods/palettes/suits/power.png")) oControl.PowerPalette = sprite_add("mods/palettes/suits/power.png", 1, false, false, 0, 0);
 if (file_exists("mods/palettes/suits/varia.png")) oControl.VariaPalette = sprite_add("mods/palettes/suits/varia.png", 1, false, false, 0, 0);
 if (file_exists("mods/palettes/suits/gravity.png")) oControl.GravityPalette = sprite_add("mods/palettes/suits/gravity.png", 1, false, false, 0, 0);
@@ -256,15 +269,6 @@ ini_open("mods/palettes/monsters/config.ini");
 MonsterPalettesFusionOnly = ini_read_real('PaletteMode', 'FusionOnly', 1);
 ini_close();
 
-AlphaPalette = -1;
-GammaPalette = -1;
-ZetaPalette = -1;
-OmegaPalette = -1;
-QueenPalette = -1;
-ZetaBlur = -1;
-QueenDead = -1;
-QueenBloodDrop = -1;
-QueenBloodParticle = -1;
 
 if (file_exists("mods/palettes/monsters/alpha.png")) AlphaPalette = sprite_add("mods/palettes/monsters/alpha.png", 1, false, false, 0, 0);
 if (file_exists("mods/palettes/monsters/gamma.png")) GammaPalette = sprite_add("mods/palettes/monsters/gamma.png", 1, false, false, 0, 0);
