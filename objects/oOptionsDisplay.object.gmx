@@ -33,6 +33,10 @@ active = 0;
 targetY = y;
 timer = 0;
 SPACER = 16;
+buttonsEnabled = true;
+if (os_type != os_android &amp;&amp; !gamepad_is_connected(global.gamepadIndex)) || (os_type == os_android &amp;&amp; (!global.joydetected || global.compatibilitymode)) {
+    buttonsEnabled = false;
+}
 
 view_object[0] = id;
 
@@ -62,7 +66,9 @@ opShowMap = i++;
 opCounterStyle = i++;
 // NOTIFICATIONS
 opShowHints = i++;
-opButtonType = i++;
+if (buttonsEnabled) {
+    opButtonType = i++;
+}
 opShowScans = i++;
 opLanguage = i++;
 
@@ -302,7 +308,7 @@ display_reset(0, global.opvsync);
         if (global.curropt == opShowHints) global.ophudshowhints = !global.ophudshowhints;
         
         // Button Prompt Style
-        if (global.curropt == opButtonType) {
+        if (buttonsEnabled &amp;&amp; global.curropt == opButtonType) {
             var inputMax = 5 - ((os_type == os_android) * 2);
             oControl.mod_buttonsconfig = wrap(oControl.mod_buttonsconfig + input, 0, inputMax);
             
@@ -393,7 +399,9 @@ op[opShowMap].label = get_text("OptionsDisplay", "HUDMap");
 op[opCounterStyle].label = get_text("OptionsDisplay", "MonsterCounter");
 op[52].text = get_text("OptionsDisplay", "Title_Notifications");
 op[opShowHints].label = get_text("OptionsDisplay", "Hints");
-op[opButtonType].label = get_text("ExtrasMenu", "Controller");
+if (buttonsEnabled) {
+    op[opButtonType].label = get_text("ExtrasMenu", "Controller");
+}
 op[opShowScans].label = get_text("OptionsDisplay", "ScanNotifications");
 op[opLanguage].label = get_text("OptionsDisplay", "Language");
 
@@ -442,7 +450,9 @@ tip[opShowHUD] = get_text("OptionsDisplay", "HUDDisplay_Tip");
 tip[opShowMap] = get_text("OptionsDisplay", "HUDMap_Tip");
 tip[opCounterStyle] = get_text("OptionsDisplay", "MonsterCounter_Tip");
 tip[opShowHints] = get_text("OptionsDisplay", "Hints_Tip");
-tip[opButtonType] = get_text("ExtrasMenu", "Controller_Tip");
+if (buttonsEnabled) {
+    tip[opButtonType] = get_text("ExtrasMenu", "Controller_Tip");
+}
 tip[opShowScans] = get_text("OptionsDisplay", "ScanNotifications_Tip");
 tip[opLanguage] = get_text("OptionsDisplay", "Language_Tip");
 tip[menuSize] = get_text("GlobalOptions", "ExitMain_Tip");
@@ -546,14 +556,16 @@ if (global.ophudshowhints) {
 } else op[opShowHints].optext = get_text("GlobalOptions", "Disabled");
 
 // Button Display Type
-switch (oControl.mod_buttonsconfig) {
-    case 0: op[opButtonType].optext = get_text("ExtrasMenu", "XBox"); break;
-    case 1: op[opButtonType].optext = get_text("ExtrasMenu", "Playstation"); break;
-    case 2: op[opButtonType].optext = get_text("ExtrasMenu", "NintendoPro"); break;
-    case 3: op[opButtonType].optext = get_text("ExtrasMenu", "SNESColored"); break;
-    case 4: op[opButtonType].optext = get_text("ExtrasMenu", "MOGA"); break;
-    case 5: op[opButtonType].optext = get_text("ExtrasMenu", "OUYA"); break;
-    default: op[opButtonType].optext = "[!]"; break;
+if (buttonsEnabled) {
+    switch (oControl.mod_buttonsconfig) {
+        case 0: op[opButtonType].optext = get_text("ExtrasMenu", "XBox"); break;
+        case 1: op[opButtonType].optext = get_text("ExtrasMenu", "Playstation"); break;
+        case 2: op[opButtonType].optext = get_text("ExtrasMenu", "NintendoPro"); break;
+        case 3: op[opButtonType].optext = get_text("ExtrasMenu", "SNESColored"); break;
+        case 4: op[opButtonType].optext = get_text("ExtrasMenu", "MOGA"); break;
+        case 5: op[opButtonType].optext = get_text("ExtrasMenu", "OUYA"); break;
+        default: op[opButtonType].optext = "[!]"; break;
+    }
 }
 
 // Show Scans
@@ -696,7 +708,7 @@ op[opShowHints].optionid = opShowHints;
 i++;
 
 // Button Display Type
-if ((os_type != os_android &amp;&amp; !gamepad_is_connected(global.gamepadIndex)) || (os_type == os_android &amp;&amp; (!global.joydetected || global.compatibilitymode)) || (os_type == os_android &amp;&amp; global.compatibilitymode)) {
+if (buttonsEnabled) {
     op[opButtonType] = instance_create(x, y + SPACER * i, oOptionLR);
     op[opButtonType].label = get_text("ExtrasMenu", "Controller");
     op[opButtonType].optionid = opButtonType;
