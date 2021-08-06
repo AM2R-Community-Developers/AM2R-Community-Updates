@@ -80,9 +80,7 @@ if (file_exists("musQueenbreak.ogg") and file_exists("musQueen2.ogg") and file_e
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (file_exists("musItemAmb2.ogg")) {
-    if(oMusicV2.currentbgm != musItemAmb2 &amp;&amp; oMusicV2.bossbgm == sndJump) mus_stop_muted();
-} else if (oMusicV2.bossbgm == sndJump) mus_stop_muted();
+            <string>if (oMusicV2.bossbgm == sndJump) mus_stop_muted();
 </string>
           </argument>
         </arguments>
