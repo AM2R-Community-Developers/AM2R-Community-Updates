@@ -924,6 +924,7 @@ global.darkness = 0;</code>
     <tile bgName="tlArea5A" x="352" y="64" w="32" h="32" xo="96" yo="192" id="10163813" name="inst_ED3274E0" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea5A" x="352" y="96" w="32" h="32" xo="96" yo="192" id="10163814" name="inst_A70AD46C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea5A" x="352" y="128" w="32" h="32" xo="96" yo="192" id="10163815" name="inst_C8E5D10B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlResearchBase" x="799" y="356" w="16" h="16" xo="96" yo="144" id="10165724" name="inst_11710136" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
