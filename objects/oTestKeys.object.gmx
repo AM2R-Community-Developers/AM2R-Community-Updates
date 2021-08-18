@@ -31,6 +31,7 @@
 
 if (os_type == os_android) instance_destroy();
 
+/*
 targetroom = rm_a0h11;
 bigdisplaytest = 0;
 viewmode = 0;
@@ -64,6 +65,8 @@ msg_loadout = 0;
             <string>instance_destroy()
 
 if (os_type == os_android) instance_destroy();
+
+/*
 
 if (mouse_check_button(mb_left) &amp;&amp; global.ingame) {
     oCharacter.x = mouse_x;

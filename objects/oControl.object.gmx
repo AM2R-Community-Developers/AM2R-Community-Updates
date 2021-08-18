@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.monsterStr = "Monster";
+            <string>global.monsterStr = "monster";
 
 randomize();
 
@@ -318,7 +318,7 @@ ini_close();
 // NOT Dymanic Version Number
 global.fontVersion = font_add_sprite_ext(sVersionFont, "V.0123456789B", true, 1);
 
-global.am2r_version = "B1.5.3"; // no longer dynamic, not worth the effort to maintain - mostly because of Android oddities.
+global.am2r_version = "V1.5.3"; // no longer dynamic, not worth the effort to maintain - mostly because of Android oddities.
 
 // Android
 global.gamestarted = 0;
