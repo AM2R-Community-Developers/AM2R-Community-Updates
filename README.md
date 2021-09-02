@@ -55,7 +55,7 @@ This repository, being based on YellowAfterlife's source reconstruction, is inst
 
 1. Download everything from the requirements section above.
 2. Download and extract [this repository](https://github.com/AM2R-Community-Developers/AM2R-Community-Updates/archive/refs/heads/main.zip) somewhere.
-3. Go to where you have your AM2Rlauncher located, then into the `Profiles` folder, and after that the `Community Updates (Latest)`. Place the `AM2R.exe` file from there into the project directory.  
+3. Go to where you have your AM2Rlauncher located, then into the `Profiles` folder, and after that the `Community Updates (Latest)`. Place the `data.win` file from there into the project directory.  
 ![https://cdn.discordapp.com/attachments/509717926807601182/841708939980570655/unknown.png](https://cdn.discordapp.com/attachments/509717926807601182/841708939980570655/unknown.png)
 4. Drag the `AM2R.exe` file onto the GmxDataSync executable. If everything is correct, this will populate the project  with art/audio assets from the binary.  
 ![https://cdn.discordapp.com/attachments/509717926807601182/841709919542706176/unknown.png](https://cdn.discordapp.com/attachments/509717926807601182/841709919542706176/unknown.png)
