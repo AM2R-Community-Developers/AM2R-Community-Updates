@@ -187,7 +187,7 @@ make_liquid(0, 896, 1, 0, 0, 0, 0);</code>
     <instance objName="oSolid8x1" x="80" y="704" name="inst_101535" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockStep" x="16" y="736" name="inst_101536" locked="0" code="visible = true;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oFadeTiles" x="16" y="64" name="inst_101537" locked="0" code="&#xA;areax = 32;&#xA;areay = 288;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeTiles" x="16" y="624" name="inst_101538" locked="0" code="&#xA;areax = 16;&#xA;areay = 128;&#xA;layer = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeTiles" x="16" y="624" name="inst_101538" locked="0" code="&#xA;areax = 16;&#xA;areay = 128;&#xA;layerVariable = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oGotoRoom" x="320" y="96" name="inst_101539" locked="0" code="&#xA;targetroom = rm_a0h03b;&#xA;targetx = 16;&#xA;targety = 96;&#xA;height = 64;&#xA;direction = 0;&#xA;camstartx = 16;&#xA;camstarty = 96;&#xA;transitionx = 4;&#xA;transitiony = 96;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oCameraLimit" x="0" y="960" name="inst_101540" locked="0" code="&#xA;areax = 320;&#xA;areay = -208;&#xA;lockx = 0;&#xA;locky = 840;&#xA;wall = 0;&#xA;smoothin = 60;&#xA;smoothout = 15;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid4x1" x="320" y="96" name="inst_FECDBC25" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

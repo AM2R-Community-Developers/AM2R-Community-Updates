@@ -163,7 +163,7 @@ make_escape_sequence_fx(2);</code>
     <instance objName="oCameraLimit" x="0" y="1072" name="inst_129007" locked="0" code="&#xA;areax = 80;&#xA;areay = -64;&#xA;locky = 1080;&#xA;lockx = 0;&#xA;wall = 0;&#xA;smoothin = 15;&#xA;smoothout = 15;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oGotoRoom" x="0" y="1056" name="inst_129008" locked="0" code="&#xA;targetroom = rm_a4b02b;&#xA;targetx = 624;&#xA;targety = 96;&#xA;height = 64;&#xA;direction = 180;&#xA;camstartx = 624;&#xA;camstarty = 96;&#xA;transitionx = 316;&#xA;transitiony = 96;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockShoot" x="64" y="1040" name="inst_129009" locked="0" code="&#xA;link_tile(tlArea4TechDestroyed, 32, 64);&#xA;regentime = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeTiles" x="0" y="1040" name="inst_129010" locked="0" code="&#xA;areax = 80;&#xA;areay = 16;&#xA;layer = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeTiles" x="0" y="1040" name="inst_129010" locked="0" code="&#xA;areax = 80;&#xA;areay = 16;&#xA;layerVariable = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="272" y="400" name="inst_129011" locked="0" code="" scaleX="3" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="288" y="336" name="inst_129012" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="0" y="144" name="inst_129013" locked="0" code="" scaleX="4" scaleY="12" colour="4294967295" rotation="0"/>

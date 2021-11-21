@@ -1,9 +1,9 @@
 
 //Argument0 = Section | Argument1 = Field | Argument2 = Default value
-ini_open('modifiers.ini');
+ini_open("modifiers.ini");
 hd = argument2 * abs(ini_read_real(argument0, argument1, argument2)); 
 
-//if (ini_read_real('Header', 'Cheating', 0) == 1)
+//if (ini_read_real("Header", "Cheating", 0) == 1)
 //{
 //    return hd;   
 //}

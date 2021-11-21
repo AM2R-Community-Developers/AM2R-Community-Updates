@@ -431,8 +431,8 @@ global.objdeactivate = 0;</code>
     <instance objName="oHalzyn" x="240" y="112" name="inst_912F8119" locked="0" code="glow = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="928" y="256" name="inst_42A74B95" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oFadeTiles" x="928" y="240" name="inst_7C2DE608" locked="0" code="areax = 48;&#xA;areay = 16;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeTiles" x="640" y="240" name="inst_6CA70337" locked="0" code="areax = 64;&#xA;areay = 16;&#xA;layer = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeTiles" x="208" y="240" name="inst_0E3F4F34" locked="0" code="areax = 48;&#xA;areay = 16;&#xA;layer = -103;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeTiles" x="640" y="240" name="inst_6CA70337" locked="0" code="areax = 64;&#xA;areay = 16;&#xA;layerVariable = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeTiles" x="208" y="240" name="inst_0E3F4F34" locked="0" code="areax = 48;&#xA;areay = 16;&#xA;layerVariable = -103;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tlRock6A" x="432" y="352" w="32" h="32" xo="96" yo="160" id="10116602" name="tile_10116602" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

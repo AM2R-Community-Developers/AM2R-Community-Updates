@@ -140,11 +140,11 @@ mus_change_itemroom();</code>
     <instance objName="oBlockBomb" x="560" y="160" name="inst_110517" locked="0" code="&#xA;link_tile(tlArtifact2, 16, 112);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockStep" x="368" y="176" name="inst_110518" locked="0" code="&#xA;link_tile(tlArtifact2, 0, 80);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockStep" x="336" y="144" name="inst_110519" locked="0" code="&#xA;link_tile(tlArtifact2, 0, 80);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeTiles" x="272" y="160" name="inst_110520" locked="0" code="//layer = -102;&#xA;areax = 112;&#xA;areay = 32;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeTiles" x="272" y="160" name="inst_110520" locked="0" code="//layerVariable = -102;&#xA;areax = 112;&#xA;areay = 32;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oGotoRoom" x="640" y="160" name="inst_110521" locked="0" code="&#xA;targetroom = rm_a2a06;&#xA;targetx = 16;&#xA;targety = 160;&#xA;height = 80;&#xA;direction = 0;&#xA;camstartx = 16;&#xA;camstarty = 120;&#xA;transitionx = 4;&#xA;transitiony = 160;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oCameraLimit" x="336" y="224" name="inst_110522" locked="0" code="&#xA;areax = 320;&#xA;areay = -240;&#xA;lockx = 480;&#xA;locky = 0;&#xA;wall = 0;&#xA;smoothin = 120;&#xA;smoothout = 20;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oDoor" x="616" y="96" name="inst_110523" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeTiles" x="0" y="32" name="inst_7B417DD5" locked="0" code="layer = -102&#xA;areax = 336;&#xA;areay = 208;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeTiles" x="0" y="32" name="inst_7B417DD5" locked="0" code="layerVariable = -102&#xA;areax = 336;&#xA;areay = 208;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid4x1" x="640" y="160" name="inst_C8F0DBE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid4x1" x="640" y="80" name="inst_A9351641" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>

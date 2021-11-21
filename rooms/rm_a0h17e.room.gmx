@@ -82,7 +82,7 @@ if (global.event[172] == 3) {
     <instance objName="oSlope3" x="112" y="272" name="inst_123420" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oFadeTiles" x="464" y="416" name="inst_123421" locked="0" code="&#xA;areax = 96;&#xA;areay = 64;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oDrillWall" x="448" y="320" name="inst_123422" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeTiles" x="672" y="416" name="inst_123423" locked="0" code="&#xA;areax = 200;&#xA;areay = 64;&#xA;layer = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeTiles" x="672" y="416" name="inst_123423" locked="0" code="&#xA;areax = 200;&#xA;areay = 64;&#xA;layerVariable = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid2x2" x="1152" y="368" name="inst_123424" locked="0" code="&#xA;material = 4;&#xA;" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="1040" y="64" name="inst_123425" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="560" y="432" name="inst_123426" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>

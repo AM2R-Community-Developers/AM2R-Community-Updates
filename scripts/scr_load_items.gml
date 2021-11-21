@@ -1,6 +1,6 @@
-ini_open('modifiers.ini');
+ini_open("modifiers.ini");
 //Header
-//global.mod_cheating = ini_read_real('Header', 'Cheating', 0);
+//global.mod_cheating = ini_read_real("Header", "Cheating", 0);
 
 
 

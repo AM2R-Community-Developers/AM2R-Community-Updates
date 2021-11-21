@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>targetalpha = 0;
 falpha = 1;
-layer = -101;
+layerVariable = -101;
 </string>
           </argument>
         </arguments>
@@ -129,7 +129,7 @@ for (i = 0; i &lt; array_length_1d(tile_list); i += 1) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>tile_list = tile_get_ids_at_depth(layer);
+            <string>tile_list = tile_get_ids_at_depth(layerVariable);
 </string>
           </argument>
         </arguments>
@@ -153,7 +153,7 @@ for (i = 0; i &lt; array_length_1d(tile_list); i += 1) {
           <argument>
             <kind>1</kind>
             <string>draw_set_font(fontMenuSmall);
-draw_text_shadow(x, y, string(layer));
+draw_text_shadow(x, y, string(layerVariable));
 </string>
           </argument>
         </arguments>
