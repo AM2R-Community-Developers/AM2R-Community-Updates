@@ -160,19 +160,25 @@ if (gamepad_is_supported()) {
         xjoyy = gamepad_axis_value(global.gamepadIndex, gp_axislv);
         if (is_walkzone(xjoyx, xjoyy, 1)) walk_zone = 1;
         if (is_past_deadzone(xjoyx, xjoyy, 1)) {
-            if ((ctrl_Left == 0) && (ctrl_Right == 0) && (xjoyx < -(global.opxjoydz / 200))) {
+
+            stickAngle = point_direction(0, 0, xjoyx, xjoyy);
+
+            if ((ctrl_Left == 0) && (ctrl_Right == 0) && (xjoyx < -(global.opxjoydz / 200))) && (stickAngle > 112.5 && stickAngle < 247.5)  {
                 ctrl_Left = -xjoyx;
                 global.controltype = 2;
             }
-            if ((ctrl_Left == 0) && (ctrl_Right == 0) && (xjoyx > (global.opxjoydz / 200))) {
+			
+            if ((ctrl_Left == 0) && (ctrl_Right == 0) && (xjoyx > (global.opxjoydz / 200))) && (stickAngle <= 67.5 || stickAngle >= 292.5) {
                 ctrl_Right = xjoyx;
                 global.controltype = 2;
             }
-            if ((ctrl_Up == 0) && (ctrl_Down == 0) && (xjoyy < -(global.opxjoydz / 200))) {
+			
+            if ((ctrl_Up == 0) && (ctrl_Down == 0) && (xjoyy < -(global.opxjoydz / 200))) && (stickAngle <= 157.5 && stickAngle >= 22.5) {
                 ctrl_Up = 1;
                 global.controltype = 2;
             }
-            if ((ctrl_Up == 0) && (ctrl_Down == 0) && (xjoyy > (global.opxjoydz / 200))) {
+			
+            if ((ctrl_Up == 0) && (ctrl_Down == 0) && (xjoyy > (global.opxjoydz / 200))) && (stickAngle > 202.5 && stickAngle < 337.5) {
                 ctrl_Down = 1;
                 global.controltype = 2;
             }
