@@ -402,7 +402,7 @@ if (global.item[item])
     instance_destroy(); //original
 }
 
-if (room_get_name(room) == 'rm_a2a07') { image_speed = 0; }
+if (room_get_name(room) == "rm_a2a07") { image_speed = 0; }
 </string>
           </argument>
         </arguments>

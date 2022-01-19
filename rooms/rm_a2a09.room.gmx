@@ -114,8 +114,8 @@ instance_create(56, 48, scr_itemsopen(oControl.mod_151));</code>
     <instance objName="oMAlpha2TriggerProx" x="832" y="160" name="inst_110630" locked="0" code="init_monster_trigger(6, 1);" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oA2WaterJetMachine" x="808" y="80" name="inst_110631" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oFadeTiles" x="80" y="16" name="inst_110632" locked="0" code="&#xA;areax = 80;&#xA;areay = 32;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeTiles" x="288" y="16" name="inst_110633" locked="0" code="&#xA;areax = 128;&#xA;areay = 32;&#xA;layer = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeTiles" x="512" y="16" name="inst_110634" locked="0" code="&#xA;areax = 128;&#xA;areay = 32;&#xA;layer = -103;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeTiles" x="288" y="16" name="inst_110633" locked="0" code="&#xA;areax = 128;&#xA;areay = 32;&#xA;layerVariable = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeTiles" x="512" y="16" name="inst_110634" locked="0" code="&#xA;areax = 128;&#xA;areay = 32;&#xA;layerVariable = -103;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oGotoRoom" x="0" y="208" name="inst_110635" locked="0" code="&#xA;targetroom = rm_a2a08;&#xA;targetx = 304;&#xA;targety = 448;&#xA;height = 80;&#xA;direction = 180;&#xA;camstartx = 304;&#xA;camstarty = 448;&#xA;transitionx = 316;&#xA;transitiony = 208;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oGotoRoom" x="800" y="0" name="inst_110636" locked="0" code="&#xA;targetroom = rm_a2a11A;&#xA;targetx = 160;&#xA;targety = 224;&#xA;height = 64;&#xA;direction = 90;&#xA;camstartx = 160;&#xA;camstarty = 224;&#xA;transitionx = 160;&#xA;transitiony = 236;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="896" y="144" name="inst_110637" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
@@ -125,7 +125,7 @@ instance_create(56, 48, scr_itemsopen(oControl.mod_151));</code>
     <instance objName="oBlockScrew" x="896" y="96" name="inst_110641" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockScrew" x="896" y="80" name="inst_110642" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oGotoRoom" x="960" y="144" name="inst_110643" locked="0" code="&#xA;targetroom = rm_a2a18;&#xA;targetx = 16;&#xA;targety = 144;&#xA;height = 80;&#xA;direction = 0;&#xA;camstartx = 16;&#xA;camstarty = 120;&#xA;transitionx = 4;&#xA;transitiony = 144;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeTiles" x="912" y="80" name="inst_110644" locked="0" code="&#xA;areax = 128;&#xA;areay = 64;&#xA;layer = -104;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeTiles" x="912" y="80" name="inst_110644" locked="0" code="&#xA;areax = 128;&#xA;areay = 64;&#xA;layerVariable = -104;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oMMoverLeft" x="912" y="80" name="inst_4EF9AB2F" locked="0" code="" scaleX="3" scaleY="4" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>

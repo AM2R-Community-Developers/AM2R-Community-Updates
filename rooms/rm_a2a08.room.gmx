@@ -112,7 +112,7 @@ instance_create(128, 64, scr_itemsopen(oControl.mod_150));</code>
     <instance objName="oBlockScrew" x="32" y="384" name="inst_110572" locked="0" code="&#xA;regentime = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockScrew" x="32" y="400" name="inst_110573" locked="0" code="&#xA;regentime = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockScrew" x="32" y="416" name="inst_110574" locked="0" code="&#xA;regentime = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeTiles" x="0" y="384" name="inst_110575" locked="0" code="&#xA;areax = 48;&#xA;areay = 64;&#xA;layer = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeTiles" x="0" y="384" name="inst_110575" locked="0" code="&#xA;areax = 48;&#xA;areay = 64;&#xA;layerVariable = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oGotoRoom" x="0" y="432" name="inst_110576" locked="0" code="targetroom = rm_a2a19;&#xA;targetx = 624;&#xA;targety = 192;&#xA;height = 80;&#xA;direction = 180;&#xA;camstartx = 800;&#xA;camstarty = 120;&#xA;transitionx = 316;&#xA;transitiony = 192;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid4x1" x="-64" y="80" name="inst_F6B2BCAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid4x1" x="-64" y="160" name="inst_33DD6545" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

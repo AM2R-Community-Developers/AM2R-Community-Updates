@@ -81,7 +81,7 @@ instance_create(314, 192, scr_itemsopen(oControl.mod_253)); // fix for random/ne
     <instance objName="oItemMissileTank" x="528" y="64" name="inst_129033" locked="0" code="itemid = 255;&#xA;itemidOriginal = itemid;&#xA;itemid = oControl.mod_255;&#xA;if (oControl.mod_255 != itemidOriginal) { src_items_rando(itemid); }&#xA;scr_item_create_text();" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockShoot" x="464" y="80" name="inst_129034" locked="0" code="&#xA;link_tile(tlArea4TechDestroyed, 16, 64);&#xA;regentime = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oFadeTiles" x="464" y="80" name="inst_129035" locked="0" code="&#xA;areax = 192;&#xA;areay = 48;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeTiles" x="512" y="48" name="inst_129036" locked="0" code="&#xA;areax = 32;&#xA;areay = 32;&#xA;layer = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeTiles" x="512" y="48" name="inst_129036" locked="0" code="&#xA;areax = 32;&#xA;areay = 32;&#xA;layerVariable = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oItemPBombTank" x="240" y="192" name="inst_7D4F2EEF" locked="0" code="itemid = 253;&#xA;itemidOriginal = itemid;&#xA;itemid = oControl.mod_253;&#xA;if (oControl.mod_253 != itemidOriginal) { src_items_rando(itemid); }&#xA;scr_item_create_text();&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>

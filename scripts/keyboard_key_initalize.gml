@@ -138,7 +138,7 @@ l_c2s[? 222] = "Quote";
 l_s2c[? "quote"] = 222;
 l_s2c[? "apostrophe"] = 222;
 l_s2c[? "'"] = 222;
-l_s2c[?chr(34)/* '"' */] = 222;
+l_s2c[?chr(34)/* """ */] = 222;
 for (l_k = 65; l_k <= 90; l_k += 1) {
     l_c = chr(l_k);
     l_c2s[?l_k] = l_c;

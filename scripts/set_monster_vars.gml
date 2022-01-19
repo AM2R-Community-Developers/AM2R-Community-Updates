@@ -656,8 +656,8 @@ if (global.difficulty >= 2) {
     myaccely *= 1.2;
 }
 
-//myhealth = hdM_change('AlphaGamma', 'Health', myhealth);
-//damage = hdM_change('AlphaGamma', 'Damage', damage);
+//myhealth = hdM_change("AlphaGamma", "Health", myhealth);
+//damage = hdM_change("AlphaGamma", "Damage", damage);
 myhealth = myhealth * global.mod_alphagammaH;
 damage = damage * global.mod_alphagammaD;
 

@@ -266,7 +266,7 @@ sprite_delete(color);
 
 // Monster palettes
 ini_open("mods/palettes/monsters/config.ini");
-MonsterPalettesFusionOnly = ini_read_real('PaletteMode', 'FusionOnly', 1);
+MonsterPalettesFusionOnly = ini_read_real("PaletteMode", "FusionOnly", 1);
 ini_close();
 
 

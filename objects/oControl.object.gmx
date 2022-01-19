@@ -288,27 +288,27 @@ subScrItemOffset   = 0;
 ini_open("lang/fonts/sizes.ini");
 
 if(file_exists("lang/fonts/04b09.ttf")) {
-    font_replace(fontGUI, "lang/fonts/04b09.ttf", ini_read_real('Sizes', '04b09_(large)', 16), false, false, 32, 255);
-    font_replace(fontSubScr, "lang/fonts/04b09.ttf", ini_read_real('Sizes', '04b09_(small)', 8), false, false, 32, 255);
-    GUIOffset          = ini_read_real('Offsets', '04b09_(large)_offset', 0);
-    subScrHeaderOffset = ini_read_real('Offsets', '04b09_(small)_offset', 0);
+    font_replace(fontGUI, "lang/fonts/04b09.ttf", ini_read_real("Sizes", "04b09_(large)", 16), false, false, 32, 255);
+    font_replace(fontSubScr, "lang/fonts/04b09.ttf", ini_read_real("Sizes", "04b09_(small)", 8), false, false, 32, 255);
+    GUIOffset          = ini_read_real("Offsets", "04b09_(large)_offset", 0);
+    subScrHeaderOffset = ini_read_real("Offsets", "04b09_(small)_offset", 0);
 }
 
 if(file_exists("lang/fonts/Acknowledge_TT_BRK.ttf")) {
-    font_replace(fontGUI2, "lang/fonts/Acknowledge_TT_BRK.ttf", ini_read_real('Sizes', 'Acknowledge_TT_BRK', 13), false, false, 32, 255);
+    font_replace(fontGUI2, "lang/fonts/Acknowledge_TT_BRK.ttf", ini_read_real("Sizes", "Acknowledge_TT_BRK", 13), false, false, 32, 255);
 }
 
 if(file_exists("lang/fonts/uni_05_53.ttf")) {
-    font_replace(fontMenuSmall, "lang/fonts/uni_05_53.ttf", ini_read_real('Sizes', 'uni_05_53', 8), false, false, 32, 255);
+    font_replace(fontMenuSmall, "lang/fonts/uni_05_53.ttf", ini_read_real("Sizes", "uni_05_53", 8), false, false, 32, 255);
 }
 
 if(file_exists("lang/fonts/04b24.ttf")) {
-    font_replace(fontMenuTiny, "lang/fonts/04b24.ttf", ini_read_real('Sizes', '04b24', 16), false, false, 32, 255);
-    subScrItemOffset = ini_read_real('Offsets', '04b24_offset', -6);
+    font_replace(fontMenuTiny, "lang/fonts/04b24.ttf", ini_read_real("Sizes", "04b24", 16), false, false, 32, 255);
+    subScrItemOffset = ini_read_real("Offsets", "04b24_offset", -6);
 }
 
 if(file_exists("lang/fonts/Glasstown_NBP.ttf")) {
-    font_replace(fontMenuSmall2, "lang/fonts/Glasstown_NBP.ttf", ini_read_real('Sizes', 'Glasstown_NBP', 16), false, false, 32, 255);
+    font_replace(fontMenuSmall2, "lang/fonts/Glasstown_NBP.ttf", ini_read_real("Sizes", "Glasstown_NBP", 16), false, false, 32, 255);
 }
 
 ini_close();
@@ -845,40 +845,40 @@ if (os_is_browser) set_fullscreen(global.opfullscreen);
 switch translatestep
 {
     case 0:
-        if keyboard_check(ord('T')) { translatestep++; }
+        if keyboard_check(ord("T")) { translatestep++; }
         break;
     case 1:
-        if keyboard_check(ord('R')) { translatestep++; }
+        if keyboard_check(ord("R")) { translatestep++; }
         break;
     case 2:
-        if keyboard_check(ord('A')) { translatestep++; }
+        if keyboard_check(ord("A")) { translatestep++; }
         break;
     case 3:
-        if keyboard_check(ord('N')) { translatestep++; }
+        if keyboard_check(ord("N")) { translatestep++; }
         break;
     case 4:
-        if keyboard_check(ord('S')) { translatestep++; }
+        if keyboard_check(ord("S")) { translatestep++; }
         break;
     case 5:
-        if keyboard_check(ord('L')) { translatestep++; }
+        if keyboard_check(ord("L")) { translatestep++; }
         break;
     case 6:
-        if keyboard_check(ord('A')) { translatestep++; }
+        if keyboard_check(ord("A")) { translatestep++; }
         break;
     case 7:
-        if keyboard_check(ord('T')) { translatestep++; }
+        if keyboard_check(ord("T")) { translatestep++; }
         break;
     case 8:
-        if keyboard_check(ord('E')) { translatestep++; }
+        if keyboard_check(ord("E")) { translatestep++; }
         break;
     case 9:
-        if keyboard_check(ord('5')) { translatestep++; }
+        if keyboard_check(ord("5")) { translatestep++; }
         break;
     case 10:
-        if keyboard_check(ord('7')) { translatestep++; }
+        if keyboard_check(ord("7")) { translatestep++; }
         break;
     case 11:
-        if keyboard_check(ord('4')) 
+        if keyboard_check(ord("4")) 
         {
             translatestep++; 
             global.targetx = 64;

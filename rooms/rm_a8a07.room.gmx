@@ -87,7 +87,7 @@ create_log_trigger(true, 2, 323, 208, -26, true);</code>
     <instance objName="oGotoRoom" x="0" y="160" name="inst_148494" locked="0" code="&#xA;targetroom = rm_a8a02;&#xA;targetx = 304;&#xA;targety = 160;&#xA;height = 64;&#xA;direction = 180;&#xA;camstartx = 304;&#xA;camstarty = 120;&#xA;transitionx = 316;&#xA;transitiony = 160;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="112" y="176" name="inst_FF458631" locked="0" code="" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="112" y="224" name="inst_68CF197A" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeTiles" x="128" y="160" name="inst_BA01933B" locked="0" code="areax = 64;&#xA;areay = 80;&#xA;layer = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeTiles" x="128" y="160" name="inst_BA01933B" locked="0" code="areax = 64;&#xA;areay = 80;&#xA;layerVariable = -102;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSlope1" x="176" y="208" name="inst_129CEB9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSlope3" x="144" y="160" name="inst_523CC9CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSlope3" x="128" y="176" name="inst_E4CCD9BA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

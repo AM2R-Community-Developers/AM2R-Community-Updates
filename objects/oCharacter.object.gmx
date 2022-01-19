@@ -579,7 +579,7 @@ sfx_stop(sndAbsorbX);
             instance_create(x, y - 16, oHatchling);
         }    
     }
-    if (oControl.mod_earlybaby == 1 &amp;&amp; global.event[304] == 0 &amp;&amp; !instance_exists(oHatchling) &amp;&amp; room_get_name(room) != 'rm_a7c01') instance_create(x, y - 16, oHatchling);
+    if (oControl.mod_earlybaby == 1 &amp;&amp; global.event[304] == 0 &amp;&amp; !instance_exists(oHatchling) &amp;&amp; room_get_name(room) != "rm_a7c01") instance_create(x, y - 16, oHatchling);
 
     spawn_random_septogg(1, max(1, floor(room_width/500), floor(room_height/500)), 18);
     
