@@ -1,0 +1,20 @@
+Changelog from vanilla AM2R to Momentum Mod 0.2a:
+MECHANICS CHANGES:
+	RUNNING AND JUMPING:
+		-Speed increases gradually while jumping, even before acquiring speedbooster
+		-Jumping before speedbooster is active will no longer cap your speed
+		-While in spinjump state, there is no air friction, so you can maintain your speed. In normal jumping/falling state, you will slow down quickly, so respin to keep speed.
+		-The faster you run, the higher you jump.
+		-New sound effect that indicates speedbooster activation.
+	BALL STATES:
+		-Mockball is now possible before (and after) speedbooster, functions like super metroid. To activate, morph within 10 frames of landing.
+		-Morphing in the air no longer halts vertical or horizontal speed (unmorphing does.)
+		-Unmorphing on the ground while holding left or right will put the player straight into the running state, instead of crouch.
+		-Note that in earlier versions of momentum mod, spider ball's speed was doubled. This change has since been reverted.
+		-Spring ball is available from the start of the game.
+OTHER:
+	LEVEL DESIGN:
+		-Power grip is no longer available from the start of the game.
+			-Platform layouts before power grip is acquired has been altered to accomodate this change.
+			-Arachnus now drops Power Grip instead of Spring Ball.
+	
