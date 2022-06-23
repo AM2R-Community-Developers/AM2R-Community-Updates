@@ -3,8 +3,8 @@
   <caption></caption>
   <width>640</width>
   <height>240</height>
-  <vsnap>32</vsnap>
-  <hsnap>32</hsnap>
+  <vsnap>16</vsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -36,7 +36,7 @@ mus_change(musArea1A);</code>
     <yoffset>0</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="-1" foreground="0" name="bgScreenGuide" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="0" foreground="0" name="bgScreenGuide" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -75,7 +75,7 @@ mus_change(musArea1A);</code>
     <instance objName="oWallfire" x="248" y="192" name="inst_108488" locked="0" code="&#xA;facing = -1;&#xA;timer = 90;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="160" y="48" name="inst_108489" locked="0" code="" scaleX="16" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="400" y="144" name="inst_108490" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
-    <instance objName="oSolid1" x="416" y="80" name="inst_108491" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="416" y="96" name="inst_108491" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="oWallfire" x="328" y="96" name="inst_108492" locked="0" code="&#xA;facing = 1;&#xA;timer = 90;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oWallfire" x="392" y="176" name="inst_108493" locked="0" code="&#xA;facing = -1;&#xA;timer = 90;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oWallfire" x="408" y="128" name="inst_108494" locked="0" code="&#xA;facing = -1;&#xA;timer = 90;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -109,6 +109,8 @@ mus_change(musArea1A);</code>
     <instance objName="oBlockShootChain" x="416" y="64" name="inst_108522" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockShootChain" x="432" y="64" name="inst_108523" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockShootChain" x="144" y="48" name="inst_108524" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oBlockShootChain" x="432" y="80" name="inst_880A790B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oBlockShootChain" x="416" y="80" name="inst_3CC53311" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tlArea1BG" x="384" y="32" w="64" h="16" xo="0" yo="112" id="10026695" name="tile_10026695" depth="100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -129,7 +131,6 @@ mus_change(musArea1A);</code>
     <tile bgName="tlArea1A" x="400" y="176" w="64" h="32" xo="0" yo="368" id="10026710" name="tile_10026710" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea1A" x="400" y="144" w="64" h="32" xo="0" yo="368" id="10026711" name="tile_10026711" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea1A" x="416" y="112" w="32" h="32" xo="0" yo="304" id="10026712" name="tile_10026712" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tlArea1A" x="416" y="80" w="32" h="32" xo="0" yo="304" id="10026713" name="tile_10026713" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea1A" x="288" y="80" w="32" h="32" xo="0" yo="304" id="10026714" name="tile_10026714" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea1A" x="272" y="144" w="32" h="32" xo="0" yo="304" id="10026715" name="tile_10026715" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea1A" x="128" y="144" w="32" h="32" xo="0" yo="272" id="10026716" name="tile_10026716" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -274,14 +275,16 @@ mus_change(musArea1A);</code>
     <tile bgName="tlArea1A" x="624" y="128" w="16" h="32" xo="64" yo="336" id="10026855" name="tile_10026855" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea1A" x="624" y="96" w="16" h="32" xo="80" yo="336" id="10026856" name="tile_10026856" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlDoor" x="0" y="96" w="32" h="64" xo="32" yo="0" id="10026857" name="tile_10026857" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlArea1A" x="416" y="96" w="16" h="16" xo="64" yo="320" id="10165849" name="inst_FA8CA02F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlArea1A" x="432" y="96" w="16" h="16" xo="80" yo="320" id="10165852" name="inst_764944DC" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea1A" x="288" y="112" w="16" h="16" xo="32" yo="272" id="10026858" name="tile_10026858" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea1A" x="304" y="112" w="16" h="16" xo="48" yo="272" id="10026859" name="tile_10026859" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea1A" x="304" y="128" w="16" h="16" xo="48" yo="288" id="10026860" name="tile_10026860" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea1A" x="288" y="128" w="16" h="16" xo="32" yo="288" id="10026861" name="tile_10026861" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tlArea1A" x="416" y="48" w="16" h="16" xo="32" yo="272" id="10026862" name="tile_10026862" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tlArea1A" x="432" y="48" w="16" h="16" xo="48" yo="272" id="10026863" name="tile_10026863" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tlArea1A" x="432" y="64" w="16" h="16" xo="48" yo="288" id="10026864" name="tile_10026864" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tlArea1A" x="416" y="64" w="16" h="16" xo="32" yo="288" id="10026865" name="tile_10026865" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlArea1A" x="416" y="64" w="16" h="16" xo="32" yo="272" id="10026862" name="tile_10026862" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlArea1A" x="432" y="64" w="16" h="16" xo="48" yo="272" id="10026863" name="tile_10026863" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlArea1A" x="432" y="80" w="16" h="16" xo="48" yo="288" id="10026864" name="tile_10026864" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlArea1A" x="416" y="80" w="16" h="16" xo="32" yo="288" id="10026865" name="tile_10026865" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea1A" x="432" y="32" w="16" h="16" xo="112" yo="112" id="10026866" name="tile_10026866" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea1A" x="400" y="32" w="16" h="16" xo="96" yo="128" id="10026867" name="tile_10026867" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea1A" x="416" y="32" w="16" h="16" xo="80" yo="48" id="10026868" name="tile_10026868" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -302,6 +305,8 @@ mus_change(musArea1A);</code>
     <tile bgName="tlArea1A" x="320" y="32" w="16" h="16" xo="48" yo="432" id="10026883" name="tile_10026883" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea1A" x="240" y="32" w="16" h="16" xo="64" yo="432" id="10026884" name="tile_10026884" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlArea1A" x="304" y="32" w="16" h="16" xo="64" yo="432" id="10026885" name="tile_10026885" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlArea1A" x="416" y="48" w="16" h="16" xo="96" yo="320" id="10165855" name="inst_A3D80527" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlArea1A" x="432" y="48" w="16" h="16" xo="112" yo="320" id="10165856" name="inst_85AC82C6" depth="-111" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

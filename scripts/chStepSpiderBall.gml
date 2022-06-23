@@ -122,3 +122,4 @@ if (state == SPIDERBALL) {
 if (state == AIRBALL && sball == 1) {
     if (isCollisionTop(1) == 1 || isCollisionBottom(1) == 1 || isCollisionRight(1) == 1 || isCollisionLeft(1) == 1) state = SPIDERBALL;
 }
+

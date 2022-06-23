@@ -4,6 +4,9 @@ switch (argument0)
     case 0:
         return oControl.mod_bombs;
         break;
+    case 1:
+        return oControl.mod_grip;
+        break;
     case 2:
         return oControl.mod_spider;
         break;

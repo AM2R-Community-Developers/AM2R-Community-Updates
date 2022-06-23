@@ -1,7 +1,7 @@
 /// load_character_vars()
 global.morphball = 1;
-global.jumpball = 0;
-global.powergrip = 1;
+global.jumpball = 1;
+global.powergrip = 0;
 global.spacejump = 0;
 global.screwattack = 0;
 global.hijump = 0;
@@ -57,6 +57,8 @@ repeat (350) {
     i -= 1;
     global.item[i] = 0;
 }
-global.item[1] = 1;
+//pretty sure this gives power grip at start
+//global.item[1] = 1;
+global.item[3] = 1; //this gives spring ball at start
 reset_logs_list();
 reset_hints();

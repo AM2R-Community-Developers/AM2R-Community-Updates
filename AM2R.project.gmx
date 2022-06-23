@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="243" name="datafiles">
-    <datafiles number="243" name="lang">
+  <datafiles number="292" name="datafiles">
+    <datafiles number="292" name="lang">
       <datafile>
         <name>czech.ini</name>
         <exists>-1</exists>
@@ -158,7 +158,7 @@
         </ConfigOptions>
         <filename>languages.txt</filename>
       </datafile>
-      <datafiles number="243" name="fonts">
+      <datafiles number="292" name="fonts">
         <datafile>
           <name>04b09.ttf</name>
           <exists>-1</exists>
@@ -331,8 +331,8 @@
       </ConfigOptions>
       <filename>readme.txt</filename>
     </datafile>
-    <datafiles number="243" name="mods">
-      <datafiles number="243" name="titles">
+    <datafiles number="292" name="mods">
+      <datafiles number="292" name="titles">
         <datafile>
           <name>config.ini</name>
           <exists>-1</exists>
@@ -368,8 +368,8 @@
           <filename>titlebackground.png</filename>
         </datafile>
       </datafiles>
-      <datafiles number="243" name="palettes">
-        <datafiles number="243" name="monsters">
+      <datafiles number="292" name="palettes">
+        <datafiles number="292" name="monsters">
           <datafile>
             <name>alpha.png</name>
             <exists>-1</exists>
@@ -541,8 +541,8 @@
             <filename>zeta_blur.png</filename>
           </datafile>
         </datafiles>
-        <datafiles number="243" name="suits">
-          <datafiles number="243" name="MorphTrailColors">
+        <datafiles number="292" name="suits">
+          <datafiles number="292" name="MorphTrailColors">
             <datafile>
               <name>fusion_gravity.png</name>
               <exists>-1</exists>
@@ -646,7 +646,7 @@
               <filename>varia.png</filename>
             </datafile>
           </datafiles>
-          <datafiles number="243" name="SpaceJumpTrails">
+          <datafiles number="292" name="SpaceJumpTrails">
             <datafile>
               <name>fusion_gravity.png</name>
               <exists>-1</exists>
@@ -750,7 +750,7 @@
               <filename>varia.png</filename>
             </datafile>
           </datafiles>
-          <datafiles number="243" name="SpiderBallGlow">
+          <datafiles number="292" name="SpiderBallGlow">
             <datafile>
               <name>fusion_gravity.png</name>
               <exists>-1</exists>
@@ -854,7 +854,7 @@
               <filename>varia.png</filename>
             </datafile>
           </datafiles>
-          <datafiles number="243" name="Inactive">
+          <datafiles number="292" name="Inactive">
             <datafile>
               <name>fusion_gravity.png</name>
               <exists>-1</exists>
@@ -1401,6 +1401,9 @@
       <sound>sound\sndSBEris</sound>
       <sound>sound\sndSkorpBlade</sound>
       <sound>sound\sndYumboDash</sound>
+    </sounds>
+    <sounds name="sunsette">
+      <sound>sound\sndSBSonicBoom</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -3391,6 +3394,26 @@
       </sprites>
       <sprite>sprites\sShipGlow</sprite>
     </sprites>
+    <sprites name="more player">
+      <sprite>sprites\sDreadSlideL_0</sprite>
+      <sprite>sprites\sGDreadSlideL_0</sprite>
+      <sprite>sprites\sDreadSlideL_1</sprite>
+      <sprite>sprites\sGDreadSlideL_1</sprite>
+      <sprite>sprites\sVDreadSlideL_1</sprite>
+      <sprite>sprites\sDreadSlideL_2</sprite>
+      <sprite>sprites\sVDreadSlideL_2</sprite>
+      <sprite>sprites\sGDreadSlideL_2</sprite>
+      <sprite>sprites\sVDreadSlideL_0</sprite>
+      <sprite>sprites\sDreadSlideR_0</sprite>
+      <sprite>sprites\sVDreadSlideR_0</sprite>
+      <sprite>sprites\sGDreadSlideR_0</sprite>
+      <sprite>sprites\sGDreadSlideR_1</sprite>
+      <sprite>sprites\sVDreadSlideR_1</sprite>
+      <sprite>sprites\sDreadSlideR_2</sprite>
+      <sprite>sprites\sDreadSlideR_1</sprite>
+      <sprite>sprites\sGDreadSlideR_2</sprite>
+      <sprite>sprites\sVDreadSlideR_2</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bgScreenGuide</background>
@@ -4331,8 +4354,8 @@
     </scripts>
   </scripts>
   <shaders name="shaders">
-    <shader type="GLSLES">shaders\shGameBoy.shader</shader>
     <shader type="GLSLES">shaders\shPaletteSwap.shader</shader>
+    <shader type="GLSLES">shaders\shGameBoy.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\font0</font>
@@ -5795,6 +5818,9 @@
       <room>rooms\rm_TranslationTest</room>
       <room>rooms\rm_a6a10B</room>
       <room>rooms\rm_gameplay</room>
+    </rooms>
+    <rooms name="end">
+      <room>rooms\room1</room>
     </rooms>
   </rooms>
   <constants number="10">

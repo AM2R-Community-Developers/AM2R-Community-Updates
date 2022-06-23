@@ -47,6 +47,12 @@ kMorph = oControl.kMorph;
 kMorphPushedSteps = oControl.kMorphPushedSteps;
 kMorphPressed = oControl.kMorphPressed;
 kMorphReleased = oControl.kMorphReleased;
+//kRun = oControl.kRun;
+//kRunPushedSteps = oControl.kRunPushedSteps;
+//kRunPressed = oControl.kRunPressed;
+//kRunReleased = oControl.kRunReleased;
+
+
 if (global.opmslstyle == 0) {
     if (global.currentweapon == 0) global.currentweapon = 1;
     if (global.maxmissiles > 0 && (state == STANDING || state == RUNNING || state == DUCKING || state == JUMPING || state == GRIP || state == GRABBEDQUEEN || global.maxpbombs > 0 && (state == BALL || state == AIRBALL || state == SPIDERBALL || state == GRABBEDQUEENMORPH || state == GRABBEDQUEENBELLY))) {
@@ -87,6 +93,7 @@ if (global.opmslstyle == 1) {
         armmsl = 1;
     } else armmsl = 0;
 }
+//start aimlock, comment out to disable
 if (global.controltype == 0) {
     if (global.opwlkstyle == 0) {
         if (kWalk && kWalkPushedSteps == 0) walking = !walking;
@@ -115,6 +122,8 @@ if (global.controltype > 0) {
         }
     }
 }
+//end aimlock
+
 if (global.controltype == 1) {
     if (kLeft > 0) {
         if (oControl.walk_zone) {

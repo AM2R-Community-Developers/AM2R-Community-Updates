@@ -18,14 +18,14 @@ global.floormaterial = 3;
 
 mus_change_itemroom();
 
-if (global.event[103] &gt; 0 &amp;&amp; global.item[scr_itemchange(3)] == 0) {
+if (global.event[103] &gt; 0 &amp;&amp; global.item[scr_itemchange(1)] == 0) {
     if(oControl.mod_fusion == 1) {
         var inst = instance_create(room_width/2, room_height/2, oCoreX);
         inst.alarm[1] = -1;
         inst.state = 1;
         inst.statetime = 0;
     }
-    else instance_create(global.event[103], 192, scr_itemsopen(oControl.mod_jumpball));
+    else instance_create(global.event[103], 192, scr_itemsopen(oControl.mod_grip));
 }
 if (global.event[103] &gt; 0)
 {

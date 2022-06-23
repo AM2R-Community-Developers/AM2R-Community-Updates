@@ -153,6 +153,8 @@ else oMusicV2.currentbgm = musArea2A;</code>
     <instance objName="oBlockShoot" x="320" y="144" name="inst_110203" locked="0" code="&#xA;link_tile(tlPipes1, 96, 0);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oGotoRoom" x="0" y="208" name="inst_110204" locked="0" code="targetroom = rm_a2a04;&#xA;targetx = 304;&#xA;targety = 208;&#xA;height = 80;&#xA;direction = 180;&#xA;camstartx = 304;&#xA;camstarty = 120;&#xA;transitionx = 316;&#xA;transitiony = 208;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oDoor" x="24" y="144" name="inst_110205" locked="0" code="&#xA;lock = 1;&#xA;event = 104;&#xA;//if (global.item[0] == 0) lock = 4;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid2x1" x="80" y="96" name="inst_70A2A8DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid2x1" x="64" y="128" name="inst_D477C400" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tlPipes3" x="472" y="16" w="48" h="16" xo="32" yo="80" id="10151419" name="inst_CB38DF8F" depth="100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -398,7 +400,6 @@ else oMusicV2.currentbgm = musArea2A;</code>
     <tile bgName="tlPipes1" x="128" y="48" w="16" h="16" xo="48" yo="96" id="10033752" name="tile_10033752" depth="-101" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlPipes1" x="128" y="0" w="16" h="16" xo="32" yo="80" id="10033753" name="tile_10033753" depth="-101" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlPipes1" x="224" y="0" w="16" h="16" xo="48" yo="80" id="10033754" name="tile_10033754" depth="-101" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tlPipes1" x="112" y="96" w="16" h="16" xo="16" yo="0" id="10033755" name="tile_10033755" depth="-101" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlPipes1" x="128" y="96" w="16" h="16" xo="96" yo="0" id="10033756" name="tile_10033756" depth="-101" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlPipes1" x="160" y="80" w="16" h="16" xo="32" yo="0" id="10033757" name="tile_10033757" depth="-101" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlPipes1" x="176" y="48" w="16" h="16" xo="96" yo="0" id="10033758" name="tile_10033758" depth="-101" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -488,6 +489,11 @@ else oMusicV2.currentbgm = musArea2A;</code>
     <tile bgName="tlPipes1" x="576" y="160" w="16" h="16" xo="32" yo="96" id="10033842" name="tile_10033842" depth="-101" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlPipes1" x="576" y="144" w="16" h="16" xo="16" yo="48" id="10033843" name="tile_10033843" depth="-101" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlPipes1" x="592" y="160" w="16" h="16" xo="112" yo="0" id="10033844" name="tile_10033844" depth="-101" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="96" y="96" w="16" h="16" xo="64" yo="0" id="10165747" name="inst_A0B639F7" depth="-101" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="112" y="96" w="16" h="16" xo="64" yo="0" id="10165748" name="inst_262FD58F" depth="-101" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="80" y="96" w="16" h="16" xo="32" yo="0" id="10165749" name="inst_B7C236D6" depth="-101" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="80" y="128" w="16" h="16" xo="112" yo="16" id="10165751" name="inst_724652B4" depth="-101" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="64" y="128" w="16" h="16" xo="96" yo="16" id="10165752" name="inst_F6F31A77" depth="-101" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

@@ -4,6 +4,9 @@ switch (argument0)
     case 0:
         return oItemBomb;
         break;
+    case 1:
+        return oItemPowergrip;
+        break;
     case 2:
         return oItemSpiderBall;
         break;

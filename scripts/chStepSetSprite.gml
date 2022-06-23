@@ -179,52 +179,62 @@ if (state == RUNNING) {
                 if (set == 0) sprite_index = scr_suit_sprites(sRunRight,sRunRight_fusion);
                 if (set == 1) sprite_index = scr_suit_sprites(sVRunRight,sRunRight_fusion);
                 if (set == 2) sprite_index = scr_suit_sprites(sGRunRight,sRunRight_fusion);
-                image_speed = 0.5;
             }
             if (aimdirection == 0 && (firing > 0 || armmsl == 1)) {
                 if (set == 0) sprite_index = scr_suit_sprites(sRunAimR,sRunAimR_fusion);
                 if (set == 1) sprite_index = scr_suit_sprites(sVRunAimR,sRunAimR_fusion);
                 if (set == 2) sprite_index = scr_suit_sprites(sGRunAimR,sRunAimR_fusion);
-                image_speed = 0.5;
             }
             if (aimdirection == 2) {
                 if (set == 0) sprite_index = scr_suit_sprites(sRunAimUR,sRunAimUR_fusion);
                 if (set == 1) sprite_index = scr_suit_sprites(sVRunAimUR,sRunAimUR_fusion);
                 if (set == 2) sprite_index = scr_suit_sprites(sGRunAimUR,sRunAimUR_fusion);
-                image_speed = 0.5;
             }
             if (aimdirection == 4) {
                 if (set == 0) sprite_index = scr_suit_sprites(sRunAimDR,sRunAimDR_fusion);
                 if (set == 1) sprite_index = scr_suit_sprites(sVRunAimDR,sRunAimDR_fusion);
                 if (set == 2) sprite_index = scr_suit_sprites(sGRunAimDR,sRunAimDR_fusion);
-                image_speed = 0.5;
             }
+            if dash < 5 {
+                image_speed = 0.35;
+            }
+            else if dash < 40{
+              image_speed = 0.5;
+            }
+            else image_speed = 0.7
         } // if (facing == RIGHT && walking == 0) 
         if (facing == LEFT && walking == 0) {
             if (aimdirection == 1 && firing == 0 && armmsl == 0) {
                 if (set == 0) sprite_index = scr_suit_sprites(sRunLeft,sRunLeft_fusion);
                 if (set == 1) sprite_index = scr_suit_sprites(sVRunLeft,sRunLeft_fusion);
                 if (set == 2) sprite_index = scr_suit_sprites(sGRunLeft,sRunLeft_fusion);
-                image_speed = 0.5;
+                
             }
             if (aimdirection == 1 && (firing > 0 || armmsl == 1)) {
                 if (set == 0) sprite_index = scr_suit_sprites(sRunAimL,sRunAimL_fusion);
                 if (set == 1) sprite_index = scr_suit_sprites(sVRunAimL,sRunAimL_fusion);
                 if (set == 2) sprite_index = scr_suit_sprites(sGRunAimL,sRunAimL_fusion);
-                image_speed = 0.5;
+                
             }
             if (aimdirection == 3) {
                 if (set == 0) sprite_index = scr_suit_sprites(sRunAimUL,sRunAimUL_fusion);
                 if (set == 1) sprite_index = scr_suit_sprites(sVRunAimUL,sRunAimUL_fusion);
                 if (set == 2) sprite_index = scr_suit_sprites(sGRunAimUL,sRunAimUL_fusion);
-                image_speed = 0.5;
+                
             }
             if (aimdirection == 5) {
                 if (set == 0) sprite_index = scr_suit_sprites(sRunAimDL,sRunAimDL_fusion);
                 if (set == 1) sprite_index = scr_suit_sprites(sVRunAimDL,sRunAimDL_fusion);
                 if (set == 2) sprite_index = scr_suit_sprites(sGRunAimDL,sRunAimDL_fusion);
-                image_speed = 0.5;
+                
             }
+            if dash < 5 {
+                image_speed = 0.35;
+            }
+            else if dash < 40{
+              image_speed = 0.5;
+            }
+            else image_speed = 0.7
         } // if (facing == LEFT && walking == 0)
         if (facing == RIGHT && walking == 1) {
             if (aimdirection == 0 && firing == 0 && armmsl == 0 && aimlock == 0) {
@@ -312,6 +322,25 @@ if (state == DUCKING) {
         image_speed = 0.1;
     }
 }
+
+if (state == DREADSLIDE) {
+        if (statetime < 5) {
+            if (set == 0) sprite_index = scr_suit_sprites(sDreadSlideL_0, sDreadSlideL_0,);
+            if (set == 1) sprite_index = scr_suit_sprites(sVDreadSlideL_0, sVDreadSlideL_0,);
+            if (set == 2) sprite_index = scr_suit_sprites(sGDreadSlideL_0, sGDreadSlideL_0,);
+        }
+        if (statetime > 5 && statetime < 13){
+            if (set == 0) sprite_index = scr_suit_sprites(sDreadSlideL_1, sDreadSlideL_1,);
+            if (set == 1) sprite_index = scr_suit_sprites(sVDreadSlideL_1, sVDreadSlideL_1,);
+            if (set == 2) sprite_index = scr_suit_sprites(sGDreadSlideL_1, sGDreadSlideL_1,);
+        }
+        if (statetime >= 13) {
+            if (set == 0) sprite_index = scr_suit_sprites(sDreadSlideL_2, sDreadSlideL_2,);
+            if (set == 1) sprite_index = scr_suit_sprites(sVDreadSlideL_2, sVDreadSlideL_2,);
+            if (set == 2) sprite_index = scr_suit_sprites(sGDreadSlideL_2, sGDreadSlideL_2,);
+        }
+}
+
 if (state == JUMPING) {
     if (vjump == 0) {
         if (facing == RIGHT) {

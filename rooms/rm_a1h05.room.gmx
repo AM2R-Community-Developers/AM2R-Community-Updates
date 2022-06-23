@@ -301,6 +301,12 @@ instance_create(1944, 160, scr_itemsopen(oControl.mod_109));</code>
     <instance objName="oSolid4x1" x="2496" y="1040" name="inst_E37B1513" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid4x1" x="2496" y="1120" name="inst_154580EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="688" y="1040" name="inst_7DA60A9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="3008" y="1056" name="inst_819FC873" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="2992" y="1056" name="inst_080DBF0A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="3056" y="1008" name="inst_2E3C387C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="3072" y="1008" name="inst_3B6CE9D1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSlope4" x="3072" y="1024" name="inst_709BCFC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="3088" y="1024" name="inst_661F28BA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tlA1OutsideBG" x="556" y="800" w="64" h="80" xo="0" yo="0" id="10022348" name="tile_10022348" depth="100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -562,7 +568,7 @@ instance_create(1944, 160, scr_itemsopen(oControl.mod_109));</code>
     <tile bgName="tlRock1AN" x="3136" y="784" w="16" h="32" xo="64" yo="304" id="10022604" name="tile_10022604" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlRock1AN" x="3136" y="992" w="16" h="32" xo="64" yo="144" id="10022605" name="tile_10022605" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlRock1AN" x="3152" y="976" w="32" h="32" xo="64" yo="0" id="10022606" name="tile_10022606" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tlRock1AN" x="3072" y="992" w="32" h="32" xo="32" yo="304" id="10022607" name="tile_10022607" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlRock1AN" x="3040" y="992" w="32" h="32" xo="32" yo="304" id="10022607" name="tile_10022607" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlRock1AN" x="3120" y="1024" w="16" h="32" xo="96" yo="176" id="10022608" name="tile_10022608" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlRock1AN" x="3136" y="704" w="16" h="16" xo="80" yo="64" id="10022609" name="tile_10022609" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlRock1AN" x="3152" y="848" w="16" h="16" xo="80" yo="64" id="10022610" name="tile_10022610" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1602,6 +1608,16 @@ instance_create(1944, 160, scr_itemsopen(oControl.mod_109));</code>
     <tile bgName="tlArea1A" x="1264" y="864" w="16" h="16" xo="64" yo="352" id="10023646" name="tile_10023646" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlDoor" x="608" y="1056" w="32" h="64" xo="128" yo="0" id="10149302" name="inst_A1C913EC" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlDoor" x="2560" y="1056" w="32" h="64" xo="160" yo="0" id="10149303" name="inst_C089BE39" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlRock1AN" x="3072" y="1008" w="16" h="16" xo="64" yo="96" id="10165829" name="inst_CF017574" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlRock1AN" x="3088" y="1008" w="16" h="16" xo="80" yo="96" id="10165830" name="inst_9407A0F0" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlRock1AN" x="3072" y="992" w="16" h="16" xo="64" yo="80" id="10165831" name="inst_7516D9EA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlRock1AN" x="3088" y="992" w="16" h="16" xo="80" yo="80" id="10165832" name="inst_2591ABD1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlRock1AN" x="3056" y="1024" w="16" h="16" xo="64" yo="256" id="10165833" name="inst_984F0017" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlRock1AN" x="3072" y="1024" w="16" h="16" xo="80" yo="256" id="10165834" name="inst_2323E124" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlRock1AN" x="3088" y="1024" w="16" h="16" xo="48" yo="112" id="10165840" name="inst_8ED01A27" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlRock1AN" x="3088" y="1040" w="16" h="16" xo="48" yo="128" id="10165841" name="inst_A5D762C8" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlArea1A" x="2992" y="1056" w="16" h="16" xo="64" yo="320" id="10165847" name="inst_EC14C3E1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlArea1A" x="3008" y="1056" w="16" h="16" xo="80" yo="320" id="10165848" name="inst_375A306A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

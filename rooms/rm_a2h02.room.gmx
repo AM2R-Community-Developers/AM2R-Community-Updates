@@ -41,7 +41,7 @@ instance_create(3144, 608, scr_itemsopen(oControl.mod_163));</code>
     <yoffset>0</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="-1" foreground="0" name="bgScreenGuide" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="0" foreground="0" name="bgScreenGuide" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -289,7 +289,6 @@ instance_create(3144, 608, scr_itemsopen(oControl.mod_163));</code>
     <instance objName="oSolid4x1" x="3168" y="1280" name="inst_109776" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid4x1" x="3184" y="1360" name="inst_109777" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="896" y="1280" name="inst_109778" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oSolid1" x="896" y="1264" name="inst_109779" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="896" y="1120" name="inst_109780" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1x8" x="912" y="1376" name="inst_109781" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid2x2" x="880" y="1360" name="inst_109782" locked="0" code="&#xA;image_yscale = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -348,7 +347,7 @@ instance_create(3144, 608, scr_itemsopen(oControl.mod_163));</code>
     <instance objName="oSolid1Metal" x="1104" y="368" name="inst_109835" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid2x2Metal" x="1216" y="432" name="inst_109836" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid4x1Metal" x="1344" y="352" name="inst_109837" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oSolid1Metal" x="1536" y="432" name="inst_109838" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1Metal" x="1504" y="448" name="inst_109838" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1Metal" x="1456" y="512" name="inst_109839" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1Metal" x="1472" y="512" name="inst_109840" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1Metal" x="1536" y="624" name="inst_109841" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -356,11 +355,10 @@ instance_create(3144, 608, scr_itemsopen(oControl.mod_163));</code>
     <instance objName="oSolid1x4" x="1552" y="592" name="inst_109843" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1Metal" x="848" y="1008" name="inst_109844" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1Metal" x="896" y="1104" name="inst_109845" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oSolid1Metal" x="848" y="1184" name="inst_109846" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid2x2Rock" x="64" y="1360" name="inst_109847" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1Rock" x="3168" y="240" name="inst_109848" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oSolid1" x="848" y="1200" name="inst_109849" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oSolid1" x="848" y="1216" name="inst_109850" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="832" y="1168" name="inst_109849" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="848" y="1168" name="inst_109850" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oMEgg2" x="1080" y="368" name="inst_109851" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oA2BigTurbine" x="912" y="1536" name="inst_109852" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oGotoRoom" x="3840" y="1312" name="inst_109853" locked="0" code="&#xA;targetroom = rm_a2h01;&#xA;targetx = 16;&#xA;targety = 112;&#xA;height = 80;&#xA;direction = 0;&#xA;camstartx = 16;&#xA;camstarty = 112;&#xA;transitionx = 4;&#xA;transitiony = 112;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -414,6 +412,22 @@ instance_create(3144, 608, scr_itemsopen(oControl.mod_163));</code>
     <instance objName="oSolid4x1" x="2480" y="768" name="inst_5C18D3E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid4x1" x="3104" y="1280" name="inst_2828A001" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid4x1" x="3120" y="1360" name="inst_E5226DBF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="896" y="1280" name="inst_C2B44C4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="1520" y="448" name="inst_D0A30BAB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="1536" y="448" name="inst_1C779581" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSpikes2" x="1536" y="528" name="inst_12BC774E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSpikes2" x="1536" y="512" name="inst_5C219145" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="1504" y="592" name="inst_DA41B8E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="1472" y="576" name="inst_1BEB915A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="1488" y="576" name="inst_B3F6C12A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="1504" y="576" name="inst_FB06A4B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="864" y="1232" name="inst_D9460939" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="864" y="1216" name="inst_875416E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="848" y="1072" name="inst_A3325A63" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="832" y="1072" name="inst_FB3B41FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="816" y="1072" name="inst_68F0B8AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="880" y="944" name="inst_473D1EF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid1" x="896" y="944" name="inst_D48AEFBB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tlRock2BG" x="3616" y="1280" w="32" h="48" xo="96" yo="112" id="10030179" name="tile_10030179" depth="100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -2007,7 +2021,6 @@ instance_create(3144, 608, scr_itemsopen(oControl.mod_163));</code>
     <tile bgName="tlChozoTemple2" x="1584" y="848" w="16" h="64" xo="96" yo="208" id="10031774" name="tile_10031774" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlChozoTemple2" x="2560" y="784" w="16" h="16" xo="80" yo="224" id="10031775" name="tile_10031775" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlChozoTemple2" x="3200" y="1296" w="16" h="64" xo="112" yo="208" id="10031776" name="tile_10031776" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tlA2Bridge" x="1520" y="432" w="32" h="32" xo="96" yo="0" id="10031777" name="tile_10031777" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlA2Bridge" x="1216" y="416" w="32" h="64" xo="64" yo="128" id="10031778" name="tile_10031778" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlA2Bridge" x="1312" y="352" w="48" h="48" xo="80" yo="0" id="10031779" name="tile_10031779" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlA2Bridge" x="1360" y="352" w="32" h="16" xo="0" yo="16" id="10031780" name="tile_10031780" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -2026,8 +2039,6 @@ instance_create(3144, 608, scr_itemsopen(oControl.mod_163));</code>
     <tile bgName="tlRock2NB" x="928" y="240" w="16" h="64" xo="64" yo="384" id="10031799" name="tile_10031799" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlRock2NB" x="864" y="208" w="64" h="64" xo="64" yo="384" id="10031800" name="tile_10031800" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlRock2NB" x="800" y="208" w="64" h="64" xo="64" yo="384" id="10031803" name="tile_10031803" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tlPipes1" x="848" y="1184" w="16" h="32" xo="16" yo="48" id="10031804" name="tile_10031804" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tlPipes1" x="848" y="1216" w="16" h="16" xo="16" yo="96" id="10031805" name="tile_10031805" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlA2Outside" x="960" y="1296" w="32" h="64" xo="32" yo="64" id="10031806" name="tile_10031806" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlA2Outside" x="2512" y="800" w="32" h="32" xo="96" yo="64" id="10031810" name="tile_10031810" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlA2Outside" x="2496" y="752" w="32" h="32" xo="96" yo="64" id="10031811" name="tile_10031811" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -2275,7 +2286,26 @@ instance_create(3144, 608, scr_itemsopen(oControl.mod_163));</code>
     <tile bgName="tlRock2NB" x="3808" y="1456" w="16" h="16" xo="64" yo="384" id="10151076" name="inst_60772C13" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlRock2NB" x="3760" y="1456" w="16" h="16" xo="64" yo="384" id="10151077" name="inst_EC43D3BD" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlA2Outside" x="3216" y="1520" w="32" h="32" xo="0" yo="0" id="10151079" name="inst_E796BAD0" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tlA2Outside" x="896" y="1264" w="32" h="32" xo="64" yo="160" id="10152475" name="inst_62AC0801" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlA2Outside" x="912" y="1264" w="16" h="32" xo="32" yo="64" id="10165773" name="inst_A06B5A1E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlA2Outside" x="896" y="1280" w="16" h="16" xo="64" yo="192" id="10165775" name="inst_2BBF8C05" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="864" y="1216" w="16" h="16" xo="16" yo="48" id="10165779" name="inst_6F6A8DFA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="864" y="1232" w="16" h="16" xo="16" yo="96" id="10165780" name="inst_B07AEC55" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="832" y="1168" w="16" h="16" xo="96" yo="16" id="10165786" name="inst_5F72B6D3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="848" y="1168" w="16" h="16" xo="112" yo="16" id="10165787" name="inst_553BBE48" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="816" y="1072" w="16" h="16" xo="80" yo="32" id="10165789" name="inst_A2EE0B15" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="832" y="1072" w="16" h="16" xo="96" yo="32" id="10165790" name="inst_A24802FA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="848" y="1072" w="16" h="16" xo="112" yo="32" id="10165792" name="inst_8C1ADB43" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="880" y="944" w="16" h="16" xo="16" yo="0" id="10165794" name="inst_85CB9DC6" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="896" y="944" w="16" h="16" xo="32" yo="0" id="10165795" name="inst_F73E37B7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="1504" y="448" w="16" h="16" xo="32" yo="0" id="10165796" name="inst_902D2DA1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="1520" y="448" w="16" h="16" xo="48" yo="0" id="10165797" name="inst_B36BD2EF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="1536" y="448" w="16" h="16" xo="96" yo="0" id="10165798" name="inst_2FDE94AC" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="1504" y="576" w="16" h="16" xo="48" yo="80" id="10165799" name="inst_6EA2CA1A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="1504" y="592" w="16" h="16" xo="16" yo="96" id="10165800" name="inst_2A09CBAE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="1488" y="576" w="16" h="16" xo="96" yo="0" id="10165805" name="inst_CD719D20" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlBrick1" x="1536" y="528" w="16" h="16" xo="64" yo="176" id="10165808" name="inst_3D4588F1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlBrick1" x="1536" y="512" w="16" h="16" xo="64" yo="176" id="10165809" name="inst_AE15E912" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tlPipes1" x="1472" y="576" w="16" h="16" xo="112" yo="0" id="10165815" name="inst_6013BDF8" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlA2Outside" x="3168" y="1392" w="48" h="16" xo="48" yo="288" id="10150917" name="inst_B70B2873" depth="-102" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlA2Outside" x="3200" y="1408" w="16" h="16" xo="80" yo="256" id="10150922" name="inst_FFCB6840" depth="-102" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tlA2Outside" x="2384" y="560" w="16" h="16" xo="64" yo="288" id="10150926" name="inst_ACE23D2F" depth="-102" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

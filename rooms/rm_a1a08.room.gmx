@@ -94,8 +94,6 @@ instance_create(832, 48, scr_itemsopen(oControl.mod_107));</code>
     <instance objName="oSolid1" x="752" y="48" name="inst_108452" locked="0" code="" scaleX="5" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="768" y="96" name="inst_108453" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid1" x="752" y="112" name="inst_108454" locked="0" code="" scaleX="5" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="oBlockShoot" x="464" y="64" name="inst_108455" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oBlockShoot" x="480" y="64" name="inst_108456" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockShoot" x="400" y="144" name="inst_108457" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockShoot" x="416" y="144" name="inst_108458" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockShoot" x="432" y="144" name="inst_108459" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -111,6 +109,9 @@ instance_create(832, 48, scr_itemsopen(oControl.mod_107));</code>
     <instance objName="oBlockBomb" x="736" y="80" name="inst_108469" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockBomb" x="736" y="112" name="inst_108470" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockBomb" x="736" y="144" name="inst_108471" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oBlockBomb" x="480" y="64" name="inst_256E01E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oBlockBomb" x="464" y="64" name="inst_0A04DD57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oNeedler" x="448" y="64" name="inst_7E76C8A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tlArea1BG" x="624" y="160" w="64" h="32" xo="0" yo="80" id="10026342" name="tile_10026342" depth="100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

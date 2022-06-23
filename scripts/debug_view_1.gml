@@ -1,4 +1,4 @@
-/// debug_view_1()
+debug_view_1()
 if (instance_exists(oCharacter) && instance_exists(oCamera) && global.ingame) {
     i = 0;
     debug_draw_var("X: ", oCharacter.x);

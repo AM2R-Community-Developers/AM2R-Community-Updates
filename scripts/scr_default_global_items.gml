@@ -2,6 +2,7 @@
 //Randomizer will take over and act weird otherwise.
 
 oControl.mod_bombs = 0;
+oControl.mod_grip = 1;
 oControl.mod_spider = 2;
 oControl.mod_jumpball = 3;
 oControl.mod_hijump = 4;

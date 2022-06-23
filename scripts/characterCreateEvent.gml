@@ -64,7 +64,7 @@ fxtimer = 0;
 onfire = 0;
 sbmove = 0;
 sbstate = 0;
-sball = 0;
+sball = 1;
 speedboost_steps = 0;
 speedboost = 0;
 shinespark = 0;
@@ -152,6 +152,7 @@ GRABBEDQUEEN = 53;
 GRABBEDQUEENMORPH = 54;
 GRABBEDQUEENBELLY = 55;
 LOCKEDBALL = 60;
+DREADSLIDE = 69;
 DEFEATED = 100;
 // inputs:
 kLeft = 0;
@@ -255,3 +256,9 @@ if (1) {
     alarm[3] = 300;
 } else alarm[3] = 1;
 empspark = -4;
+//sunsette added stuff
+vSpin = 0;
+sidePressTimer = 0;
+airStoredXvel = 0;
+machball = 0;
+slideCooldown = 0;

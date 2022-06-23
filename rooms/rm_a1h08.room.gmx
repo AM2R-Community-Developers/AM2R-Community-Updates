@@ -98,7 +98,6 @@ instance_create(80, 432, scr_itemsopen(oControl.mod_spider));</code>
     <instance objName="oBlockShoot" x="160" y="176" name="inst_108035" locked="0" code="&#xA;link_tile(tlBrick1, 64, 160);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oGotoRoom" x="144" y="0" name="inst_108036" locked="0" code="targetroom = rm_a1h07;&#xA;targetx = 464;&#xA;targety = 224;&#xA;height = 64;&#xA;direction = 90;&#xA;camstartx = 480;&#xA;camstarty = 224;&#xA;transitionx = 144;&#xA;transitiony = 236;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oGotoRoom" x="0" y="416" name="inst_108037" locked="0" code="targetroom = rm_a1a08;&#xA;targetx = 944;&#xA;targety = 176;&#xA;height = 80;&#xA;direction = 180;&#xA;camstartx = 944;&#xA;camstarty = 176;&#xA;transitionx = 316;&#xA;transitiony = 176;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oItemSpiderBall" x="80" y="432" name="inst_1B7F52D9" locked="0" code="instance_destroy();" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid4x1" x="-64" y="416" name="inst_26617934" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid4x1" x="-64" y="384" name="inst_B92C3A8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
