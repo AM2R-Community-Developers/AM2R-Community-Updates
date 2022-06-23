@@ -1,3 +1,5 @@
+# This currently just says the same thing as AM2R's github, I'll update it eventually.
+
 # AM2R-Community-Updates
 
 **Please do not request help until you have read this entire document. The vast majority of your questions should be answered within it, and we will be able to easily tell if you have not followed the installation instructions thoroughly.**
