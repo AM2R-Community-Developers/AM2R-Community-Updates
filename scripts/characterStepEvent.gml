@@ -557,7 +557,7 @@ if (state == BALL || state == AIRBALL) {
                 sfx_play(sndBrake); //test3
             }
             facing = LEFT;
-            if (state == BALL && dash == 0) xVel = -4.5 /(1+walking); //added
+            if (state == BALL && dash == 0) xVel = -6 /(1+walking); //added
             //if (state == BALL && dash > 0) xVel = -10;
             if (state == AIRBALL && dash == 0) xVel = -4.5;
         }
@@ -572,14 +572,14 @@ if (state == BALL || state == AIRBALL) {
                 sfx_play(sndBrake); //test2
             }
             facing = RIGHT;
-            if (state == BALL && dash == 0) xVel = 4.5 /(1+walking); //added
+            if (state == BALL && dash == 0) xVel = 6 /(1+walking); //added
             //if (state == BALL && dash > 0) xVel = 10;
             if (state == AIRBALL && dash == 0) xVel = 4.5;
         }
     }
     if (fixedx > 0) {
-        if (facing == RIGHT) xVel = 4.5;
-        if (facing == LEFT) xVel = -4.5;
+        if (facing == RIGHT) xVel = 4;
+        if (facing == LEFT) xVel = -4;
     }
     //if (state == AIRBALL && dash > 0 && airtime > 1) {
         //if (facing == RIGHT) xVel = 9;
@@ -1326,7 +1326,7 @@ if (global.spiderball == 1 && sball == 0 && moverobj == 0 && invincible == 0 && 
     }
 }
 //below is grounded morph
-if (global.morphball == 1 && unmorphing == 0 && nomorph == 0 && (global.opmrpstyle == 1 && kDown && kDownPushedSteps == 0 && state == DUCKING && (global.opaimstyle == 0 && (kAim == 0 || kAim && aimdirection == 4 || kAim && aimdirection == 5) || global.opaimstyle == 1) || kMorph && kMorphPushedSteps == 0 && (state == STANDING || state == DUCKING ||(state == RUNNING && (kLeft == 0 && kRight == 0)||(global.currentsuit != 2 && (inwater == 1 || waterfall == 1)))))) {
+if (global.morphball == 1 && unmorphing == 0 && nomorph == 0 && (global.opmrpstyle == 1 && kDown && kDownPushedSteps == 0 && state == DUCKING && (global.opaimstyle == 0 && (kAim == 0 || kAim && aimdirection == 4 || kAim && aimdirection == 5) || global.opaimstyle == 1) || kMorph && kMorphPushedSteps == 0 && (state == STANDING || state == DUCKING || state == RUNNING))) {
     state = BALL;
     morphing = 1;
     image_index = 0;
@@ -1338,15 +1338,15 @@ if (global.morphball == 1 && unmorphing == 0 && nomorph == 0 && (global.opmrpsty
     sfx_play(sndMorph);
 }
 //below is dreadslide
-if ((slideCooldown < 1)&& (kRight > 0 || kLeft > 0) && state == RUNNING && kMorph && kMorphPushedSteps == 0 && (global.currentsuit < 2 && inwater == 0 && waterfall == 0 || global.currentsuit == 2)){
-    state = DREADSLIDE;
-    statetime = 0;
-    turning = 0;
-    canturn = 0;
-    image_index = 0;
-    speedboost_steps = 0;
-    speedboost = 0;
-}
+//if ((slideCooldown < 1)&& (kRight > 0 || kLeft > 0) && state == RUNNING && kMorph && kMorphPushedSteps == 0 && (global.currentsuit < 2 && inwater == 0 && waterfall == 0 || global.currentsuit == 2)){
+//    state = DREADSLIDE;
+//   statetime = 0;
+//    turning = 0;
+//    canturn = 0;
+//    image_index = 0;
+//    speedboost_steps = 0;
+//   speedboost = 0;
+//}
 if (state == DREADSLIDE){
     canturn = 0;
     dash = 0;

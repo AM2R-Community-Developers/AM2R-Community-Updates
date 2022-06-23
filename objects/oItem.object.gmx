@@ -102,7 +102,7 @@ text2 = "";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.item[itemid] = 2;
+            <string>global.item[itemid] = 1;
 global.itemstaken += 1;
 myposx = floor(x / 320);
 myposy = floor((y - 8) / 240);
