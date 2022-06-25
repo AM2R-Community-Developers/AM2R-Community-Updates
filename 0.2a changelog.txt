@@ -1,11 +1,13 @@
 Changelog from vanilla AM2R to Momentum Mod 0.2a:
 MECHANICS CHANGES:
 	RUNNING AND JUMPING:
-		-Speed increases gradually while jumping, even before acquiring speedbooster
+		-Running responds to player input slightly faster.
+		-Speed increases gradually while running, even before acquiring speedbooster
 		-Jumping before speedbooster is active will no longer cap your speed
 		-While in spinjump state, there is no air friction, so you can maintain your speed. In normal jumping/falling state, you will slow down quickly, so respin to keep speed.
 		-The faster you run, the higher you jump.
-		-New sound effect that indicates speedbooster activation.
+		-New sound effect and graphic that indicates speedbooster activation.
+		-Upon landing, Samus will no longer stop in her tracks for 5 frames like she does in vanilla (this was likely done to mimic gba metroid movement.)
 	BALL STATES:
 		-Mockball is now possible before (and after) speedbooster, functions like super metroid. To activate, morph within 10 frames of landing.
 		-Morphing in the air no longer halts vertical or horizontal speed (unmorphing does.)
