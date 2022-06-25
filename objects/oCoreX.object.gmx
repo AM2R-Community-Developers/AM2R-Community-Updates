@@ -238,7 +238,7 @@ if(state == 6) {
     
     if(image_xscale &lt;= 0) {
         if(room == rm_a2a04) {
-            with(instance_create(oCharacter.x-8, oCharacter.y-8, scr_itemsopen(oControl.mod_jumpball))) {
+            with(instance_create(oCharacter.x-8, oCharacter.y-8, scr_itemsopen(oControl.mod_grip))) {
                 visible = false;
                 active = 1;
             }

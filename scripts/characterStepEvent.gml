@@ -8,6 +8,11 @@ if (isCollisionBottom(1) || isCollisionPlatformBottom(1)) {
 SetSpinJumpSound();
 if (state == STANDING || state == RUNNING) {
     idle += 1;
+    if (turning == 1){
+    xFric = 0;
+    xVel *= 0.25;
+    xAcc = 0;
+    }
     if (state == RUNNING && speedboost) {
         if (facing == RIGHT && (kRight == 0 || kLeft > 0) || facing == LEFT && (kLeft == 0 || kRight > 0)) {
             state = BRAKING;
@@ -49,9 +54,11 @@ if (state == STANDING || state == RUNNING) {
         if (position_meeting(x - 7, y - 8, oSolid) == false && position_meeting(x - 7, y - 24, oSolid) == false) {
             if (!inwater && waterfall == 0 || global.currentsuit == 2) {
                 if (statetime <= 5 && kLeft > 0 && turning = 0 && state == RUNNING){
+                if (turning == 0){
                 xVel = -2.2;
                 //xAcc = -2.4;
                 xFric = 1;
+                } else xFric = 0;
                 }
                 //hspeed = 0;
                 if (statetime <= 5) xAcc -= runAcc / 8;
@@ -104,9 +111,11 @@ if (state == STANDING || state == RUNNING) {
         if (position_meeting(x + 7, y - 8, oSolid) == false && position_meeting(x + 7, y - 24, oSolid) == false) {
             if (!inwater && waterfall == 0 || global.currentsuit == 2) {
                 if (statetime <= 5 && turning = 0 && kRight > 0 && state == RUNNING){
+                if (turning == 0) {
                 //xAcc = 2.4;
                 xVel = 2.2;
                 xFric = 1;
+                } else xFric = 0;
                 }
                 //hspeed = 0;
                 if (statetime <= 5) xAcc += runAcc / 8;
@@ -2024,7 +2033,6 @@ if (state == RUNNING) {
     if (dash > 0 && dash <= 25) xFric = frictionRunningX + dash * 0.0065;
     if (dash >25 && dash <=39) xFric = frictionRunningX + 25 * 0.0065;
     if (dash > 39 && dash <= 45) xFric = frictionRunningX + dash * 0.006;
-    if (turning == 1) xFric = 0;
     if (shinespark) xFric = 1;
     } else {
     xFric = 1;    

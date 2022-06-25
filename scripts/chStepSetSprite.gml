@@ -3334,12 +3334,14 @@ if (state == SUPERJUMP && fxtimer == 0 && sjball == 1) {
     if (facing == LEFT && sjdir != 0) myspark.image_xscale = -1;
 }
 if (speedboostFXTimer > 0 && facing == RIGHT){
-    myspark = instance_create(x + 10, y - 12, oFXAnimSpark);
+    myspark = instance_create(x + 12, y - 15, oFXAnimSpark);
     myspark.image_angle = 0;
+    myspark.additive = 1;
 }
 if (speedboostFXTimer > 0 && facing == LEFT){
-    myspark = instance_create(x - 10, y - 12, oFXAnimSpark);
+    myspark = instance_create(x - 12, y - 15, oFXAnimSpark);
     myspark.image_angle = 180;
+    myspark.additive = 1;
 }
 if (state == RUNNING && speedboost && (fxtimer == 0 || fxtimer == 2 || fxtimer == 4)) myspark = instance_create(x, y - random(36), oSBSpark);
 if (onfire && fxtimer == 0) {
