@@ -638,6 +638,7 @@ if (global.speedbooster && speedboost == 0 && dash == 45) {
     sjball = 0;
     charge = 0;
     sfx_play(sndSBSonicBoom);
+    speedboostFXTimer = 5;
     alarm[2] = 30;
 }
 if (state == SJSTART) {
@@ -2641,6 +2642,7 @@ if (vSpin > 0 && vjump == 0 && state == JUMPING){
 if platformCharacterIs(IN_AIR) {
     airStoredXvel = xVel;
 }
+if (speedboostFXTimer > 0) speedboostFXTimer -=1;
 if (slideCooldown > 0) slideCooldown -= 1
 if machball > 0 && state == BALL && (kRight > 0 || kLeft > 0){
     if (airStoredXvel > 6 && kLeft > 0){

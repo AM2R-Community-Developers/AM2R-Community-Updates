@@ -262,3 +262,4 @@ sidePressTimer = 0;
 airStoredXvel = 0;
 machball = 0;
 slideCooldown = 0;
+speedboostFXTimer = 0;
