@@ -2704,7 +2704,7 @@ if machball > 0 && state == BALL && (kRight > 0 || kLeft > 0){
         xVel = -6;
     }
     //LoopSoundMono(sndChargeLoop);
-    LoopSoundMono(spinjump_sound);
+    //LoopSoundMono(spinjump_sound);
     if (state != BRAKING){
     if xVel > 0 && kLeft > 0 {
         xVel = 0;
