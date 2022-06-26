@@ -1479,6 +1479,7 @@ if (state == BRAKING) {
     }
     if (statetime >= 15 && sjball != 1){
         state = STANDING;
+        dash = 0;
         canturn = 1;
         idle = 0;
         image_index = 0;
@@ -1487,8 +1488,8 @@ if (state == BRAKING) {
     }
 }
 if (state == BRAKING && statetime > 3 && kDown && kLeft == 0 && kRight == 0) {
-    if (sjball == 0) state = DUCKING;
-    if (sjball == 1) state = BALL;
+    //if (sjball == 0) state = DUCKING;
+    //if (sjball == 1) state = BALL;
     if (brakeSB > 0){
         statetime = 0;
         brakeSB = 0;
@@ -1503,10 +1504,19 @@ if (state == BRAKING && statetime > 3 && kDown && kLeft == 0 && kRight == 0) {
         expl.depth = -150;
     }
     else{
-        state = BALL;
-        canturn = 1;
-        sjball = 0;
-        machball = 0;
+        if (sjball > 0){
+            state = BALL;
+            canturn = 1;
+            sjball = 0;
+            machball = 0;
+            dash = 0;
+        }
+        else {
+            state = DUCKING;
+            statetime = 0;
+            turning = 0;
+            sfx_play(sndCrouch);
+        }
     }
 }
 //below is uncrouch
@@ -2566,7 +2576,7 @@ if (footstep == 0) {
     }
 }
 if (!sfx_isplaying(spinjump_sound) && state == JUMPING && vjump == 0 && statetime >= 10) LoopSoundMono(spinjump_sound);
-if (sfx_isplaying(spinjump_sound) && (state != JUMPING || state == JUMPING && vjump == 1)) sfx_stop(spinjump_sound);
+if (sfx_isplaying(spinjump_sound) && (state != JUMPING && machball == 0 || state == JUMPING && vjump == 1 )) sfx_stop(spinjump_sound);
 if (sfx_isplaying(sndSBLoop) && dash == 0) sfx_stop(sndSBLoop);
 if (sfx_isplaying(sndSBStart) && dash == 0) sfx_stop(sndSBStart);
 if (charge == 0 && sfx_isplaying(sndSBChargeLoop)) sfx_stop(sndSBChargeLoop);
@@ -2693,7 +2703,8 @@ if machball > 0 && state == BALL && (kRight > 0 || kLeft > 0){
     } else {
         xVel = -6;
     }
-    LoopSoundMono(sndChargeLoop);
+    //LoopSoundMono(sndChargeLoop);
+    LoopSoundMono(spinjump_sound);
     if (state != BRAKING){
     if xVel > 0 && kLeft > 0 {
         xVel = 0;
