@@ -594,7 +594,7 @@ if (state == BALL || state == AIRBALL) {
             facing = LEFT;
             if (state == BALL && dash == 0) xVel = -6 /(1+walking); //added
             //if (state == BALL && dash > 0) xVel = -10;
-            if (state == AIRBALL && dash == 0) xVel = -6;
+            if (state == AIRBALL && dash == 0) xVel = -3.5;
         }
     }
     if (kRight > 0 && fixedx == 0) {
@@ -609,7 +609,7 @@ if (state == BALL || state == AIRBALL) {
             facing = RIGHT;
             if (state == BALL && dash == 0) xVel = 6 /(1+walking); //added
             //if (state == BALL && dash > 0) xVel = 10;
-            if (state == AIRBALL && dash == 0) xVel = 6;
+            if (state == AIRBALL && dash == 0) xVel = 3.5;
         }
     }
     if (fixedx > 0) {
@@ -654,7 +654,7 @@ if (state == BALL || state == AIRBALL) {
 chStepSpiderBall();
 
 if ((walking == 1 || (inwater || waterfall > 0) && global.currentsuit < 2 || turning) && monster_drain == 0 && state == RUNNING) speedboost_steps = 0;
-if (dash == 0 && state == RUNNING && speedboost_steps > 25 && (inwater == 0 || global.currentsuit == 2)) dash = 1;
+if (dash == 0 && state == RUNNING && speedboost_steps > 20 && (inwater == 0 || global.currentsuit == 2)) dash = 1;
 if (global.speedbooster && speedboost == 0 && dash == 45 && state != BRAKING && state != STANDING) {
     speedboost = 1;
     canturn = 0;
