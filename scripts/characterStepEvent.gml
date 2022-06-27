@@ -41,6 +41,14 @@ if (state == STANDING || state == RUNNING) {
             }
         } // if (facing == RIGHT && (kRight == 0 || kLeft > 0) || facing == LEFT && (kLeft == 0 || kRight > 0))
     } // if (state == RUNNING && speedboost)
+    //if (walking < 0 && statetime <=5) xVel *= 0.5;
+    if (state == RUNNING && statetime <=8){
+    if (facing == RIGHT){
+        if (xVel > 1) xVel = 1;
+    } else {
+        if (xVel < -1) xVel = -1;
+    }
+    }
     if (kLeft > 0) {
         if (facing == RIGHT && turning == 0 && speedboost == 0 && aimlock == 0) {
             turning = 1;
@@ -54,14 +62,17 @@ if (state == STANDING || state == RUNNING) {
         if (position_meeting(x - 7, y - 8, oSolid) == false && position_meeting(x - 7, y - 24, oSolid) == false) {
             if (!inwater && waterfall == 0 || global.currentsuit == 2) {
                 if (statetime <= 5 && kLeft > 0 && turning = 0 && state == RUNNING){
-                if (turning == 0){
-                xVel = -2.2;
-                //xAcc = -2.4;
+                if (turning == 0 && kWalk == 0 && walking == 0 && speedboost == 0){
+                xVel = -1;
+                xAcc -= runAcc / 8;
                 xFric = 1;
-                } else xFric = 0;
+                } else if (walking > 0){ 
+                    xAcc *= 0.1;
+                    xVel = -0.25;
+                    }
                 }
                 //hspeed = 0;
-                if (statetime <= 5) xAcc -= runAcc / 8;
+                //if (statetime <= 5) xAcc -= runAcc / 8;
                 if (statetime > 5) {
                     if (walking == 0) {
                         xAcc -= runAcc;
@@ -111,14 +122,17 @@ if (state == STANDING || state == RUNNING) {
         if (position_meeting(x + 7, y - 8, oSolid) == false && position_meeting(x + 7, y - 24, oSolid) == false) {
             if (!inwater && waterfall == 0 || global.currentsuit == 2) {
                 if (statetime <= 5 && turning = 0 && kRight > 0 && state == RUNNING){
-                if (turning == 0) {
-                //xAcc = 2.4;
-                xVel = 2.2;
+                if (turning == 0 && kWalk == 0 && walking == 0 && speedboost == 0) {
+                xAcc += runAcc / 8;
+                xVel = 1;
                 xFric = 1;
-                } else xFric = 0;
+                } else if (walking > 0) {
+                        xVel = 0.25;
+                        xAcc *= 0.1;
+                    }
                 }
                 //hspeed = 0;
-                if (statetime <= 5) xAcc += runAcc / 8;
+                //if (statetime <= 5) xAcc += runAcc / 8;
                 if (statetime > 5) {
                     if (walking == 0) {
                         xAcc += runAcc;
@@ -1471,11 +1485,13 @@ if (state == BRAKING) {
         statetime = 0;
         y += 1;
     }
-    if ((sjball == 1 || machball > 0) && statetime == 15) {
+    if ((sjball == 1) && statetime == 15) {
         state = BALL;
         canturn = 1;
         sjball = 0;
         machball = 0;
+        unmorphing = 0;
+        morphing = 1;
     }
     if (statetime >= 15 && sjball != 1){
         state = STANDING;
@@ -2693,36 +2709,37 @@ if platformCharacterIs(IN_AIR) {
 if (speedboostFXTimer > 0) speedboostFXTimer -=1;
 if (slideCooldown > 0) slideCooldown -= 1
 if machball > 0 && state == BALL && (kRight > 0 || kLeft > 0){
-    if (airStoredXvel < -6 && kLeft > 0){
-        xVel = (airStoredXvel);
-    } else {
-        xVel = 6;
+    if (kLeft > 0 && airStoredXvel <= -7){
+        if (airStoredXvel > 0) xVel = (airStoredXvel) * -1;
+        else xVel = (airStoredXvel);
     }
-    if (airStoredXvel > 6 && kRight > 0){
-        xVel = (airStoredXvel);
-    } else {
-        xVel = -6;
+    if (kRight > 0 && airStoredXvel >= 7){
+        if (airStoredXvel < 0) xVel = (airStoredXvel) * -1;
+        else xVel = (airStoredXvel);
     }
     //LoopSoundMono(sndChargeLoop);
     //LoopSoundMono(spinjump_sound);
-    if (state != BRAKING){
-    if xVel > 0 && kLeft > 0 {
-        xVel = 0;
-        machball = 0;
-    }
-    if xVel < 0 && kRight > 0 {
-        xVel = 0;
-        machball = 0;
-    }
-    }
+    //if (state != BRAKING){
+    //if xVel > 0 && kLeft > 0 {
+    //    xVel = 0;
+    //    machball = 0;
+    //}
+    //if xVel < 0 && kRight > 0 {
+    //    xVel = 0;
+    //    machball = 0;
+    //}
+    //} 
 }
 
 if (state != BALL && state != BRAKING) {
     machball = 0;
 }
-if (machball > 0 && kRight > 0 && kLeft > 0 && state != BRAKING){
+if (machball > 0 && kRight == 0 && kLeft == 0 && state != BRAKING){
     machball = 0;
     dash = 0;
+    state = BRAKING;
+    statetime = 0;
+    unmorphing = 0;
 }
 if (dash > 40 && dash < 41 && state == RUNNING){
     sfx_play(sndSBStart);
@@ -2731,3 +2748,18 @@ if (sfx_isplaying(sndSBStart) && speedboost == 0 && state != RUNNING) sfx_stop(s
 if (state != BRAKING) brakeSB = 0;
 //if (state == STANDING) dash = 0;
 //if (state != RUNNING && state != BRAKING && platformCharacterIs(ON_GROUND)) dash = 0;
+if (machball > 0){
+        if (kRight > 0) {
+            if (airStoredXvel < 7){ 
+            xVel = 7;
+            airStoredXvel = 7;
+            }
+        }
+        if (kLeft > 0) {
+            if (airStoredXvel > -7){
+            xVel = -7;
+            airStoredXvel = -7;
+            }
+        }
+    if (dash < 20) dash = 20;
+}
