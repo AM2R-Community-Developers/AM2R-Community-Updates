@@ -29,3 +29,6 @@ Changes from 0.2a to 0.3a:
 -Fixed mockball speeds sometimes not translating to the player's prior airspeed. Added a minimum mockball speed.
 -Fixed a bug where doing mockball at below speedbooster speed would allow you to store a shinespark, even without speedbooster.
 -Fixed a bug where ballsparking into a slope would steal all of your speed.
+
+0.3.1a:
+-Minor bug fixes.
