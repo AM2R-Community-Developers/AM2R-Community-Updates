@@ -44,9 +44,9 @@ if (state == STANDING || state == RUNNING) {
     //if (walking < 0 && statetime <=5) xVel *= 0.5;
     if (state == RUNNING && statetime <=8){
     if (facing == RIGHT){
-        if (xVel > 1) xVel = 1;
+        if (xVel > 0.5) xVel = 0.5;
     } else {
-        if (xVel < -1) xVel = -1;
+        if (xVel < -0.5) xVel = -0.5;
     }
     }
     if (kLeft > 0) {
@@ -178,10 +178,10 @@ if (platformCharacterIs(IN_AIR)) {
         state = JUMPING;
         vjump = 1;
     }
-    if (vjump == 1){
-        dash = 0;
-        speedboost = 0;
-    }
+    //if (vjump == 1){
+        //dash = 0;
+        //speedboost = 0;
+    //}
     if (yVel < 0 && kJump == 0 && state != AIRBALL) yVel = 0;
     if (yVel < 0 && kJump == 0 && state == AIRBALL) {
         if (fixedy == 0 && ballbounce == 0) yVel = 0;
@@ -351,7 +351,7 @@ if (platformCharacterIs(IN_AIR)) {
                 facing = LEFT;
             }
             if (kLeftPushedSteps > 3) {
-                if (vjump == 1 || jumpfwd == 0 || (inwater || waterfall > 0) && global.currentsuit != 2) xAcc = -0.4;
+                if (vjump == 1 || jumpfwd == 0 || (inwater || waterfall > 0) && global.currentsuit != 2 && dash < 5) xAcc = -0.4;
             }
             if (position_meeting(x + 8, y - 16, oSolid) == true && kLeftPushedSteps < 9 && vjump == 0) xVel = 0;
         }
@@ -366,7 +366,7 @@ if (platformCharacterIs(IN_AIR)) {
                 facing = RIGHT;
             }
             if (kRightPushedSteps > 3) {
-                if (vjump == 1 || jumpfwd == 0 || (inwater || waterfall > 0) && global.currentsuit != 2) xAcc = 0.4;
+                if (vjump == 1 || jumpfwd == 0 || (inwater || waterfall > 0) && global.currentsuit != 2 && dash < 5) xAcc = 0.4;
             }
             if (position_meeting(x - 8, y - 16, oSolid) == true && kRightPushedSteps < 9 && vjump == 0) xVel = 0;
         }
@@ -458,12 +458,13 @@ if ((isCollisionBottom(1) || isCollisionPlatformBottom(1)) && platformCharacterI
 //below is falling
 if (isCollisionBottom(1) == 0 && isCollisionPlatformBottom(1) == 0 && platformCharacterIs(ON_GROUND)) {
     xAcc = xAcc / 3.5;
+    xVel = xVel * 0.5
     if (state != AIRBALL && state != BALL) state = JUMPING;
     if (state == BALL){
         state = AIRBALL;
         sball = 0;
     }
-    if (kJump == 0) vjump = 1;
+    vjump = 1;
     y += 1;
 }
 if (isCollisionTop(1)) {
@@ -505,9 +506,9 @@ if (kJump && kJumpPushedSteps == 0 && state != BALL && state != AIRBALL && state
     
     }
     instance_create(x, y, oJTrail);
-    if ((dash > 0 && dash < 45)) xVel *= 0.5
+    if ((dash >= 5 && dash < 45)) xVel *= 0.5
     else{ 
-        if (dash == 0) xAcc = 0;
+        if (dash < 5) xAcc = 0;
         if (dash == 45) xVel *=1;
     }
 }
@@ -654,7 +655,7 @@ if (state == BALL || state == AIRBALL) {
 chStepSpiderBall();
 
 if ((walking == 1 || (inwater || waterfall > 0) && global.currentsuit < 2 || turning) && monster_drain == 0 && state == RUNNING) speedboost_steps = 0;
-if (dash == 0 && state == RUNNING && speedboost_steps > 20 && (inwater == 0 || global.currentsuit == 2)) dash = 1;
+if (dash == 0 && state == RUNNING && speedboost_steps > 5 && (inwater == 0 || global.currentsuit == 2)) dash = 1;
 if (global.speedbooster && speedboost == 0 && dash == 45 && state != BRAKING && state != STANDING) {
     speedboost = 1;
     canturn = 0;
@@ -2083,12 +2084,12 @@ if (state == STANDING && kRight == 0 && kLeft == 0){
 if (state == RUNNING) {
     if (statetime > 5) {
     if (dash == 0) xFric = frictionRunningX;
-    if (dash > 0 && dash <= 27) xFric = frictionRunningX + dash * 0.0065;
-    if (dash >27 && dash <=39) xFric = frictionRunningX + 25 * 0.0065;
+    if (dash > 0 && dash <= 27) xFric = frictionRunningX + dash * 0.006;
+    if (dash >27 && dash <=39) xFric = frictionRunningX + 27 * 0.006;
     if (dash > 39 && dash <= 45) xFric = frictionRunningX + dash * 0.006;
     if (shinespark) xFric = 1;
     } else {
-    xFric = 1;    
+    xFric = 0.9;    
     }
 }
 if (state == BRAKING) xFric = frictionRunningX * 2.8;
@@ -2096,8 +2097,8 @@ if (state == SUPERJUMP) xFric = 1;
 if (state == BALL) {
     if (dash == 0) xFric = frictionRunningX * 2;
     if (dash > 0 && speedboost == 0){
-        if (dash > 0 && dash <= 27) xFric = frictionRunningX + dash * 0.0065 * 3.25;
-        if (dash >27 && dash <=39) xFric = frictionRunningX + 25 * 0.0065 * 3;
+        if (dash > 0 && dash <= 27) xFric = frictionRunningX + dash * 0.006 * 3.25;
+        if (dash >27 && dash <=39) xFric = frictionRunningX + 27 * 0.006 * 3;
         if (dash > 39 && dash <= 45) xFric = frictionRunningX + dash * 0.006 * 2.5;
     }
     if (shinespark) xFric = 1;
@@ -2105,7 +2106,8 @@ if (state == BALL) {
 if (state == AIRBALL) {
     if (dash == 0) xFric = frictionRunningX * 2;
     if (dash > 0 && speedboost == 0){
-        xFric = 1;
+        if (machball > 0) xFric = 0.8
+        else xFric = 1;
     }
     if (speedboost > 0) xFric = 1;
     if (moverobj) {
@@ -2114,7 +2116,13 @@ if (state == AIRBALL) {
     }
 }
 if (state == JUMPING) {
-    if (vjump == 1) xFric = frictionJumpingX;
+    if (vjump == 1){
+        if (kJump == 0 || dash < 5)xFric = frictionJumpingX;
+        else { 
+            xFric = 1;
+            xAcc = 0;
+        }
+    }
     if (vjump == 0) xFric = 1;
     if (walljumping == 1 || state == SPIDERBALL) xFric = 0;
 }
@@ -2623,8 +2631,8 @@ if (fxtimer >= 0) fxtimer -= 1;
 if (fxtimer == -1) fxtimer = 5;
 if (fixedx > 0) fixedx -= 1;
 if (fixedy > 0) fixedy -= 1;
-if (dash > 0 && dash < 40 && state == RUNNING) dash += 1;
-if (dash >= 40 && dash < 45 && state == RUNNING) dash += 0.5;
+if (dash > 0 && dash < 16 && state == RUNNING) dash += 1;
+if (dash >= 16 && dash < 45 && state == RUNNING) dash += 0.5;
 //run key leftover
 //if (dash > 0 && dash < 45 && state == RUNNING && kWalk > 0) dash += 1;
 if (shinespark > 0) shinespark -= 1;
@@ -2731,7 +2739,7 @@ if machball > 0 && state == BALL && (kRight > 0 || kLeft > 0){
     //} 
 }
 
-if (state != BALL && state != BRAKING) {
+if (state != BALL && state != BRAKING && state != AIRBALL) {
     machball = 0;
 }
 if (machball > 0 && kRight == 0 && kLeft == 0 && state != BRAKING){
