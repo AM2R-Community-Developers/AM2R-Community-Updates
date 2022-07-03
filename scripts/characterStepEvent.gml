@@ -320,7 +320,7 @@ if (platformCharacterIs(IN_AIR)) {
         if (isCollisionUpLeft() == 1 && kLeft == 0) x += 1 + (statetime < 2) + (statetime < 4);
     }
     //below is spinjump air state
-    if (vjump == 0 && dash == 0 && state != AIRBALL && vSpin == 0) {
+    if (vjump == 0 && dash < 7 && state != AIRBALL && vSpin == 0) {
         if (sidePressTimer == 0) {
             if (!inwater || global.currentsuit == 2) {
                 if (facing == LEFT) xVel = -2.4;
@@ -358,7 +358,7 @@ if (platformCharacterIs(IN_AIR)) {
                 facing = LEFT;
             }
             if (kLeftPushedSteps > 3) {
-                if (vjump == 1 || jumpfwd == 0 || (inwater || waterfall > 0) && global.currentsuit != 2 && dash < 5) xAcc = -0.4;
+                if (vjump == 1 || jumpfwd == 0 || (inwater || waterfall > 0) && global.currentsuit != 2 && dash < 7) xAcc = -0.4;
             }
             if (position_meeting(x + 8, y - 16, oSolid) == true && kLeftPushedSteps < 9 && vjump == 0) xVel = 0;
         }
@@ -373,7 +373,7 @@ if (platformCharacterIs(IN_AIR)) {
                 facing = RIGHT;
             }
             if (kRightPushedSteps > 3) {
-                if (vjump == 1 || jumpfwd == 0 || (inwater || waterfall > 0) && global.currentsuit != 2 && dash < 5) xAcc = 0.4;
+                if (vjump == 1 || jumpfwd == 0 || (inwater || waterfall > 0) && global.currentsuit != 2 && dash < 7) xAcc = 0.4;
             }
             if (position_meeting(x - 8, y - 16, oSolid) == true && kRightPushedSteps < 9 && vjump == 0) xVel = 0;
         }
@@ -402,12 +402,13 @@ if ((isCollisionBottom(1) || isCollisionPlatformBottom(1)) && platformCharacterI
         if (state != AIRBALL) {
             idle = 0;
             dash = 0;
-            statetime = 0;
             if (kRight > 0 || kLeft > 0) {
                 state = RUNNING;
+                statetime = 8;
             }
             else {
-                state = STANDING;            
+                state = STANDING;   
+                statetime = 0;         
             }
         }
             PlayLandingSound(get_floor_material());
@@ -423,7 +424,7 @@ if ((isCollisionBottom(1) || isCollisionPlatformBottom(1)) && platformCharacterI
                 sfx_stop(sndSJLoop);
             }
             else {
-                if dash > 0 {    
+                if dash > 7 {    
                     machball = 1;
                 }
             }
@@ -502,7 +503,7 @@ if (kJump && kJumpPushedSteps == 0 && state != BALL && state != AIRBALL && state
     if (kLeft == 0 && kRight == 0 || aimlock || monster_drain > 0 && sidePressTimer == 0) {
         vjump = 1;
     } else vjump = 0;
-    if (!inwater || global.currentsuit >= 2) yAcc += initialJumpAcc + (dash * -0.1); 
+    if (!inwater || global.currentsuit >= 2) yAcc += initialJumpAcc + (dash * -0.125); 
     else yAcc += initialJumpAcc;
     jumpfwd = 1;
     hijump = 1;
@@ -513,15 +514,15 @@ if (kJump && kJumpPushedSteps == 0 && state != BALL && state != AIRBALL && state
     
     }
     instance_create(x, y, oJTrail);
-    if ((dash >= 5 && dash < 45)) xVel *= 0.5
+    if ((dash >= 7 && dash < 45)) xVel *= 0.5
     else{ 
-        if (dash < 5) xAcc = 0;
+        if (dash < 7) xAcc = 0;
         if (dash == 45) xVel *=1;
     }
 }
 if (kJump == 0 || platformCharacterIs(ON_GROUND)) hijump = 0;
 if (global.hijump && kJump && state == JUMPING && hijump && monster_drain == 0) {
-    if ((!inwater && waterfall == 0 || global.currentsuit >= 2) && statetime <= 11) yVel = initialJumpAcc + (dash * -0.05);
+    if ((!inwater && waterfall == 0 || global.currentsuit >= 2) && statetime <= 11) yVel = initialJumpAcc + (dash * -0.075);
 }
 if (monster_drain > 0) {
     hijump = 0;
@@ -557,10 +558,10 @@ if (state == BALL || state == AIRBALL) {
         image_index = 0;
     }  
     
-    if (machball > 0) {
+    if (machball > 0 || dash >= 45) {
         sjball = 1;
         if (state == BALL && (facing == RIGHT && kRight == 0 || facing == LEFT && kLeft == 0)) {
-            dash = 0;
+            //dash = 0;
             state = BRAKING;
             statetime = 0;
             canturn = 1;
@@ -2111,7 +2112,7 @@ if (state == AIRBALL) {
 }
 if (state == JUMPING) {
     if (vjump == 1){
-        if (kJump == 0 || dash < 5)xFric = frictionJumpingX;
+        if (kJump == 0 || dash < 7)xFric = frictionJumpingX;
         else { 
             xFric = 1;
             xAcc = 0;
