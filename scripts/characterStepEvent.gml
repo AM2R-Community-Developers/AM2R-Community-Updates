@@ -298,7 +298,7 @@ if (platformCharacterIs(IN_AIR)) {
         novjump = 10;
         LoopSoundMono(spinjump_sound);
         jumpfwd = 1;
-        if (global.spacejump && (inwater == 0 && waterfall == 0 || global.currentsuit == 2) && monster_drain == 0) {
+        if (global.spacejump && vjump == 0 && (inwater == 0 && waterfall == 0 || global.currentsuit == 2) && monster_drain == 0) {
             state = JUMPING;
             yVel = initialJumpAcc;
             jumpfwd = 1;
@@ -321,7 +321,7 @@ if (platformCharacterIs(IN_AIR)) {
     }
     //below is spinjump air state
     if (vjump == 0 && dash < 7 && state != AIRBALL && vSpin == 0) {
-        if (sidePressTimer == 0) {
+        //if (sidePressTimer == 0) {
             if (!inwater || global.currentsuit == 2) {
                 if (facing == LEFT) xVel = -2.4;
                 if (facing == RIGHT) xVel = 2.4;
@@ -336,12 +336,12 @@ if (platformCharacterIs(IN_AIR)) {
                     if (xVel > 2.4) xVel = 2.4;
                 }
             }
-        }
-        else {
-            if (kRight == 0 && kLeft == 0) {
-                vSpin = 1;
-            }
-        }
+        //}
+        //else {
+            //if (kRight == 0 && kLeft == 0) {
+                //vSpin = 1;
+            //}
+        //}
     }
     if (state != AIRBALL) yAcc += gravityIntensity * 0.8;
     if (state == AIRBALL) yAcc += 0.3;
@@ -500,10 +500,10 @@ if ((state == STANDING || state == DUCKING || state == RUNNING) && charge > 0 &&
 //below is spin jump from ground
 if (kJump && kJumpPushedSteps == 0 && state != BALL && state != AIRBALL && state != DREADSLIDE && platformCharacterIs(ON_GROUND)) {
     state = JUMPING;
-    if (kLeft == 0 && kRight == 0 || aimlock || monster_drain > 0 && sidePressTimer == 0) {
+    if (kLeft == 0 && kRight == 0 && sidePressTimer <= 0 || aimlock || monster_drain > 0) {
         vjump = 1;
     } else vjump = 0;
-    if (!inwater || global.currentsuit >= 2) yAcc += initialJumpAcc + (dash * -0.125); 
+    if (!inwater || global.currentsuit >= 2) yAcc += initialJumpAcc + (dash * -0.1); 
     else yAcc += initialJumpAcc;
     jumpfwd = 1;
     hijump = 1;
@@ -511,7 +511,7 @@ if (kJump && kJumpPushedSteps == 0 && state != BALL && state != AIRBALL && state
     if (vjump == 1) sfx_play(sndJump);
     if (vjump == 0) {
         LoopSoundMono(spinjump_sound);
-    
+        if (kLeft == 0 && kRight == 0 && sidePressTimer > 0) vSpin = 1;
     }
     instance_create(x, y, oJTrail);
     if ((dash >= 7 && dash < 45)) xVel *= 0.5
@@ -522,14 +522,14 @@ if (kJump && kJumpPushedSteps == 0 && state != BALL && state != AIRBALL && state
 }
 if (kJump == 0 || platformCharacterIs(ON_GROUND)) hijump = 0;
 if (global.hijump && kJump && state == JUMPING && hijump && monster_drain == 0) {
-    if ((!inwater && waterfall == 0 || global.currentsuit >= 2) && statetime <= 11) yVel = initialJumpAcc + (dash * -0.075);
+    if ((!inwater && waterfall == 0 || global.currentsuit >= 2) && statetime <= 11) yVel = initialJumpAcc + (dash * -0.05);
 }
 if (monster_drain > 0) {
     hijump = 0;
     vjump = 1;
     if (yVel < -4) yVel = -4;
 }
-if (kJump && kJumpPushedSteps == 0 && state == JUMPING && global.spacejump == 1 && novjump == 0 && aimlock == 0 && monster_drain == 0 && (inwater == 0 && waterfall == 0 || global.currentsuit == 2) && (vjump == 0 || vjump == 1 && aimdirection != 6 && aimdirection != 7)) {
+if (vjump == 0 && kJump && kJumpPushedSteps == 0 && state == JUMPING && global.spacejump == 1 && novjump == 0 && aimlock == 0 && monster_drain == 0 && (inwater == 0 && waterfall == 0 || global.currentsuit == 2) && (vjump == 0)) {
     if (yVel > 2 && (!inwater && waterfall == 0 || global.currentsuit == 2) || yVel > 1 && (inwater || waterfall > 0) && global.currentsuit != 2) {
         state = JUMPING;
         yVel = initialJumpAcc;
@@ -1476,10 +1476,10 @@ if (state == BRAKING) {
     speedboost = 0;
     canturn = 0;
     image_index = 0;
-    if (dash >= 45){
+    if (dash >= 45 && statetime == 0){
         brakeSB = 1;
     }
-    else if statetime < 1 {
+    else if (statetime == 0) {
         dash = 0;
         brakeSB = 0;
     }
@@ -1502,6 +1502,8 @@ if (state == BRAKING) {
         sjball = 0;
         machball = 0;
         unmorphing = 0;
+        if (dash >= 45) brakeSB = 1;
+        else dash = 0;
     }
     if (statetime >= 15 && sjball != 1 && machball == 0){
         state = STANDING;
@@ -2721,18 +2723,6 @@ if machball > 0 && state == BALL && (kRight > 0 || kLeft > 0){
         if (airStoredXvel < 0) xVel = (airStoredXvel) * -1;
         else xVel = (airStoredXvel);
     }
-    //LoopSoundMono(sndChargeLoop);
-    //LoopSoundMono(spinjump_sound);
-    //if (state != BRAKING){
-    //if xVel > 0 && kLeft > 0 {
-    //    xVel = 0;
-    //    machball = 0;
-    //}
-    //if xVel < 0 && kRight > 0 {
-    //    xVel = 0;
-    //    machball = 0;
-    //}
-    //} 
 }
 
 if (state != BALL && state != BRAKING && state != AIRBALL) {
