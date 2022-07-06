@@ -288,9 +288,14 @@ if (platformCharacterIs(IN_AIR)) {
             }
         } // if (kRight > 0 && kJump == 1 && kJumpPushedSteps == 0 && position_meeting(x - 8, y - 16, oSolid) == true)
     } // if (state == JUMPING && statetime > 4 && position_meeting(x, y + 8, oSolid) == false && ...)
+    //below is zip code
     if (walljumping) {
-        if (facing == LEFT) while (isCollisionRight(1) == 0) x += 1;
-        if (facing == RIGHT) while (isCollisionLeft(1) == 0) x -= 1;
+        if (facing == LEFT) while (isCollisionRight(1) == 0) && collision_line(x, y, (x +4000), y, oSolid, false, false) { 
+            x += 1;
+        }
+        if (facing == RIGHT) while (isCollisionLeft(1) == 0) && collision_line(x, y, (x -4000), y, oSolid, false, false) { 
+            x -= 1;
+        }
     }
     if (kJump && kJumpPushedSteps == 0 && vjump == 1 && aimdirection != 6 && aimdirection != 7 && novjump == 0 && state != AIRBALL && aimlock == 0 && monster_drain == 0) {
         vjump = 0;
