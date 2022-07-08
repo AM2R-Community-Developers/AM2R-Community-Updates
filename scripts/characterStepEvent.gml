@@ -290,11 +290,17 @@ if (platformCharacterIs(IN_AIR)) {
     } // if (state == JUMPING && statetime > 4 && position_meeting(x, y + 8, oSolid) == false && ...)
     //below is zip code
     if (walljumping) {
-        if (facing == LEFT) while (isCollisionRight(1) == 0) && collision_line(x, y, (x +4000), y, oSolid, false, false) { 
-            x += 1;
-        }
-        if (facing == RIGHT) while (isCollisionLeft(1) == 0) && collision_line(x, y, (x -4000), y, oSolid, false, false) { 
-            x -= 1;
+        if (facing == LEFT) {
+            while (isCollisionRight(1) == 0) && ((collision_line(x, y, (x +400), y, oSolid, false, false) && (global.objdeactivate == 1)) || (global.objdeactivate == 0)) { 
+            x += 1; 
+            }
+            if (kMorph && kMorphPushedSteps == 0 && nomorph == 0 && justwalljumped < 1) x -= 12;
+        }        
+        if (facing == RIGHT) {
+            while (isCollisionLeft(1) == 0) && ((collision_line(x, y, (x -400), y, oSolid, false, false) && (global.objdeactivate == 1)) || (global.objdeactivate == 0)) { 
+            x -= 1
+            }
+            if (kMorph && kMorphPushedSteps == 0 && nomorph == 0 && justwalljumped < 1) x += 12;
         }
     }
     if (kJump && kJumpPushedSteps == 0 && vjump == 1 && aimdirection != 6 && aimdirection != 7 && novjump == 0 && state != AIRBALL && aimlock == 0 && monster_drain == 0) {
@@ -660,7 +666,7 @@ if (state == BALL || state == AIRBALL) {
         state = AIRBALL;
         statetime = 0;
         sball = 0;
-        //weird spiderball debug ^
+        //sball was getting set to 1 here, not sure why, setting it back lol
         sfx_play(sndBallBounce);
     }
 } // if (state == BALL || state == AIRBALL)
@@ -2762,3 +2768,4 @@ if (machball > 0){
         }
     if (dash < 20) dash = 20;
 }
+
