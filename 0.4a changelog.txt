@@ -1,0 +1,37 @@
+Changelog from vanilla AM2R to Momentum Mod 0.3a:
+MECHANICS CHANGES:
+	RUNNING AND JUMPING:
+		-Running responds to player input faster. (this does not apply when turning, so as to allow players to aim shots and position themselves more precisely.)
+		-Speed increases gradually (starting from vanilla run speed) while running, even before acquiring speedbooster
+		-Jumping before speedbooster is active will no longer cap your speed
+		-While in spinjump state, there is no air friction, so you can maintain your speed. In normal jumping/falling state, you will slow down quickly, so respin to keep speed.
+		-The faster you run, the higher you jump.
+		-New sound effect and graphic that indicates speedbooster activation.
+		-Upon landing, Samus will no longer stop in her tracks for 5 frames like she does in vanilla (this was likely done to mimic gba metroid movement.)
+		-Added vertical spinjump from RoS and Super.
+	BALL STATES:
+		-Mockball is now possible before (and after) speedbooster, functions like super metroid. To activate, morph within 12 frames of landing.
+		-Morphing in the air no longer halts vertical or horizontal speed (unmorphing does.)
+		-Unmorphing on the ground while holding left or right will put the player straight into the running state, instead of crouch.
+		-Unmorphing or leaving spin by aiming, while jump is held, will retain speed.
+		-Note that in earlier versions of momentum mod, spider ball's speed was doubled. This change has since been reverted.
+		-Spring ball is available from the start of the game.
+OTHER:
+	LEVEL DESIGN:
+		-Power grip is no longer available from the start of the game.
+			-Platform layouts before power grip is acquired has been altered to accomodate this change.
+			-Arachnus now drops Power Grip instead of Spring Ball.
+
+
+Changes from 0.3.1a to 0.4a:
+-Smoothed out walking and running- no teleports at the beginning of the state change
+-Retooled vertical spin jump to activate more like its original appearances.
+-Slowed down the player slightly overall allowing for better reaction times when moving through the level
+-gave player more options to preserve speed
+	-unmorphing or leaving spinjump while holding jump preserves speed, allowing for mockballs to be chained together
+	-if you don't want to jump the full height, release and re-press jump, then remorph before hitting the ground.
+	-this change also allows for mockball to be activated with super metroid inputs
+-gave mockball a minimum speed
+-speedboosting into a slope now maintains 100% of your speed instead of briefly slowing you down
+-fixed a large majority of zip crashes (if the game would have crashed, you'll get stuck in a wall instead.)
+	-Remaining crashes involve zipping towards open doors when the object deactivation radius is disabled.

@@ -13,6 +13,9 @@ if (state == STANDING || state == RUNNING) {
     xVel *= 0.25;
     xAcc = 0;
     }
+    else if (statetime < 8) {
+        statetime = 8;
+    }
     if (state == RUNNING && (speedboost || dash >= 45)) {
         if (facing == RIGHT && (kRight == 0 || kLeft > 0) || facing == LEFT && (kLeft == 0 || kRight > 0)) {
             state = BRAKING;
