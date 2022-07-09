@@ -7,7 +7,7 @@ MECHANICS CHANGES:
 		-While in spinjump state, there is no air friction, so you can maintain your speed. In normal jumping/falling state, you will slow down quickly, so respin to keep speed.
 		-The faster you run, the higher you jump.
 		-New sound effect and graphic that indicates speedbooster activation.
-		-Upon landing, Samus will no longer stop in her tracks for 5 frames like she does in vanilla (this was likely done to mimic gba metroid movement.)
+		-Upon landing, Samus will no longer stop in her tracks for 5 frames like she does in vanilla (this was likely done in the original to mimic gba metroid movement.)
 		-Added vertical spinjump from RoS and Super.
 	BALL STATES:
 		-Mockball is now possible before (and after) speedbooster, functions like super metroid. To activate, morph within 12 frames of landing.
