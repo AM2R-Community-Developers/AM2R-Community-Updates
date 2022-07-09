@@ -1,4 +1,4 @@
-Changelog from vanilla AM2R to Momentum Mod 0.3a:
+Changelog from vanilla AM2R to Momentum Mod 0.4a:
 MECHANICS CHANGES:
 	RUNNING AND JUMPING:
 		-Running responds to player input faster. (this does not apply when turning, so as to allow players to aim shots and position themselves more precisely.)
