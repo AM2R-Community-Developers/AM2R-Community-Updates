@@ -19,7 +19,7 @@ MECHANICS CHANGES:
 OTHER:
 	LEVEL DESIGN:
 		-Power grip is no longer available from the start of the game.
-			-Platform layouts before power grip is acquired has been altered to accomodate this change.
+			-Platform layouts before power grip is acquired has been altered to accommodate this change.
 			-Arachnus now drops Power Grip instead of Spring Ball.
 
 
